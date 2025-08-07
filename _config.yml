@@ -1,0 +1,29 @@
+# Site settings
+title: Personal Artist Portfolio
+description: A minimalist portfolio showcasing artistic works and performances
+author: Artist Name
+baseurl: ""  # Leave empty for GitHub user site, or use "/repository-name" for project site
+
+# Social profiles
+social:
+  - name: Instagram
+    url: https://instagram.com/yourusername
+  - name: Facebook
+    url: https://facebook.com/yourpage
+    
+# Google Analytics (optional)
+google_analytics: ""  # Your GA tracking ID
+
+# Don't edit below this line unless you know what you're doing
+exclude:
+  - .git/
+  - .github/
+  - node_modules/
+  - package.json
+  - package-lock.json
+  - README.md
+
+# Build settings
+markdown: kramdown
+plugins:
+  - jekyll-seo-tag
