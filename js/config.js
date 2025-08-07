@@ -10,8 +10,8 @@ const siteConfig = {
     about: {
         name: "Avery Smith",
         profileImage: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=764&q=80",
-        bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor. Ut in nulla enim.",
-        longBio: "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Proin vel ante a orci tempus eleifend ut et magna. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta. Sed nec diam eu diam mattis viverra."
+        bio: "Avery Smith is a dance artist living and working on the unceded territories of the Musqueam, Squamish, and Tseil-Waututh First Nations of Vancouver, BC. Avery has danced in site specific and multimedia pieces for artists including Company 605, Compagnie Vision Impure, Farouche Collective, Emmalena Fredriksson, and others.",
+        longBio: "She completed her professional training at Modus Operandi Contemporary Dance Training Program under the direction of Tiffany Tregarthen and David Raymond. Here, she was fortunate to work with artists including Crystal Pite, Justine Chambers, Wen Wei Wang, Serge Bennathan, and many others. Avery was associate artistic producer for Company 605 through 2018/19 and was the company's artistic intern through 2017/2018. She is a recipient of EDAM Dance’s training scholarship and was a selected participant in The Banff Centre’s Creative Gesture Collective Composition Lab for Music and Dance 2019. ​ Avery uses her artistic practice to explore differing gradients of effort and ease. She’s interested in subverting ratios of structure and freedom within physical tasks, creative processes, and already existing dance infrastructure. The ability that dance has to connect us has invigorated Avery to create new spaces and projects that foster this capacity for connection. Questioning creative process as space for collaboration and community fuels her practice. In recent years, interdisciplinary collaborations have become central to Avery's voice as an artist and have inspired her to reimagine alternative ways of making. "
     },
     
     // Current section - current projects, exhibitions or focus
@@ -20,11 +20,11 @@ const siteConfig = {
         items: [
             {
                 id: "current1",
-                title: "Project Name 1",
-                thumbnail: "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                title: "Here We Are",
+                thumbnail: "images/here-we-are.png",
+                fullImage: "images/here-we-are.png",
                 video: "", // Leave empty if no video
-                description: "Description of current project 1"
+                description: "“Here We Are” explores the artifice of identity. Together, Avery and Kate have created states of being that attempt to consolidate multiple versions of self. The attempt of presenting oneself in a neat package fails and dissolves in different ways. Cracks in formality and persona soften the performer and make space for multiple identities to exist. Performed by Kate Franklin Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)"
             },
             {
                 id: "current2",
