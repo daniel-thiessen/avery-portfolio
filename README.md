@@ -1,0 +1,207 @@
+# Personal Artist Portfolio
+
+This is a minimalist artist portfolio website designed to showcase work in a clean, elegant interface. The site features responsive design, image carousels, video integration, and a contact form that works on GitHub Pages.
+
+## Features
+
+- Responsive design that works on all devices
+- Clean, minimalist aesthetic
+- Image and video galleries organized by category
+- Contact form (powered by FormSubmit)
+- Optimized for fast loading
+- Easy deployment to GitHub Pages
+
+## Table of Contents
+
+- [Local Development](#local-development)
+- [GitHub Pages Deployment](#github-pages-deployment)
+  - [Initial Setup](#initial-setup)
+  - [How to Deploy](#how-to-deploy)
+  - [Troubleshooting](#troubleshooting-deployment)
+  - [Custom Domain](#custom-domain-optional)
+- [Contact Form Integration](#contact-form-integration)
+  - [How It Works](#how-the-form-works)
+  - [Setup Instructions](#contact-form-setup-instructions)
+  - [Troubleshooting](#troubleshooting-contact-form)
+  - [Privacy Considerations](#privacy-considerations)
+
+## Local Development
+
+To run this site locally:
+
+```bash
+# If you have Python installed
+python -m http.server
+
+# Or if you have Node.js installed
+npm install
+npm start
+```
+
+Then open your browser to `http://localhost:8000` (Python) or `http://localhost:3000` (Node.js)
+
+## GitHub Pages Deployment
+
+This site is configured for deployment on GitHub Pages using manual deployment workflows.
+
+### Initial Setup
+
+1. **Create a GitHub Repository**:
+   - Go to GitHub and create a new repository
+   - Push your code to this repository
+
+2. **Configure GitHub Pages**:
+   - Go to your repository's Settings
+   - Navigate to "Pages" in the sidebar
+   - Under "Build and deployment", set:
+     - Source: "Deploy from a branch"
+     - Branch: "gh-pages" (this will be created by the workflow)
+   - Click "Save"
+
+3. **Enable GitHub Actions**:
+   - In repository Settings, go to "Actions" > "General"
+   - Ensure "Allow all actions and reusable workflows" is selected
+   - Click "Save"
+
+### How to Deploy
+
+Whenever you want to deploy a new version of your site:
+
+1. Make your changes and push them to the main branch
+2. Go to the "Actions" tab in your GitHub repository
+3. Select the "Manual Deploy to GitHub Pages" workflow from the left sidebar
+4. Click the "Run workflow" button
+5. In the dropdown:
+   - Select the branch you want to deploy (usually "main")
+   - Optionally add deployment notes
+6. Click "Run workflow" to start the deployment process
+
+The workflow will:
+
+- Check out your code
+- Set up Node.js (in case you need it in the future)
+- Install any dependencies if you have a package.json file
+- Run any build scripts if specified in package.json
+- Deploy the site to the gh-pages branch
+- GitHub Pages will automatically update with the new content
+
+### Troubleshooting Deployment
+
+- **Deployment fails**: Check the Actions logs for error messages
+- **Site not updating**: It may take a few minutes for GitHub Pages to reflect changes
+- **404 errors**: Make sure your repository is public and GitHub Pages is properly configured
+
+### Custom Domain (Optional)
+
+To use a custom domain with your GitHub Pages site:
+
+1. Go to repository Settings > Pages
+2. Under "Custom domain", enter your domain name (e.g., `www.yourdomain.com`)
+3. Click "Save"
+4. Add a file named `CNAME` to your repository with your domain name as the content (e.g., `www.yourdomain.com`)
+
+#### DNS Configuration
+
+For a **subdomain** like `www.yourdomain.com` or `portfolio.yourdomain.com`:
+
+- Create a **CNAME record** at your domain registrar with:
+  - Name/Host: `www` or your subdomain (e.g., `portfolio`)
+  - Value/Target: `yourusername.github.io` (your GitHub Pages domain)
+  - TTL: 3600 (or automatic)
+
+For an **apex domain** like `yourdomain.com` (without www):
+
+- Create **A records** pointing to GitHub Pages' IP addresses:
+  - Name/Host: `@` (or leave blank, depending on your registrar)
+  - Value/Target:
+    - `185.199.108.153`
+    - `185.199.109.153`
+    - `185.199.110.153`
+    - `185.199.111.153`
+  - TTL: 3600 (or automatic)
+
+- Alternatively, some registrars support **ALIAS/ANAME records** for apex domains:
+  - Name/Host: `@`
+  - Value/Target: `yourusername.github.io`
+
+## Contact Form Integration
+
+### How the Form Works
+
+Since GitHub Pages only hosts static websites and doesn't support server-side processing, we've integrated with [FormSubmit.co](https://formsubmit.co/) to handle form submissions. FormSubmit is a free service that allows you to receive form submissions directly to your email without any server-side code.
+
+### Contact Form Setup Instructions
+
+#### 1. Email Protection
+
+The form has been set up with a secure token instead of a direct email address to protect against spam:
+
+```javascript
+// In main.js
+form.action = 'https://formsubmit.co/7901188d6d31702f00ad3357f2698284';
+```
+
+This token is already linked to your email address in the contact section of `js/config.js`, so you don't need to modify the form action.
+
+#### 2. First Form Submission
+
+When someone submits the form for the first time, FormSubmit will send you a confirmation email to activate the endpoint. You need to:
+
+1. Check your inbox (and spam folder) for an email from FormSubmit
+2. Click the activation link in that email to confirm you want to receive submissions
+
+#### 3. Additional Form Configuration (Optional)
+
+You can customize your form behavior by updating these parameters in `js/main.js`:
+
+```javascript
+// Find this code section (around line 490)
+const disableAutoreply = document.createElement('input');
+disableAutoreply.type = 'hidden';
+disableAutoreply.name = '_autoresponse';
+disableAutoreply.value = 'Thank you for your message. I will get back to you soon!';
+```
+
+FormSubmit supports many configuration options:
+
+- `_subject` - Customize the email subject
+- `_autoresponse` - Set an auto-response message
+- `_cc` - Send a copy to another email
+- And more at [FormSubmit documentation](https://formsubmit.co/)
+
+#### How Form Submission Works
+
+1. When visitors fill out your contact form and click "Send Message"
+2. FormSubmit processes the submission and sends it to your email
+3. The visitor is redirected back to your site with a success message
+4. You receive the message details in your inbox
+
+### Troubleshooting Contact Form
+
+- **Not receiving emails?** Check your spam folder and make sure you've activated the FormSubmit endpoint.
+- **Getting 404 errors when testing locally?** This is expected. The form is configured to use FormSubmit's thank-you page during local testing since FormSubmit cannot redirect to localhost URLs. In production (on GitHub Pages), it will properly redirect back to your site.
+- **Form not submitting on GitHub Pages?** Make sure your site is properly deployed with the correct URL.
+
+### Privacy Considerations
+
+FormSubmit's free tier adds a small "Powered by FormSubmit" branding to emails. If you want to remove this, you can upgrade to their paid plan.
+
+## File Structure
+
+```text
+├── index.html           # Main HTML file
+├── style.css            # Main CSS file
+├── js/
+│   ├── main.js          # Main JavaScript file
+│   └── config.js        # Site configuration
+├── .github/
+│   └── workflows/
+│       └── manual-deploy.yml  # GitHub Actions workflow
+└── _config.yml          # Jekyll configuration
+```
+
+## Credits
+
+- Placeholder images from [Unsplash](https://unsplash.com/)
+- Icons: Custom minimal SVG icons
+- Form processing by [FormSubmit](https://formsubmit.co/)
