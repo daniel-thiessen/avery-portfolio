@@ -14,6 +14,8 @@ const MIME_TYPES = {
   '.jpeg': 'image/jpeg',
   '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
+  '.yml': 'text/yaml',
+  '.yaml': 'text/yaml',
 };
 
 const server = http.createServer((req, res) => {
