@@ -1,0 +1,111 @@
+backend:
+  name: github
+  repo: daniel-thiessen/avery-portfolio
+  branch: main
+  commit_messages:
+    create: "Create {{collection}}/{{slug}}"
+    update: "Update {{collection}}/{{slug}}"
+    delete: "Delete {{collection}}/{{slug}}"
+    uploadMedia: "Upload {{path}}"
+    deleteMedia: "Delete {{path}}"
+media_folder: "images"
+public_folder: "/images"
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Site Config"
+        name: "siteConfig"
+        file: "js/config.js"
+        fields:
+          - label: "Site Title"
+            name: "siteTitle"
+            widget: "string"
+          - label: "Site Description"
+            name: "siteDescription"
+            widget: "text"
+          - label: "About"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Profile Image", name: "profileImage", widget: "image" }
+              - { label: "Short Bio", name: "bio", widget: "text" }
+              - { label: "Long Bio", name: "longBio", widget: "text" }
+          - label: "Current Work"
+            name: "current"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+                  - { label: "Full Image", name: "fullImage", widget: "image" }
+                  - { label: "Video URL", name: "video", widget: "string", required: false }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Choreography"
+            name: "choreography"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+                  - { label: "Full Image", name: "fullImage", widget: "image" }
+                  - { label: "Video URL", name: "video", widget: "string", required: false }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Projects"
+            name: "projects"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+                  - { label: "Full Image", name: "fullImage", widget: "image" }
+                  - { label: "Video URL", name: "video", widget: "string", required: false }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Performances"
+            name: "performances"
+            widget: "object"
+            fields:
+              - { label: "Section Title", name: "title", widget: "string" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Thumbnail", name: "thumbnail", widget: "image" }
+                  - { label: "Full Image", name: "fullImage", widget: "image" }
+                  - { label: "Video URL", name: "video", widget: "string", required: false }
+                  - { label: "Description", name: "description", widget: "text" }
+          - label: "Contact"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Email", name: "email", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - label: "Social Media"
+                name: "socialMedia"
+                widget: "object"
+                fields:
+                  - { label: "Instagram", name: "instagram", widget: "string" }
+                  - { label: "Facebook", name: "facebook", widget: "string" }
+                  - { label: "YouTube", name: "youtube", widget: "string" }
+                  - { label: "Vimeo", name: "vimeo", widget: "string" }
+              - { label: "Contact Form Enabled", name: "formEnabled", widget: "boolean" }
+          - label: "Navigation Menu"
+            name: "navigation"
+            widget: "list"
+            fields:
+              - { label: "Section ID", name: "id", widget: "string" }
+              - { label: "Label", name: "label", widget: "string" }
