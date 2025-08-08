@@ -2,8 +2,7 @@ backend:
   name: github
   repo: daniel-thiessen/avery-portfolio
   branch: main
-  base_url: https://daniel-thiessen.github.io/avery-portfolio
-  site_domain: daniel-thiessen.github.io/avery-portfolio
+  auth_endpoint: https://github.com/login/oauth/authorize
   auth_type: implicit
   app_id: "1748805"
   commit_messages:
