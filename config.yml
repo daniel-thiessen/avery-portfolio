@@ -2,6 +2,10 @@ backend:
   name: github
   repo: daniel-thiessen/avery-portfolio
   branch: main
+  auth_endpoint: https://api.netlify.com/auth
+  base_url: https://api.netlify.com
+  auth_type: implicit
+  app_id: "1748805"
   commit_messages:
     create: "Create {{collection}}/{{slug}}"
     update: "Update {{collection}}/{{slug}}"
