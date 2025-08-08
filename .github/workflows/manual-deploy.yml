@@ -1,6 +1,10 @@
-name: Manual Deploy to GitHub Pages
+
+name: Deploy to GitHub Pages
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
     inputs:
       notes:
@@ -32,4 +36,5 @@ jobs:
           branch: gh-pages
           clean: true
           single-commit: false
-          commit-message: "Deploy site - ${{ github.event.inputs.notes }}"
+          commit-message: |
+            Deploy site - ${{ github.event.inputs.notes }}${{ github.event_name == 'push' && ' (auto-deploy from main)' || '' }}
