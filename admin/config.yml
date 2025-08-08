@@ -2,8 +2,8 @@ backend:
   name: github
   repo: daniel-thiessen/avery-portfolio
   branch: main
-  base_url: https://daniel-thiessen.github.io
-  site_domain: daniel-thiessen.github.io
+  base_url: https://daniel-thiessen.github.io/avery-portfolio
+  site_domain: daniel-thiessen.github.io/avery-portfolio
   auth_type: implicit
   app_id: "1748805"
   commit_messages:
@@ -12,7 +12,7 @@ backend:
     delete: "Delete {{collection}}/{{slug}}"
     uploadMedia: "Upload {{path}}"
     deleteMedia: "Delete {{path}}"
-media_folder: "images"
+media_folder: "../images"
 public_folder: "/images"
 collections:
   - name: "settings"
@@ -20,7 +20,7 @@ collections:
     files:
       - label: "Site Config"
         name: "siteConfig"
-        file: "js/config.js"
+        file: "../js/config.js"
         fields:
           - label: "Site Title"
             name: "siteTitle"
