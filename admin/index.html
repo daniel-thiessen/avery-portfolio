@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Content Manager</title>
-  <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
+    <meta charset="UTF-8">
+    <title>Content Manager</title>
+    <link rel="cms-config-url" href="/config.yml">
 </head>
 <body>
-  <script>
-    window.CMS_MANUAL_INIT = true;
-  </script>
-  <script src="/admin/config.js"></script>
+    <div id="nc-root"></div>
+    <script>
+        window.CMS_MANUAL_INIT = true;
+    </script>
+    <script src="https://unpkg.com/decap-cms@latest/dist/decap-cms.js"></script>
+    <script>
+        if (window.CMS) {
+            window.CMS.init();
+        }
+    </script>
 </body>
 </html>
