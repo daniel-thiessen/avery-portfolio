@@ -14,26 +14,19 @@ const MIME_TYPES = {
   '.jpeg': 'image/jpeg',
   '.gif': 'image/gif',
   '.svg': 'image/svg+xml',
-  '.yml': 'text/yaml',
-  '.yaml': 'text/yaml',
 };
 
 const server = http.createServer((req, res) => {
   console.log(`Request: ${req.url}`);
   
-  // Normalize URL and map to file path
+  // Handle root path
   let filePath = req.url === '/' 
     ? path.join(__dirname, 'index.html')
     : path.join(__dirname, req.url);
-
-  // If the path is a directory, serve its index.html
-  if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
-    filePath = path.join(filePath, 'index.html');
-  }
-
+  
   const extname = path.extname(filePath);
   let contentType = MIME_TYPES[extname] || 'application/octet-stream';
-
+  
   fs.readFile(filePath, (err, content) => {
     if (err) {
       if (err.code === 'ENOENT') {

@@ -10,7 +10,6 @@
     <meta name="description" content="Artist Portfolio - Showcase of artistic work and performances">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
     <main class="fade-in"></main>
@@ -18,16 +17,5 @@
     <!-- Configuration and JavaScript -->
     <script src="js/config.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        if (window.netlifyIdentity) {
-            window.netlifyIdentity.on("init", user => {
-                if (!user) {
-                    window.netlifyIdentity.on("login", () => {
-                        document.location.href = "/admin/";
-                    });
-                }
-            });
-        }
-    </script>
 </body>
 </html>
