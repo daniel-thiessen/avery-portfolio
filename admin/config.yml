@@ -1,10 +1,6 @@
 backend:
-  name: github
-  repo: daniel-thiessen/avery-portfolio
+  name: git-gateway
   branch: main
-  api_root: https://api.github.com
-  base_url: https://heartfelt-biscotti-de2960.netlify.app
-  auth_endpoint: /.netlify/functions/auth
   commit_messages:
     create: "Create {{collection}}/{{slug}}"
     update: "Update {{collection}}/{{slug}}"
