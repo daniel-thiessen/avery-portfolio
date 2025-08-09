@@ -1,0 +1,8 @@
+{
+  "name": "avery-portfolio-netlify-functions",
+  "version": "1.0.0",
+  "description": "Netlify Functions for OAuth authentication",
+  "dependencies": {
+    "simple-oauth2": "^5.0.0"
+  }
+}
