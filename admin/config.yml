@@ -3,14 +3,14 @@ backend:
   repo: daniel-thiessen/avery-portfolio
   branch: main
   base_url: https://heartfelt-biscotti-de2960.netlify.app
-  auth_endpoint: /api/auth
+  auth_endpoint: api/auth
   commit_messages:
     create: "Create {{collection}}/{{slug}}"
     update: "Update {{collection}}/{{slug}}"
     delete: "Delete {{collection}}/{{slug}}"
     uploadMedia: "Upload {{path}}"
     deleteMedia: "Delete {{path}}"
-media_folder: "../images"
+media_folder: "images"
 public_folder: "/images"
 collections:
   - name: "settings"

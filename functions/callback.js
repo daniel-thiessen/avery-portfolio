@@ -1,55 +1,68 @@
-const simpleOauth = require('simple-oauth2');
-
-const clientId = process.env.OAUTH_CLIENT_ID;
-const clientSecret = process.env.OAUTH_CLIENT_SECRET;
-
-// GitHub's OAuth settings
-const tokenHost = 'https://github.com';
-const tokenPath = '/login/oauth/access_token';
-
-// Create oAuth2 client
-const oauth2 = simpleOauth.create({
-  client: {
-    id: clientId,
-    secret: clientSecret,
-  },
-  auth: {
-    tokenHost,
-    tokenPath,
-  },
-});
+const queryString = require('query-string');
+const fetch = require('node-fetch');
 
 // Callback Handler
 exports.handler = async (event, context) => {
-  const code = event.queryStringParameters.code;
-  const redirectUri = `${process.env.NETLIFY_URL}/api/callback`;
-  
-  try {
-    const tokenConfig = {
-      code,
-      redirect_uri: redirectUri,
-    };
+  // Check method
+  if (event.httpMethod !== 'GET') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
 
-    // Exchange auth code for access token
-    const accessToken = await oauth2.authorizationCode.getToken(tokenConfig);
-    const { token } = oauth2.accessToken.create(accessToken);
+  // Get the code from the query
+  const code = event.queryStringParameters.code;
+  if (!code) {
+    return { statusCode: 400, body: 'Missing code parameter' };
+  }
+
+  // Get environment variables
+  const clientId = process.env.OAUTH_CLIENT_ID;
+  const clientSecret = process.env.OAUTH_CLIENT_SECRET;
+  const siteUrl = process.env.NETLIFY_URL || 'https://heartfelt-biscotti-de2960.netlify.app';
+  const redirectUri = `${siteUrl}/api/callback`;
+
+  try {
+    // Exchange the code for an access token
+    const tokenResponse = await fetch('https://github.com/login/oauth/access_token', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        client_id: clientId,
+        client_secret: clientSecret,
+        code: code,
+        redirect_uri: redirectUri
+      })
+    });
+
+    const tokenData = await tokenResponse.json();
     
-    // Redirect back to admin with the token
+    if (tokenData.error) {
+      console.error('Error getting token:', tokenData.error_description);
+      return {
+        statusCode: 400,
+        body: JSON.stringify({
+          error: tokenData.error,
+          error_description: tokenData.error_description
+        })
+      };
+    }
+
+    // Redirect back to the admin page with the token
     return {
       statusCode: 302,
       headers: {
-        Location: `/admin/#access_token=${token.access_token}&token_type=bearer&expires_in=${token.expires_in}`,
+        Location: `/admin/#access_token=${tokenData.access_token}&token_type=bearer&expires_in=${tokenData.expires_in || '3600'}`
       },
-      body: '',
+      body: ''
     };
-  } catch (error) {
-    console.error('Access Token Error:', error.message);
+    
+  } catch (err) {
+    console.error('Token exchange error:', err);
     return {
       statusCode: 500,
-      body: JSON.stringify({
-        error: 'Error getting access token',
-        details: error.message,
-      }),
+      body: JSON.stringify({ error: 'Internal Server Error during token exchange' })
     };
   }
 };

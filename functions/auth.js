@@ -1,45 +1,48 @@
-const simpleOauth = require('simple-oauth2');
+// For netlify-identity-widget
+const express = require('express');
+const bodyParser = require('body-parser');
+const queryString = require('query-string');
+const fetch = require('node-fetch');
 
-const clientId = process.env.OAUTH_CLIENT_ID;
-const clientSecret = process.env.OAUTH_CLIENT_SECRET;
-
-// GitHub's OAuth settings
-const authorizationHost = 'https://github.com';
-const tokenHost = 'https://github.com';
-const authorizePath = '/login/oauth/authorize';
-const tokenPath = '/login/oauth/access_token';
-
-// Create oAuth2 client
-const oauth2 = simpleOauth.create({
-  client: {
-    id: clientId,
-    secret: clientSecret,
-  },
-  auth: {
-    tokenHost,
-    tokenPath,
-    authorizePath,
-    authorizeHost: authorizationHost,
-  },
-});
-
-// Auth Handler
+// Auth Handler for GitHub
 exports.handler = async (event, context) => {
-  // Redirect URL pointing back to your site
-  const redirectUrl = `${process.env.NETLIFY_URL}/api/callback`;
+  // Check method
+  if (event.httpMethod !== 'GET') {
+    return { statusCode: 405, body: 'Method Not Allowed' };
+  }
+
+  // Get environment variables
+  const clientId = process.env.OAUTH_CLIENT_ID;
+  const clientSecret = process.env.OAUTH_CLIENT_SECRET;
+
+  if (!clientId || !clientSecret) {
+    return {
+      statusCode: 500,
+      body: 'OAuth credentials not properly configured'
+    };
+  }
+
+  // Create GitHub OAuth URL
+  const authEndpoint = 'https://github.com/login/oauth/authorize';
+  const siteUrl = process.env.NETLIFY_URL || 'https://heartfelt-biscotti-de2960.netlify.app';
+  const redirectUri = `${siteUrl}/api/callback`;
   
-  // Authorization URL oauth2 client
-  const authorizationUrl = oauth2.authorizationCode.authorizeURL({
-    redirect_uri: redirectUrl,
-    scope: 'repo,user', // Scope required for repository access
+  // Build the authorization URL
+  const queryParams = queryString.stringify({
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    scope: 'repo,user',
+    response_type: 'code',
+    state: 'dcmsauth' + Math.random().toString(36).substring(2)
   });
 
-  // Redirect to GitHub authorization page
+  // Redirect to GitHub for authorization
   return {
     statusCode: 302,
     headers: {
-      Location: authorizationUrl,
+      Location: `${authEndpoint}?${queryParams}`,
+      'Cache-Control': 'no-cache'
     },
-    body: '',
+    body: JSON.stringify({})
   };
 };
