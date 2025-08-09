@@ -1,5 +1,6 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: daniel-thiessen/avery-portfolio
   branch: main
   commit_messages:
     create: "Create {{collection}}/{{slug}}"
