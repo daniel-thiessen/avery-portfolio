@@ -1,0 +1,40 @@
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      notes:
+        description: 'Deployment Notes'
+        required: false
+        default: 'Manual deployment triggered from GitHub Actions'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Prepare site folder
+        run: |
+          mkdir -p dist
+          # Copy all files except excluded directories
+          rsync -av --exclude='.git/' \
+                    --exclude='.github/' \
+                    --exclude='node_modules/' \
+                    --exclude='dist/' \
+                    . dist/
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
+          branch: gh-pages
+          clean: true
+          single-commit: false
+          commit-message: |
+            Deploy site - ${{ github.event.inputs.notes }}${{ github.event_name == 'push' && ' (auto-deploy from main)' || '' }}
