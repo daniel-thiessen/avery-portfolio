@@ -1,48 +1,46 @@
-// For netlify-identity-widget
-const express = require('express');
-const bodyParser = require('body-parser');
 const queryString = require('query-string');
-const fetch = require('node-fetch');
 
 // Auth Handler for GitHub
 exports.handler = async (event, context) => {
-  // Check method
-  if (event.httpMethod !== 'GET') {
-    return { statusCode: 405, body: 'Method Not Allowed' };
-  }
-
+  // Get parameters from Decap CMS
+  const params = event.queryStringParameters;
+  const provider = params.provider || 'github';
+  const scope = params.scope || 'repo,user';
+  
   // Get environment variables
   const clientId = process.env.OAUTH_CLIENT_ID;
-  const clientSecret = process.env.OAUTH_CLIENT_SECRET;
-
-  if (!clientId || !clientSecret) {
+  
+  if (!clientId) {
     return {
       statusCode: 500,
-      body: 'OAuth credentials not properly configured'
+      body: 'OAuth client ID not configured'
     };
   }
 
   // Create GitHub OAuth URL
   const authEndpoint = 'https://github.com/login/oauth/authorize';
   const siteUrl = process.env.NETLIFY_URL || 'https://heartfelt-biscotti-de2960.netlify.app';
-  const redirectUri = `${siteUrl}/api/callback`;
+  const redirectUri = `${siteUrl}/.netlify/functions/callback`;
   
   // Build the authorization URL
   const queryParams = queryString.stringify({
     client_id: clientId,
     redirect_uri: redirectUri,
-    scope: 'repo,user',
+    scope: scope,
     response_type: 'code',
     state: 'dcmsauth' + Math.random().toString(36).substring(2)
   });
+
+  console.log(`Redirecting to ${authEndpoint}?${queryParams}`);
 
   // Redirect to GitHub for authorization
   return {
     statusCode: 302,
     headers: {
       Location: `${authEndpoint}?${queryParams}`,
-      'Cache-Control': 'no-cache'
+      'Cache-Control': 'no-cache',
+      'Access-Control-Allow-Origin': '*'
     },
-    body: JSON.stringify({})
+    body: ''
   };
 };

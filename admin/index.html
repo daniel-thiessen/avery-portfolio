@@ -4,9 +4,34 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
+    <!-- Include the script that enables Netlify Identity on this page. -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <script>
+      // Manually configure CMS
+      window.CMS_MANUAL_INIT = true;
+      
+      // Initialize CMS
+      window.addEventListener('load', function() {
+        CMS.init({
+          config: {
+            backend: {
+              name: 'github',
+              repo: 'daniel-thiessen/avery-portfolio',
+              branch: 'main',
+              api_root: 'https://api.github.com',
+              base_url: 'https://heartfelt-biscotti-de2960.netlify.app',
+              auth_endpoint: '/.netlify/functions/auth'
+            },
+            media_folder: 'images',
+            public_folder: '/images',
+            load_config_file: false
+          }
+        });
+      });
+    </script>
   </head>
   <body>
-    <!-- Include the script that builds the page and powers Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- The CMS interface will be rendered here -->
+    <div id="nc-root"></div>
   </body>
 </html>
