@@ -1,12 +1,6 @@
 backend:
-  name: github
-  repo: daniel-thiessen/avery-portfolio
+  name: git-gateway
   branch: main
-  base_url: https://api.netlify.com
-  auth_endpoint: auth
-  site_id: daniel-thiessen.github.io/avery-portfolio
-  app_id: "1748805"
-  site_domain: daniel-thiessen.github.io/avery-portfolio
   commit_messages:
     create: "Create {{collection}}/{{slug}}"
     update: "Update {{collection}}/{{slug}}"
