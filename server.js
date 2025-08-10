@@ -9,6 +9,8 @@ const MIME_TYPES = {
   '.js': 'text/javascript',
   '.css': 'text/css',
   '.json': 'application/json',
+  '.yaml': 'text/yaml',
+  '.yml': 'text/yaml',
   '.png': 'image/png',
   '.jpg': 'image/jpg',
   '.jpeg': 'image/jpeg',
@@ -19,10 +21,30 @@ const MIME_TYPES = {
 const server = http.createServer((req, res) => {
   console.log(`Request: ${req.url}`);
   
-  // Handle root path
-  let filePath = req.url === '/' 
-    ? path.join(__dirname, 'index.html')
-    : path.join(__dirname, req.url);
+  // CORS headers
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  
+  // Handle OPTIONS requests for CORS preflight
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
+  
+  // Special handling for admin paths
+  let filePath;
+  if (req.url === '/') {
+    filePath = path.join(__dirname, 'index.html');
+  } else if (req.url === '/admin' || req.url === '/admin/') {
+    filePath = path.join(__dirname, 'admin/index.html');
+  } else if (req.url === '/config.yml') {
+    // Serve admin config from the admin directory
+    filePath = path.join(__dirname, 'admin/config.yml');
+  } else {
+    filePath = path.join(__dirname, req.url);
+  }
   
   const extname = path.extname(filePath);
   let contentType = MIME_TYPES[extname] || 'application/octet-stream';

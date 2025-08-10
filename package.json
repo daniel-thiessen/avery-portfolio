@@ -4,7 +4,9 @@
   "description": "A minimalist artist portfolio website",
   "main": "index.html",
   "scripts": {
-    "start": "serve",
+    "start": "node server.js",
+    "cms": "node local-backend.js",
+    "dev": "node server.js & node local-backend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -16,5 +18,9 @@
   "license": "MIT",
   "devDependencies": {
     "serve": "^14.0.0"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0"
   }
 }

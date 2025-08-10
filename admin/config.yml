@@ -1,6 +1,7 @@
 backend:
   # For local development and testing
   name: test-repo
+  local_backend: true
 
 # For production with GitHub OAuth, uncomment the following and comment out test-repo above:
 # backend:
