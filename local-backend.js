@@ -1,34 +1,46 @@
-#!/usr/bin/env node
+/**
+ * Local Backend Server for Decap CMS
+ * 
+ * This provides a simple Express server that handles local CMS API calls.
+ * It allows the CMS to work without authentication by using the test-repo backend.
+ */
 
-// Local CMS backend server for testing content editing without authentication
-// This allows editing content locally, then you can manually commit changes to GitHub
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const fs = require('fs');
-const { exec } = require('child_process');
-
+const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 8082; // Different from main server port
-const ROOT_DIR = path.resolve(__dirname);
+const PORT = 8082;
 
-// Enable CORS for all routes with explicit configuration
+// CORS middleware
 app.use(cors({
-  origin: ['http://localhost:8080', 'http://127.0.0.1:8080'],
-  credentials: true,
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Handle preflight OPTIONS requests
-app.options('*', cors());
-
-app.use(express.json({ limit: '10mb' }));
+// JSON parsing middleware
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
 // Log all requests
 app.use((req, res, next) => {
   console.log(`${req.method} ${req.url}`);
   next();
+});
+
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ status: 'ok', message: 'CMS Local Backend is running' });
+});
+
+// Root API endpoint
+app.get('/api/v1', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    message: 'CMS Local Backend API is operational',
+    version: '1.0.0'
+  });
 });
 
 // Ensure content directories exist
@@ -39,6 +51,7 @@ const ensureDir = (dir) => {
   }
 };
 
+const ROOT_DIR = path.resolve(__dirname);
 ensureDir(path.join(ROOT_DIR, '_content'));
 ensureDir(path.join(ROOT_DIR, '_data'));
 ensureDir(path.join(ROOT_DIR, '_content/current'));
@@ -46,11 +59,6 @@ ensureDir(path.join(ROOT_DIR, '_content/choreography'));
 ensureDir(path.join(ROOT_DIR, '_content/projects'));
 ensureDir(path.join(ROOT_DIR, '_content/performances'));
 ensureDir(path.join(ROOT_DIR, 'images'));
-
-// API health check endpoint
-app.get('/api/v1', (req, res) => {
-  res.json({ status: 'ok', message: 'Local CMS backend is running' });
-});
 
 // List content collections
 app.get('/api/v1/collections', (req, res) => {
@@ -222,30 +230,9 @@ app.post('/api/v1/media', express.json({ limit: '50mb' }), (req, res) => {
   }
 });
 
-// Content synchronization endpoints
-app.get('/api/v1/sync/pull', (req, res) => {
-  exec('node content-sync.js pull', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error pulling content: ${error.message}`);
-      return res.status(500).json({ error: error.message, stderr });
-    }
-    res.json({ success: true, message: 'Content pulled successfully', output: stdout });
-  });
-});
-
-app.get('/api/v1/sync/push', (req, res) => {
-  exec('node content-sync.js push', (error, stdout, stderr) => {
-    if (error) {
-      console.error(`Error pushing content: ${error.message}`);
-      return res.status(500).json({ error: error.message, stderr });
-    }
-    res.json({ success: true, message: 'Content pushed successfully', output: stdout });
-  });
-});
-
-// Create the server and handle potential errors
-const server = app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Local CMS backend running on http://localhost:${PORT}`);
+// Start the server
+const server = app.listen(PORT, () => {
+  console.log(`CMS Local Backend Server running on http://localhost:${PORT}`);
   console.log(`Access the admin interface at http://localhost:8080/admin/`);
 });
 
@@ -253,17 +240,7 @@ const server = app.listen(PORT, '0.0.0.0', () => {
 server.on('error', (err) => {
   if (err.code === 'EADDRINUSE') {
     console.error(`Port ${PORT} is already in use. Is the backend already running?`);
-    console.error('Try running with a different port: PORT=8083 node local-backend.js');
   } else {
     console.error('Server error:', err);
   }
-});
-
-// Keep the process running
-process.on('SIGINT', () => {
-  console.log('Shutting down local backend...');
-  server.close(() => {
-    console.log('Local backend stopped');
-    process.exit(0);
-  });
 });

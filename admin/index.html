@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Avery Portfolio - Content Manager</title>
+  <title>Content Manager</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -55,239 +55,50 @@
     <div id="error-message"></div>
   </div>
   
-  <!-- Inline the config for the CMS -->
-  <script>
-    // Define CMS configuration inline to avoid loading config.yml
-    window.CMS_MANUAL_INIT = true;
-    
-    // Configuration object
-    const cmsConfig = {
-      backend: {
-        name: 'test-repo',
-        local_backend: true
-      },
-      media_folder: "images",
-      public_folder: "/images",
-      collections: [
-        {
-          name: "settings",
-          label: "Site Settings",
-          files: [
-            {
-              name: "general",
-              label: "General Settings",
-              file: "_data/settings.yml",
-              fields: [
-                { label: "Site Title", name: "site_title", widget: "string", default: "Avery Smith" },
-                { label: "Site Description", name: "site_description", widget: "text", default: "Showcase of artistic work and performances" }
-              ]
-            }
-          ]
-        },
-        {
-          name: "about",
-          label: "About Section",
-          files: [
-            {
-              name: "about",
-              label: "About",
-              file: "_data/about.yml",
-              fields: [
-                { label: "Name", name: "name", widget: "string" },
-                { label: "Profile Image", name: "profile_image", widget: "image" },
-                { label: "Bio", name: "bio", widget: "text" },
-                { label: "Long Bio", name: "long_bio", widget: "text" }
-              ]
-            }
-          ]
-        },
-        {
-          name: "current",
-          label: "Current Work",
-          folder: "_content/current",
-          create: true,
-          slug: "{{slug}}",
-          fields: [
-            { label: "Title", name: "title", widget: "string" },
-            { label: "Thumbnail", name: "thumbnail", widget: "image" },
-            { label: "Full Image", name: "full_image", widget: "image", required: false },
-            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
-            { label: "Description", name: "description", widget: "text" },
-            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
-          ]
-        },
-        {
-          name: "choreography",
-          label: "Choreography",
-          folder: "_content/choreography",
-          create: true,
-          slug: "{{slug}}",
-          fields: [
-            { label: "Title", name: "title", widget: "string" },
-            { label: "Thumbnail", name: "thumbnail", widget: "image" },
-            { label: "Full Image", name: "full_image", widget: "image", required: false },
-            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
-            { label: "Description", name: "description", widget: "text" },
-            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
-          ]
-        },
-        {
-          name: "projects",
-          label: "Projects",
-          folder: "_content/projects",
-          create: true,
-          slug: "{{slug}}",
-          fields: [
-            { label: "Title", name: "title", widget: "string" },
-            { label: "Thumbnail", name: "thumbnail", widget: "image" },
-            { label: "Full Image", name: "full_image", widget: "image", required: false },
-            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
-            { label: "Description", name: "description", widget: "text" },
-            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
-          ]
-        },
-        {
-          name: "performances",
-          label: "Performances",
-          folder: "_content/performances",
-          create: true,
-          slug: "{{slug}}",
-          fields: [
-            { label: "Title", name: "title", widget: "string" },
-            { label: "Thumbnail", name: "thumbnail", widget: "image" },
-            { label: "Full Image", name: "full_image", widget: "image", required: false },
-            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
-            { label: "Description", name: "description", widget: "text" },
-            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
-          ]
-        },
-        {
-          name: "contact",
-          label: "Contact Information",
-          files: [
-            {
-              name: "contact",
-              label: "Contact",
-              file: "_data/contact.yml",
-              fields: [
-                { label: "Email", name: "email", widget: "string" },
-                { label: "Phone", name: "phone", widget: "string", required: false },
-                {
-                  label: "Social Media",
-                  name: "social_media",
-                  widget: "object",
-                  fields: [
-                    { label: "Instagram", name: "instagram", widget: "string", required: false },
-                    { label: "Facebook", name: "facebook", widget: "string", required: false },
-                    { label: "YouTube", name: "youtube", widget: "string", required: false },
-                    { label: "Vimeo", name: "vimeo", widget: "string", required: false }
-                  ]
-                },
-                { label: "Enable Contact Form", name: "form_enabled", widget: "boolean", default: true }
-              ]
-            }
-          ]
-        }
-      ]
-    };
-  </script>
-  
-  <!-- Include the CMS script -->
+  <!-- Include the script that builds the page and powers Decap CMS (formerly Netlify CMS) -->
   <script src="https://unpkg.com/decap-cms@3.1.5/dist/decap-cms.js"></script>
   
   <script>
-    // Initialize the CMS with proper error handling
-    window.addEventListener('load', function() {
-      console.log('CMS initialization started...');
-      
-      function showError(message) {
-        const errorEl = document.getElementById('error-message');
-        errorEl.textContent = message;
-        errorEl.style.display = 'block';
-        console.error(message);
-      }
-      
-      // Check if we're running locally
-      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.log('Running on localhost - initializing local backend');
-        
-        // Initialize the local backend
-        try {
-          // Add event listener for CMS errors
-          window.addEventListener('error', function(event) {
-            if (event.message && event.message.includes('Failed to load config')) {
-              showError('Error: Failed to load CMS configuration. Using inline configuration instead.');
-            }
-          });
-          
-          // Initialize CMS with the inline config
-          window.CMS.init({
-            config: cmsConfig
-          });
-          
-          // Function to try connecting to the backend
-          function tryConnectingToBackend(retries = 3, delay = 1000) {
-            console.log(`Attempting to connect to backend (${retries} retries left)...`);
-            
-            fetch('http://localhost:8082/api/v1', { 
-              method: 'GET',
-              headers: { 'Content-Type': 'application/json' },
-              mode: 'cors',
-              cache: 'no-cache',
-              credentials: 'same-origin'
-            })
-            .then(response => {
-              if (!response.ok) {
-                console.warn(`Backend responded with status ${response.status}`);
-                showError(`Warning: Local backend API returned status ${response.status}. Make sure the backend server is running properly.`);
-              } else {
-                console.log('Connected to local backend API');
-                document.querySelector('.loading h2').textContent = 'Content Management System Ready';
-                document.querySelector('.spinner').style.borderTopColor = '#4CAF50';
-              }
-            })
-            .catch(err => {
-              console.error('Backend connection error:', err);
-              
-              if (retries > 0) {
-                showError(`Trying to connect to local backend... (${retries} attempts left)`);
-                setTimeout(() => tryConnectingToBackend(retries - 1, delay), delay);
-              } else {
-                showError('Error connecting to local backend: ' + err.message + 
-                  '. Make sure the local backend server is running on port 8082. ' +
-                  'Try running "node local-backend.js" in a separate terminal.');
-                  
-                // Add manual retry button
-                const retryBtn = document.createElement('button');
-                retryBtn.textContent = 'Retry Connection';
-                retryBtn.style.marginTop = '20px';
-                retryBtn.style.padding = '8px 16px';
-                retryBtn.style.backgroundColor = '#2196F3';
-                retryBtn.style.color = 'white';
-                retryBtn.style.border = 'none';
-                retryBtn.style.borderRadius = '4px';
-                retryBtn.style.cursor = 'pointer';
-                
-                retryBtn.addEventListener('click', () => {
-                  document.querySelector('.loading h2').textContent = 'Reconnecting...';
-                  tryConnectingToBackend(3, 1000);
-                });
-                
-                document.querySelector('.loading').appendChild(retryBtn);
-              }
-            });
-          }
-          
-          // Start connection attempts
-          tryConnectingToBackend();
-          
-        } catch (error) {
-          showError('Failed to initialize CMS: ' + error.message);
+    // Function to show error messages
+    function showError(message) {
+      const errorElement = document.getElementById('error-message');
+      errorElement.textContent = message;
+      errorElement.style.display = 'block';
+      console.error(message);
+    }
+    
+    // Check if the local backend server is running
+    function checkBackendServer() {
+      return fetch('http://localhost:8082/api/health', {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Backend server is not responding correctly');
         }
-      } else {
-        // Production mode - just show a message that editing is only available locally
-        showError('The CMS is only available in local development mode. Please run the site locally to edit content.');
-      }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Backend server status:', data);
+        document.querySelector('.loading h2').textContent = 'CMS Ready';
+        document.querySelector('.spinner').style.borderTopColor = '#4CAF50';
+        return true;
+      })
+      .catch(error => {
+        console.error('Backend server check failed:', error);
+        showError('Local backend server is not running. Please start the server using "node local-backend.js"');
+        return false;
+      });
+    }
+    
+    // When page loads, check backend server
+    window.addEventListener('load', function() {
+      checkBackendServer().then(serverRunning => {
+        if (serverRunning) {
+          console.log('CMS initialization starting...');
+        }
+      });
     });
   </script>
 </body>
