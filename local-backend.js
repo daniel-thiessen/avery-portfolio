@@ -12,8 +12,17 @@ const app = express();
 const PORT = process.env.PORT || 8082; // Different from main server port
 const ROOT_DIR = path.resolve(__dirname);
 
-// Enable CORS for all routes
-app.use(cors());
+// Enable CORS for all routes with explicit configuration
+app.use(cors({
+  origin: ['http://localhost:8080', 'http://127.0.0.1:8080'],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// Handle preflight OPTIONS requests
+app.options('*', cors());
+
 app.use(express.json({ limit: '10mb' }));
 
 // Log all requests
@@ -234,7 +243,27 @@ app.get('/api/v1/sync/push', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
+// Create the server and handle potential errors
+const server = app.listen(PORT, '0.0.0.0', () => {
   console.log(`Local CMS backend running on http://localhost:${PORT}`);
   console.log(`Access the admin interface at http://localhost:8080/admin/`);
+});
+
+// Handle server errors
+server.on('error', (err) => {
+  if (err.code === 'EADDRINUSE') {
+    console.error(`Port ${PORT} is already in use. Is the backend already running?`);
+    console.error('Try running with a different port: PORT=8083 node local-backend.js');
+  } else {
+    console.error('Server error:', err);
+  }
+});
+
+// Keep the process running
+process.on('SIGINT', () => {
+  console.log('Shutting down local backend...');
+  server.close(() => {
+    console.log('Local backend stopped');
+    process.exit(0);
+  });
 });

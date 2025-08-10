@@ -225,21 +225,61 @@
             config: cmsConfig
           });
           
-          // Connect to the local backend API
-          fetch('http://localhost:8082/api/v1', { 
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' }
-          })
-          .then(response => {
-            if (!response.ok) {
-              showError('Warning: Local backend API not responding. Make sure the local backend server is running on port 8082.');
-            } else {
-              console.log('Connected to local backend API');
-            }
-          })
-          .catch(err => {
-            showError('Error connecting to local backend: ' + err.message + '. Make sure the local backend server is running on port 8082.');
-          });
+          // Function to try connecting to the backend
+          function tryConnectingToBackend(retries = 3, delay = 1000) {
+            console.log(`Attempting to connect to backend (${retries} retries left)...`);
+            
+            fetch('http://localhost:8082/api/v1', { 
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+              mode: 'cors',
+              cache: 'no-cache',
+              credentials: 'same-origin'
+            })
+            .then(response => {
+              if (!response.ok) {
+                console.warn(`Backend responded with status ${response.status}`);
+                showError(`Warning: Local backend API returned status ${response.status}. Make sure the backend server is running properly.`);
+              } else {
+                console.log('Connected to local backend API');
+                document.querySelector('.loading h2').textContent = 'Content Management System Ready';
+                document.querySelector('.spinner').style.borderTopColor = '#4CAF50';
+              }
+            })
+            .catch(err => {
+              console.error('Backend connection error:', err);
+              
+              if (retries > 0) {
+                showError(`Trying to connect to local backend... (${retries} attempts left)`);
+                setTimeout(() => tryConnectingToBackend(retries - 1, delay), delay);
+              } else {
+                showError('Error connecting to local backend: ' + err.message + 
+                  '. Make sure the local backend server is running on port 8082. ' +
+                  'Try running "node local-backend.js" in a separate terminal.');
+                  
+                // Add manual retry button
+                const retryBtn = document.createElement('button');
+                retryBtn.textContent = 'Retry Connection';
+                retryBtn.style.marginTop = '20px';
+                retryBtn.style.padding = '8px 16px';
+                retryBtn.style.backgroundColor = '#2196F3';
+                retryBtn.style.color = 'white';
+                retryBtn.style.border = 'none';
+                retryBtn.style.borderRadius = '4px';
+                retryBtn.style.cursor = 'pointer';
+                
+                retryBtn.addEventListener('click', () => {
+                  document.querySelector('.loading h2').textContent = 'Reconnecting...';
+                  tryConnectingToBackend(3, 1000);
+                });
+                
+                document.querySelector('.loading').appendChild(retryBtn);
+              }
+            });
+          }
+          
+          // Start connection attempts
+          tryConnectingToBackend();
           
         } catch (error) {
           showError('Failed to initialize CMS: ' + error.message);

@@ -71,9 +71,67 @@ echo -e "${BLUE}Starting local CMS backend...${NC}"
 node local-backend.js &
 CMS_PID=$!
 
-# Wait for server to start
+# Wait for servers to start and check their status
 echo "Waiting for servers to initialize..."
-sleep 2
+
+# Function to check if a server is responding
+check_server() {
+  local url=$1
+  local max_attempts=$2
+  local attempt=1
+  local server_name=$3
+  
+  echo -ne "Checking $server_name at $url... "
+  
+  while [ $attempt -le $max_attempts ]; do
+    if curl -s -o /dev/null -w "%{http_code}" "$url" | grep -q "200\|404"; then
+      echo -e "${GREEN}OK${NC}"
+      return 0
+    fi
+    
+    echo -ne "."
+    sleep 1
+    ((attempt++))
+  done
+  
+  echo -e "\n${YELLOW}Warning: $server_name at $url did not respond after $max_attempts attempts${NC}"
+  return 1
+}
+
+# Check both servers
+main_server_ok=0
+cms_backend_ok=0
+
+# Try to connect to main server
+if check_server "http://localhost:$PORT" 5 "Main server"; then
+  main_server_ok=1
+fi
+
+# Try to connect to CMS backend
+if check_server "http://localhost:8082/api/v1" 5 "CMS backend"; then
+  cms_backend_ok=1
+fi
+
+# If any server failed to start, warn the user
+if [ $main_server_ok -eq 0 ] || [ $cms_backend_ok -eq 0 ]; then
+  echo -e "${YELLOW}Warning: One or more servers failed to start properly${NC}"
+  echo -e "Main server: $([ $main_server_ok -eq 1 ] && echo "${GREEN}OK${NC}" || echo "${YELLOW}Not responding${NC}")"
+  echo -e "CMS backend: $([ $cms_backend_ok -eq 1 ] && echo "${GREEN}OK${NC}" || echo "${YELLOW}Not responding${NC}")"
+  
+  if [ $cms_backend_ok -eq 0 ]; then
+    echo -e "${YELLOW}The CMS admin interface may not work correctly without the backend server${NC}"
+    echo -e "Try running the backend server manually with: node local-backend.js"
+  fi
+  
+  echo -ne "Do you want to continue anyway? [y/N] "
+  read CONTINUE
+  if [[ ! "$CONTINUE" =~ ^[Yy]$ ]]; then
+    echo "Stopping servers..."
+    kill $SERVER_PID 2>/dev/null
+    kill $CMS_PID 2>/dev/null
+    exit 1
+  fi
+fi
 
 # Build the URL
 SITE_URL="http://localhost:$PORT"
