@@ -97,13 +97,20 @@ class ContentLoader {
         }
 
         try {
+            console.log(`Loading YAML file: ${path}`);
             const response = await fetch(path);
+            console.log(`YAML response status: ${response.status} for ${path}`);
+            
             if (!response.ok) {
                 throw new Error(`Failed to load ${path}: ${response.status}`);
             }
+            
             const yamlText = await response.text();
+            console.log(`YAML content received (${yamlText.length} chars) for ${path}`);
+            
             const data = this.parseSimpleYaml(yamlText);
             this.cache[path] = data;
+            console.log(`YAML parsed successfully:`, data);
             return data;
         } catch (error) {
             console.warn(`Could not load ${path}, using fallback data:`, error);
@@ -118,15 +125,22 @@ class ContentLoader {
         }
 
         try {
+            console.log(`Loading markdown file: ${path}`);
             const response = await fetch(path);
+            console.log(`Markdown response status: ${response.status} for ${path}`);
+            
             if (!response.ok) {
                 throw new Error(`Failed to load ${path}: ${response.status}`);
             }
+            
             const markdownText = await response.text();
+            console.log(`Markdown content received (${markdownText.length} chars) for ${path}`);
+            
             const data = this.parseFrontmatter(markdownText);
             
             if (data) {
                 this.cache[path] = data;
+                console.log(`Markdown parsed successfully:`, data);
                 return data;
             } else {
                 throw new Error('No frontmatter found');
@@ -141,6 +155,8 @@ class ContentLoader {
     async loadDirectory(directory) {
         const items = [];
         let filesToTry = [];
+
+        console.log(`Loading content from directory: ${directory}`);
 
         // Define specific files for each directory
         switch (directory) {
@@ -159,6 +175,8 @@ class ContentLoader {
             default:
                 filesToTry = [];
         }
+        
+        console.log(`Files to try in ${directory}:`, filesToTry);
 
         for (const filename of filesToTry) {
             const fullPath = `${directory}/${filename}`;
@@ -327,3 +345,22 @@ class ContentLoader {
 
 // Create global content loader instance
 window.contentLoader = new ContentLoader();
+
+// Debug function to check if content files are available
+(async function debugContentFiles() {
+    try {
+        // Test YAML files
+        console.log("Checking if content files are accessible...");
+        const settingsTest = await fetch('_data/settings.yml');
+        console.log(`Settings YAML status: ${settingsTest.status}`);
+        
+        // Test Markdown files
+        const currentTest = await fetch('_content/current/here-we-are.md');
+        console.log(`Current MD status: ${currentTest.status}`);
+        
+        // Check the base path
+        console.log("Base path:", window.location.pathname);
+    } catch (error) {
+        console.error("Error checking content files:", error);
+    }
+})();
