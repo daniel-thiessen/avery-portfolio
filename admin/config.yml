@@ -1,8 +1,10 @@
 backend:
-  # Using GitHub as the backend
+  # Using GitHub as the backend through Netlify's authentication service
   name: github
   repo: daniel-thiessen/avery-portfolio
   branch: main
+  base_url: https://api.netlify.com
+  auth_endpoint: auth
 
 media_folder: "images"
 public_folder: "/images"
