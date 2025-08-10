@@ -90,15 +90,19 @@ class ContentLoader {
         return null;
     }
 
-    // Load YAML file
+    // Load YAML file with robust error handling and cache busting
     async loadYaml(path) {
-        if (this.cache[path]) {
-            return this.cache[path];
-        }
-
         try {
             console.log(`Loading YAML file: ${path}`);
-            const response = await fetch(path);
+            
+            // Force no-cache to ensure fresh content
+            const response = await fetch(path, {
+                cache: 'no-store',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache'
+                }
+            });
             console.log(`YAML response status: ${response.status} for ${path}`);
             
             if (!response.ok) {
@@ -108,25 +112,39 @@ class ContentLoader {
             const yamlText = await response.text();
             console.log(`YAML content received (${yamlText.length} chars) for ${path}`);
             
+            if (!yamlText || yamlText.trim().length === 0) {
+                console.warn(`Empty YAML content received for ${path}`);
+                return null;
+            }
+            
             const data = this.parseSimpleYaml(yamlText);
+            if (!data || Object.keys(data).length === 0) {
+                console.warn(`YAML parsing produced no data for ${path}`);
+                return null;
+            }
+            
             this.cache[path] = data;
             console.log(`YAML parsed successfully:`, data);
             return data;
         } catch (error) {
-            console.warn(`Could not load ${path}, using fallback data:`, error);
+            console.warn(`Could not load YAML ${path}:`, error);
             return null;
         }
     }
 
-    // Load markdown file with frontmatter
+    // Load markdown file with frontmatter and robust error handling
     async loadMarkdown(path) {
-        if (this.cache[path]) {
-            return this.cache[path];
-        }
-
         try {
             console.log(`Loading markdown file: ${path}`);
-            const response = await fetch(path);
+            
+            // Force no-cache to ensure fresh content
+            const response = await fetch(path, {
+                cache: 'no-store',
+                headers: {
+                    'Cache-Control': 'no-cache',
+                    'Pragma': 'no-cache'
+                }
+            });
             console.log(`Markdown response status: ${response.status} for ${path}`);
             
             if (!response.ok) {
@@ -136,53 +154,90 @@ class ContentLoader {
             const markdownText = await response.text();
             console.log(`Markdown content received (${markdownText.length} chars) for ${path}`);
             
+            if (!markdownText || markdownText.trim().length === 0) {
+                console.warn(`Empty markdown content received for ${path}`);
+                return null;
+            }
+            
             const data = this.parseFrontmatter(markdownText);
             
             if (data) {
+                // Store in cache with path as key
                 this.cache[path] = data;
-                console.log(`Markdown parsed successfully:`, data);
+                console.log(`Markdown parsed successfully for ${path.split('/').pop()}:`, data);
                 return data;
             } else {
-                throw new Error('No frontmatter found');
+                console.warn(`No valid frontmatter found in ${path}`);
+                
+                // Try to create a minimal valid object from the markdown content
+                const filename = path.split('/').pop().replace(/\.md$/, '');
+                const fallbackData = {
+                    title: filename.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()),
+                    content: markdownText
+                };
+                
+                console.log(`Created fallback data for ${filename}:`, fallbackData);
+                this.cache[path] = fallbackData;
+                return fallbackData;
             }
         } catch (error) {
-            console.warn(`Could not load ${path}:`, error);
+            console.warn(`Could not load markdown ${path}:`, error);
             return null;
         }
     }
 
-    // Load all files from a directory (simulated by trying specific filenames for each directory)
-    async loadDirectory(directory) {
+    // Load all files from a directory using GitHub API
+    async loadDirectory(directory, timestamp = Date.now()) {
         const items = [];
-        let filesToTry = [];
+        let directoryPath = '';
+        let categoryName = '';
 
         console.log(`Loading content from directory: ${directory}`);
-
-        // Define specific files for each directory
-        switch (true) {
-            case directory.includes('_content/current'):
-                filesToTry = ['here-we-are.md'];
-                break;
-            case directory.includes('_content/choreography'):
-                filesToTry = ['choreography-piece-1.md', 'choreography-piece-2.md', 'choreography-piece-3.md'];
-                break;
-            case directory.includes('_content/projects'):
-                filesToTry = ['project-1.md', 'project-2.md', 'project-3.md'];
-                break;
-            case directory.includes('_content/performances'):
-                filesToTry = ['performance-1.md', 'performance-2.md', 'performance-3.md'];
-                break;
-            default:
-                filesToTry = [];
-        }
         
-        console.log(`Files to try in ${directory}:`, filesToTry);
+        // Extract the directory category name for fallback detection
+        if (directory.includes('_content/')) {
+            categoryName = directory.split('_content/')[1].split('/')[0];
+            console.log(`Category name: ${categoryName}`);
+        }
 
-        for (const filename of filesToTry) {
-            const fullPath = `${directory}/${filename}`;
-            const item = await this.loadMarkdown(fullPath);
-            if (item) {
-                items.push(item);
+        // First try to load all files using GitHub API
+        const apiItems = await this.fetchDirectoryContentsViaGitHubAPI(directory, timestamp);
+        if (apiItems && apiItems.length > 0) {
+            console.log(`Successfully loaded ${apiItems.length} files from GitHub API for ${directory}`);
+            items.push(...apiItems);
+        } else {
+            console.warn(`GitHub API directory listing failed for ${directory}, trying fallback files...`);
+            
+            // Fallback to predefined files if API fails
+            let filesToTry = [];
+            
+            switch (categoryName) {
+                case 'current':
+                    filesToTry = ['here-we-are.md'];
+                    break;
+                case 'choreography':
+                    filesToTry = ['choreography-piece-1.md', 'choreography-piece-2.md', 'choreography-piece-3.md'];
+                    break;
+                case 'projects':
+                    filesToTry = ['project-1.md', 'project-2.md', 'project-3.md'];
+                    break;
+                case 'performances':
+                    filesToTry = ['performance-1.md', 'performance-2.md', 'performance-3.md'];
+                    break;
+                default:
+                    console.warn(`Unknown directory category: ${categoryName}`);
+                    filesToTry = [];
+            }
+            
+            console.log(`Trying fallback files in ${directory}:`, filesToTry);
+
+            // Try each known file
+            for (const filename of filesToTry) {
+                const fullPath = `${directory}/${filename}?t=${timestamp}`;
+                const item = await this.loadMarkdown(fullPath);
+                if (item) {
+                    items.push(item);
+                }
             }
         }
 
@@ -190,25 +245,104 @@ class ContentLoader {
         items.sort((a, b) => (a.order || 0) - (b.order || 0));
         return items;
     }
+    
+    // Fetch directory contents using GitHub API
+    async fetchDirectoryContentsViaGitHubAPI(directory, timestamp) {
+        try {
+            // Extract the path from raw.githubusercontent.com URL
+            const pathMatch = directory.match(/github\.com\/[^\/]+\/[^\/]+\/[^\/]+\/(.+)/);
+            if (!pathMatch) {
+                console.warn(`Could not extract path from URL: ${directory}`);
+                return [];
+            }
+            
+            const path = pathMatch[1];
+            const repo = 'daniel-thiessen/avery-portfolio';
+            const branch = 'main';
+            
+            // Use GitHub API to list directory contents
+            const apiUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}&timestamp=${timestamp}`;
+            console.log(`Fetching directory contents via GitHub API: ${apiUrl}`);
+            
+            const response = await fetch(apiUrl, {
+                headers: {
+                    'Accept': 'application/vnd.github.v3+json'
+                },
+                cache: 'no-store' // Ensure we're not using cached API responses
+            });
+            
+            if (!response.ok) {
+                console.warn(`GitHub API request failed: ${apiUrl} (Status: ${response.status})`);
+                return [];
+            }
+            
+            const contents = await response.json();
+            
+            if (!Array.isArray(contents)) {
+                console.warn(`GitHub API returned unexpected format (not an array):`, contents);
+                return [];
+            }
+            
+            console.log(`Found ${contents.length} items in directory ${path}`);
+            
+            // Process only markdown files in the directory
+            const items = [];
+            const markdownFiles = contents.filter(item => item.type === 'file' && item.name.endsWith('.md'));
+            
+            console.log(`Found ${markdownFiles.length} markdown files in ${path}`);
+            
+            // Load all markdown files in parallel for better performance
+            const loadPromises = markdownFiles.map(async file => {
+                // Use direct raw content URL for the file
+                const rawUrl = file.download_url + `?t=${timestamp}`;
+                console.log(`Loading markdown file: ${file.name} from ${rawUrl}`);
+                
+                const fileContent = await this.loadMarkdown(rawUrl);
+                if (fileContent) {
+                    items.push(fileContent);
+                }
+            });
+            
+            await Promise.all(loadPromises);
+            return items;
+            
+        } catch (error) {
+            console.warn(`Error fetching directory contents via GitHub API:`, error);
+            return [];
+        }
+    }
 
     // Get the site configuration in the format expected by the existing code
     async getSiteConfig() {
         try {
-            // Use raw GitHub content URLs for content files
-            const contentBaseUrl = "https://raw.githubusercontent.com/daniel-thiessen/avery-portfolio/main";
+            // Clear cache every time to ensure fresh content
+            this.cache = {};
+            
+            // Use raw GitHub content URLs for content files with cache-busting timestamp
+            const timestamp = Date.now();
+            const contentBaseUrl = `https://raw.githubusercontent.com/daniel-thiessen/avery-portfolio/main`;
+            
+            console.log(`Loading content with cache-busting timestamp: ${timestamp}`);
             
             // Load all data
             const [settings, about, contact, currentItems, choreographyItems, projectItems, performanceItems] = await Promise.all([
-                this.loadYaml(`${contentBaseUrl}/_data/settings.yml`),
-                this.loadYaml(`${contentBaseUrl}/_data/about.yml`),
-                this.loadYaml(`${contentBaseUrl}/_data/contact.yml`),
-                this.loadDirectory(`${contentBaseUrl}/_content/current`),
-                this.loadDirectory(`${contentBaseUrl}/_content/choreography`),
-                this.loadDirectory(`${contentBaseUrl}/_content/projects`),
-                this.loadDirectory(`${contentBaseUrl}/_content/performances`)
+                this.loadYaml(`${contentBaseUrl}/_data/settings.yml?t=${timestamp}`),
+                this.loadYaml(`${contentBaseUrl}/_data/about.yml?t=${timestamp}`),
+                this.loadYaml(`${contentBaseUrl}/_data/contact.yml?t=${timestamp}`),
+                this.loadDirectory(`${contentBaseUrl}/_content/current`, timestamp),
+                this.loadDirectory(`${contentBaseUrl}/_content/choreography`, timestamp),
+                this.loadDirectory(`${contentBaseUrl}/_content/projects`, timestamp),
+                this.loadDirectory(`${contentBaseUrl}/_content/performances`, timestamp)
             ]);
 
-            console.log('Loaded CMS content:', { settings, about, contact, currentItems, choreographyItems, projectItems, performanceItems });
+            // Log the content we've loaded
+            console.log('Settings:', settings);
+            console.log('About:', about);
+            console.log('Contact:', contact);
+            console.log('Current items:', currentItems.length, currentItems);
+            console.log('Choreography items:', choreographyItems.length, choreographyItems);
+            console.log('Project items:', projectItems.length, projectItems);
+            console.log('Performance items:', performanceItems.length, performanceItems);
 
             // Create config object in the format expected by the existing main.js
             const config = {
@@ -227,10 +361,10 @@ class ContentLoader {
                     items: currentItems.map(item => ({
                         id: this.generateId(item.title),
                         title: item.title,
-                        thumbnail: item.thumbnail,
-                        fullImage: item.full_image || item.thumbnail,
+                        thumbnail: item.thumbnail || "",
+                        fullImage: item.full_image || item.thumbnail || "",
                         video: item.video || "",
-                        description: item.description
+                        description: item.content || item.description || ""
                     }))
                 },
                 
@@ -239,10 +373,10 @@ class ContentLoader {
                     items: choreographyItems.map(item => ({
                         id: this.generateId(item.title),
                         title: item.title,
-                        thumbnail: item.thumbnail,
-                        fullImage: item.full_image || item.thumbnail,
+                        thumbnail: item.thumbnail || "",
+                        fullImage: item.full_image || item.thumbnail || "",
                         video: item.video || "",
-                        description: item.description
+                        description: item.content || item.description || ""
                     }))
                 },
                 
@@ -251,10 +385,10 @@ class ContentLoader {
                     items: projectItems.map(item => ({
                         id: this.generateId(item.title),
                         title: item.title,
-                        thumbnail: item.thumbnail,
-                        fullImage: item.full_image || item.thumbnail,
+                        thumbnail: item.thumbnail || "",
+                        fullImage: item.full_image || item.thumbnail || "",
                         video: item.video || "",
-                        description: item.description
+                        description: item.content || item.description || ""
                     }))
                 },
                 
@@ -263,10 +397,10 @@ class ContentLoader {
                     items: performanceItems.map(item => ({
                         id: this.generateId(item.title),
                         title: item.title,
-                        thumbnail: item.thumbnail,
-                        fullImage: item.full_image || item.thumbnail,
+                        thumbnail: item.thumbnail || "",
+                        fullImage: item.full_image || item.thumbnail || "",
                         video: item.video || "",
-                        description: item.description
+                        description: item.content || item.description || ""
                     }))
                 },
                 
@@ -352,19 +486,75 @@ window.contentLoader = new ContentLoader();
 // Debug function to check if content files are available
 (async function debugContentFiles() {
     try {
-        // Test YAML files using GitHub raw content URLs
+        console.log("========== CONTENT LOADER DIAGNOSTIC ==========");
         console.log("Checking if content files are accessible...");
-        const contentBaseUrl = "https://raw.githubusercontent.com/daniel-thiessen/avery-portfolio/main";
+        console.log("Environment:", window.location.hostname);
+        console.log("Pathname:", window.location.pathname);
+        console.log("Timestamp:", new Date().toISOString());
         
-        const settingsTest = await fetch(`${contentBaseUrl}/_data/settings.yml`);
-        console.log(`Settings YAML status from GitHub raw: ${settingsTest.status}`);
+        const contentBaseUrl = "https://raw.githubusercontent.com/daniel-thiessen/avery-portfolio/main";
+        const apiBaseUrl = "https://api.github.com/repos/daniel-thiessen/avery-portfolio";
+        const cacheBuster = Date.now();
+        
+        // Check GitHub repo API access (repo listing)
+        try {
+            const repoTest = await fetch(`${apiBaseUrl}?t=${cacheBuster}`, {
+                headers: {'Accept': 'application/vnd.github.v3+json'},
+                cache: 'no-store'
+            });
+            console.log(`GitHub repo API access: ${repoTest.status}`);
+            
+            if (repoTest.ok) {
+                const repoData = await repoTest.json();
+                console.log(`Repository: ${repoData.full_name}, default branch: ${repoData.default_branch}`);
+            }
+        } catch (e) {
+            console.warn("GitHub repo API access failed:", e);
+        }
+        
+        // Test YAML files using GitHub raw content URLs
+        const settingsTest = await fetch(`${contentBaseUrl}/_data/settings.yml?t=${cacheBuster}`, {cache: 'no-store'});
+        console.log(`Settings YAML status: ${settingsTest.status}`);
+        
+        const aboutTest = await fetch(`${contentBaseUrl}/_data/about.yml?t=${cacheBuster}`, {cache: 'no-store'});
+        console.log(`About YAML status: ${aboutTest.status}`);
+        
+        const contactTest = await fetch(`${contentBaseUrl}/_data/contact.yml?t=${cacheBuster}`, {cache: 'no-store'});
+        console.log(`Contact YAML status: ${contactTest.status}`);
         
         // Test Markdown files
-        const currentTest = await fetch(`${contentBaseUrl}/_content/current/here-we-are.md`);
-        console.log(`Current MD status from GitHub raw: ${currentTest.status}`);
+        const currentTest = await fetch(`${contentBaseUrl}/_content/current/here-we-are.md?t=${cacheBuster}`, {cache: 'no-store'});
+        console.log(`Current MD status: ${currentTest.status}`);
         
-        // Check the base path
-        console.log("Base path:", window.location.pathname);
+        // Check directory listings using GitHub API
+        const directories = ['_content/current', '_content/choreography', '_content/projects', '_content/performances'];
+        
+        for (const dir of directories) {
+            try {
+                const apiTest = await fetch(`${apiBaseUrl}/contents/${dir}?ref=main&t=${cacheBuster}`, {
+                    headers: {'Accept': 'application/vnd.github.v3+json'},
+                    cache: 'no-store'
+                });
+                
+                if (apiTest.ok) {
+                    const apiData = await apiTest.json();
+                    const mdFiles = apiData.filter(item => item.name.endsWith('.md'));
+                    console.log(`Directory "${dir}": ${apiTest.status}, found ${mdFiles.length}/${apiData.length} markdown files`);
+                    
+                    // List first few files
+                    if (mdFiles.length > 0) {
+                        const fileList = mdFiles.slice(0, 3).map(f => f.name).join(', ');
+                        console.log(`  Files (sample): ${fileList}${mdFiles.length > 3 ? ', ...' : ''}`);
+                    }
+                } else {
+                    console.warn(`Directory "${dir}" listing failed: ${apiTest.status}`);
+                }
+            } catch (e) {
+                console.warn(`GitHub API directory listing failed for "${dir}":`, e);
+            }
+        }
+        
+        console.log("===============================================");
     } catch (error) {
         console.error("Error checking content files:", error);
     }
