@@ -159,17 +159,17 @@ class ContentLoader {
         console.log(`Loading content from directory: ${directory}`);
 
         // Define specific files for each directory
-        switch (directory) {
-            case '_content/current':
+        switch (true) {
+            case directory.includes('_content/current'):
                 filesToTry = ['here-we-are.md'];
                 break;
-            case '_content/choreography':
+            case directory.includes('_content/choreography'):
                 filesToTry = ['choreography-piece-1.md', 'choreography-piece-2.md', 'choreography-piece-3.md'];
                 break;
-            case '_content/projects':
+            case directory.includes('_content/projects'):
                 filesToTry = ['project-1.md', 'project-2.md', 'project-3.md'];
                 break;
-            case '_content/performances':
+            case directory.includes('_content/performances'):
                 filesToTry = ['performance-1.md', 'performance-2.md', 'performance-3.md'];
                 break;
             default:
@@ -194,15 +194,18 @@ class ContentLoader {
     // Get the site configuration in the format expected by the existing code
     async getSiteConfig() {
         try {
+            // Use raw GitHub content URLs for content files
+            const contentBaseUrl = "https://raw.githubusercontent.com/daniel-thiessen/avery-portfolio/main";
+            
             // Load all data
             const [settings, about, contact, currentItems, choreographyItems, projectItems, performanceItems] = await Promise.all([
-                this.loadYaml('_data/settings.yml'),
-                this.loadYaml('_data/about.yml'),
-                this.loadYaml('_data/contact.yml'),
-                this.loadDirectory('_content/current'),
-                this.loadDirectory('_content/choreography'),
-                this.loadDirectory('_content/projects'),
-                this.loadDirectory('_content/performances')
+                this.loadYaml(`${contentBaseUrl}/_data/settings.yml`),
+                this.loadYaml(`${contentBaseUrl}/_data/about.yml`),
+                this.loadYaml(`${contentBaseUrl}/_data/contact.yml`),
+                this.loadDirectory(`${contentBaseUrl}/_content/current`),
+                this.loadDirectory(`${contentBaseUrl}/_content/choreography`),
+                this.loadDirectory(`${contentBaseUrl}/_content/projects`),
+                this.loadDirectory(`${contentBaseUrl}/_content/performances`)
             ]);
 
             console.log('Loaded CMS content:', { settings, about, contact, currentItems, choreographyItems, projectItems, performanceItems });
@@ -349,14 +352,16 @@ window.contentLoader = new ContentLoader();
 // Debug function to check if content files are available
 (async function debugContentFiles() {
     try {
-        // Test YAML files
+        // Test YAML files using GitHub raw content URLs
         console.log("Checking if content files are accessible...");
-        const settingsTest = await fetch('_data/settings.yml');
-        console.log(`Settings YAML status: ${settingsTest.status}`);
+        const contentBaseUrl = "https://raw.githubusercontent.com/daniel-thiessen/avery-portfolio/main";
+        
+        const settingsTest = await fetch(`${contentBaseUrl}/_data/settings.yml`);
+        console.log(`Settings YAML status from GitHub raw: ${settingsTest.status}`);
         
         // Test Markdown files
-        const currentTest = await fetch('_content/current/here-we-are.md');
-        console.log(`Current MD status: ${currentTest.status}`);
+        const currentTest = await fetch(`${contentBaseUrl}/_content/current/here-we-are.md`);
+        console.log(`Current MD status from GitHub raw: ${currentTest.status}`);
         
         // Check the base path
         console.log("Base path:", window.location.pathname);
