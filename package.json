@@ -2,12 +2,21 @@
   "name": "artist-portfolio",
   "version": "1.0.0",
   "description": "A minimalist artist portfolio website",
-  "main": "index.html",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "cms": "node local-backend.js",
-    "dev": "node server.js & node local-backend.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run start & npm run cms",
+    "init-content": "node content-sync.js init",
+    "pull-content": "node content-sync.js pull",
+    "push-content": "node content-sync.js push",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:manual": "node test-cms-manual.js",
+    "test:unit": "jest --testPathPattern=unit",
+    "test:integration": "jest --testPathPattern=integration",
+    "test:e2e": "jest --testPathPattern=e2e"
   },
   "keywords": [
     "portfolio",
@@ -16,11 +25,14 @@
   ],
   "author": "",
   "license": "MIT",
-  "devDependencies": {
-    "serve": "^14.0.0"
-  },
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^4.18.2",
+    "netlify-cms-proxy-server": "^1.3.24"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "serve": "^14.0.0",
+    "supertest": "^6.3.4"
   }
 }

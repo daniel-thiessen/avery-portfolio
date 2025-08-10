@@ -1,18 +1,6 @@
 backend:
-  # For local development and testing
   name: test-repo
   local_backend: true
-
-# For production with GitHub OAuth, uncomment the following and comment out test-repo above:
-# backend:
-#   name: github
-#   repo: daniel-thiessen/avery-portfolio
-#   branch: main
-#   # Configure this after setting up GitHub OAuth app
-#   # auth_endpoint: api/auth
-#   # auth_url: https://github.com/login/oauth/authorize
-#   # auth_token_url: https://github.com/login/oauth/access_token
-
 media_folder: "images"
 public_folder: "/images"
 
