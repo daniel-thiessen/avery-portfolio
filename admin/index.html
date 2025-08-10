@@ -10,41 +10,243 @@
       margin: 0;
       padding: 0;
     }
+    
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      padding: 20px;
+      text-align: center;
+    }
+    
+    .spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid rgba(0,0,0,0.1);
+      border-radius: 50%;
+      border-top-color: #07d;
+      animation: spin 1s ease-in-out infinite;
+      margin-bottom: 20px;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    #error-message {
+      color: #d32f2f;
+      margin-top: 20px;
+      padding: 10px;
+      border-left: 3px solid #d32f2f;
+      background: #ffebee;
+      max-width: 500px;
+      text-align: left;
+      display: none;
+    }
   </style>
 </head>
 <body>
-  <!-- Include the script that builds the page and powers Decap CMS -->
+  <div class="loading">
+    <div class="spinner"></div>
+    <h2>Loading Content Manager...</h2>
+    <div id="error-message"></div>
+  </div>
+  
+  <!-- Inline the config for the CMS -->
+  <script>
+    // Define CMS configuration inline to avoid loading config.yml
+    window.CMS_MANUAL_INIT = true;
+    
+    // Configuration object
+    const cmsConfig = {
+      backend: {
+        name: 'test-repo',
+        local_backend: true
+      },
+      media_folder: "images",
+      public_folder: "/images",
+      collections: [
+        {
+          name: "settings",
+          label: "Site Settings",
+          files: [
+            {
+              name: "general",
+              label: "General Settings",
+              file: "_data/settings.yml",
+              fields: [
+                { label: "Site Title", name: "site_title", widget: "string", default: "Avery Smith" },
+                { label: "Site Description", name: "site_description", widget: "text", default: "Showcase of artistic work and performances" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "about",
+          label: "About Section",
+          files: [
+            {
+              name: "about",
+              label: "About",
+              file: "_data/about.yml",
+              fields: [
+                { label: "Name", name: "name", widget: "string" },
+                { label: "Profile Image", name: "profile_image", widget: "image" },
+                { label: "Bio", name: "bio", widget: "text" },
+                { label: "Long Bio", name: "long_bio", widget: "text" }
+              ]
+            }
+          ]
+        },
+        {
+          name: "current",
+          label: "Current Work",
+          folder: "_content/current",
+          create: true,
+          slug: "{{slug}}",
+          fields: [
+            { label: "Title", name: "title", widget: "string" },
+            { label: "Thumbnail", name: "thumbnail", widget: "image" },
+            { label: "Full Image", name: "full_image", widget: "image", required: false },
+            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
+            { label: "Description", name: "description", widget: "text" },
+            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
+          ]
+        },
+        {
+          name: "choreography",
+          label: "Choreography",
+          folder: "_content/choreography",
+          create: true,
+          slug: "{{slug}}",
+          fields: [
+            { label: "Title", name: "title", widget: "string" },
+            { label: "Thumbnail", name: "thumbnail", widget: "image" },
+            { label: "Full Image", name: "full_image", widget: "image", required: false },
+            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
+            { label: "Description", name: "description", widget: "text" },
+            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
+          ]
+        },
+        {
+          name: "projects",
+          label: "Projects",
+          folder: "_content/projects",
+          create: true,
+          slug: "{{slug}}",
+          fields: [
+            { label: "Title", name: "title", widget: "string" },
+            { label: "Thumbnail", name: "thumbnail", widget: "image" },
+            { label: "Full Image", name: "full_image", widget: "image", required: false },
+            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
+            { label: "Description", name: "description", widget: "text" },
+            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
+          ]
+        },
+        {
+          name: "performances",
+          label: "Performances",
+          folder: "_content/performances",
+          create: true,
+          slug: "{{slug}}",
+          fields: [
+            { label: "Title", name: "title", widget: "string" },
+            { label: "Thumbnail", name: "thumbnail", widget: "image" },
+            { label: "Full Image", name: "full_image", widget: "image", required: false },
+            { label: "Video URL", name: "video", widget: "string", required: false, hint: "YouTube embed URL (e.g., https://www.youtube.com/embed/VIDEO_ID)" },
+            { label: "Description", name: "description", widget: "text" },
+            { label: "Order", name: "order", widget: "number", default: 1, value_type: "int" }
+          ]
+        },
+        {
+          name: "contact",
+          label: "Contact Information",
+          files: [
+            {
+              name: "contact",
+              label: "Contact",
+              file: "_data/contact.yml",
+              fields: [
+                { label: "Email", name: "email", widget: "string" },
+                { label: "Phone", name: "phone", widget: "string", required: false },
+                {
+                  label: "Social Media",
+                  name: "social_media",
+                  widget: "object",
+                  fields: [
+                    { label: "Instagram", name: "instagram", widget: "string", required: false },
+                    { label: "Facebook", name: "facebook", widget: "string", required: false },
+                    { label: "YouTube", name: "youtube", widget: "string", required: false },
+                    { label: "Vimeo", name: "vimeo", widget: "string", required: false }
+                  ]
+                },
+                { label: "Enable Contact Form", name: "form_enabled", widget: "boolean", default: true }
+              ]
+            }
+          ]
+        }
+      ]
+    };
+  </script>
+  
+  <!-- Include the CMS script -->
   <script src="https://unpkg.com/decap-cms@3.1.5/dist/decap-cms.js"></script>
   
   <script>
-    // Initialize the CMS
+    // Initialize the CMS with proper error handling
     window.addEventListener('load', function() {
       console.log('CMS initialization started...');
       
-      // Initialize local backend if running locally
+      function showError(message) {
+        const errorEl = document.getElementById('error-message');
+        errorEl.textContent = message;
+        errorEl.style.display = 'block';
+        console.error(message);
+      }
+      
+      // Check if we're running locally
       if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
-        console.log('Running on localhost - enabling local backend');
-        window.CMS_MANUAL_INIT = true;
+        console.log('Running on localhost - initializing local backend');
         
-        window.initCMS = function() {
-          window.CMS.init({
-            config: {
-              backend: {
-                name: 'test-repo',
-                local_backend: true
-              }
+        // Initialize the local backend
+        try {
+          // Add event listener for CMS errors
+          window.addEventListener('error', function(event) {
+            if (event.message && event.message.includes('Failed to load config')) {
+              showError('Error: Failed to load CMS configuration. Using inline configuration instead.');
             }
           });
-        };
-        
-        // Load local backend script
-        var script = document.createElement('script');
-        script.src = 'https://unpkg.com/netlify-cms-backend-fs@1.0.0/dist/index.js';
-        script.onload = function() {
-          console.log('Local backend script loaded');
-          window.initCMS();
-        };
-        document.body.appendChild(script);
+          
+          // Initialize CMS with the inline config
+          window.CMS.init({
+            config: cmsConfig
+          });
+          
+          // Connect to the local backend API
+          fetch('http://localhost:8082/api/v1', { 
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' }
+          })
+          .then(response => {
+            if (!response.ok) {
+              showError('Warning: Local backend API not responding. Make sure the local backend server is running on port 8082.');
+            } else {
+              console.log('Connected to local backend API');
+            }
+          })
+          .catch(err => {
+            showError('Error connecting to local backend: ' + err.message + '. Make sure the local backend server is running on port 8082.');
+          });
+          
+        } catch (error) {
+          showError('Failed to initialize CMS: ' + error.message);
+        }
+      } else {
+        // Production mode - just show a message that editing is only available locally
+        showError('The CMS is only available in local development mode. Please run the site locally to edit content.');
       }
     });
   </script>
