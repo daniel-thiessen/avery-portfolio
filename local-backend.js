@@ -1,11 +1,71 @@
 #!/usr/bin/env node
 
-// Local CMS backend server for testing content editing without authentication
-// This allows editing content locally, then you can manually commit changes to GitHub
+/**
+ * Local CMS Backend Server
+ * 
+ * This server provides a backend API for Decap CMS (formerly Netlify CMS) to edit content
+ * locally without requiring authentication. It handles all CRUD operations for both
+ * data files (YAML) and content collections (Markdown).
+ * 
+ * Content changes made through the CMS admin interface will be persisted to the appropriate
+ * files in the _data/ or _content/ directories.
+ */
+
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
+
+/**
+ * Determines if a collection is a data file or content collection
+ * @param {string} collection - The collection name
+ * @param {string|undefined} slug - The slug (if any)
+ * @returns {boolean} - True if it's a data file, false if it's a content collection
+ */
+function isDataFileCollection(collection, slug) {
+  // Fallback hardcoded lists
+  const contentCollections = ['current', 'choreography', 'projects', 'performances'];
+  const knownDataCollections = ['settings', 'about', 'contact'];
+  
+  // Try to get collections from config.yml
+  let configContentCollections = [];
+  try {
+    const configPath = path.join(__dirname, 'admin', 'config.yml');
+    if (fs.existsSync(configPath)) {
+      const configContent = fs.readFileSync(configPath, 'utf8');
+      // Look for collections in the YAML - this is a simple extraction, not a full YAML parser
+      const collectionMatches = configContent.match(/collections:[\s\S]+?(?=backend:|publish_mode:|media_folder:|public_folder:|$)/);
+      if (collectionMatches) {
+        const collectionsSection = collectionMatches[0];
+        
+        // Extract content collections (those with folder: prefix)
+        const folderMatches = collectionsSection.match(/name: ([a-zA-Z0-9_-]+)[\s\S]*?folder:/g);
+        if (folderMatches) {
+          folderMatches.forEach(match => {
+            const nameMatch = match.match(/name: ([a-zA-Z0-9_-]+)/);
+            if (nameMatch && nameMatch[1]) {
+              configContentCollections.push(nameMatch[1]);
+            }
+          });
+        }
+      }
+    }
+  } catch (error) {
+    console.warn('Error reading config.yml:', error.message);
+  }
+  
+  // Use config collections if available, otherwise use hardcoded lists
+  const effectiveContentCollections = configContentCollections.length > 0 
+    ? configContentCollections 
+    : contentCollections;
+  
+  // A collection is a data file if:
+  // 1. It's one of the known data collections, or
+  // 2. It's not one of the content collections AND either it has no slug or it ends with '-test'
+  return knownDataCollections.includes(collection) || 
+         (!effectiveContentCollections.includes(collection) && 
+          (!slug || collection.endsWith('-test')));
+}
 
 const app = express();
 const PORT = process.env.PORT || 8082; // Different from main server port
@@ -28,7 +88,10 @@ app.get('/api/v1/entries/:collection/:slug?', (req, res) => {
   const { collection, slug } = req.params;
   
   try {
-    if (collection === 'settings' || collection === 'about' || collection === 'contact') {
+    // Determine if this is a data file or content collection
+    const isDataFile = isDataFileCollection(collection, slug);
+    
+    if (isDataFile) {
       // Handle _data files
       const filePath = path.join(__dirname, '_data', `${collection}.yml`);
       if (fs.existsSync(filePath)) {
@@ -77,7 +140,10 @@ app.put('/api/v1/entries/:collection/:slug?', (req, res) => {
   const { data } = req.body;
   
   try {
-    if (collection === 'settings' || collection === 'about' || collection === 'contact') {
+    // Determine if this is a data file or content collection
+    const isDataFile = isDataFileCollection(collection, slug);
+    
+    if (isDataFile) {
       // Handle _data files
       const filePath = path.join(__dirname, '_data', `${collection}.yml`);
       const dir = path.dirname(filePath);
@@ -87,6 +153,7 @@ app.put('/api/v1/entries/:collection/:slug?', (req, res) => {
         fs.mkdirSync(dir, { recursive: true });
       }
       
+      console.log(`Saving data file: ${filePath}`);
       fs.writeFileSync(filePath, data, 'utf8');
       res.json({ success: true, path: filePath });
     } else {
@@ -109,13 +176,16 @@ app.put('/api/v1/entries/:collection/:slug?', (req, res) => {
 });
 
 // Delete file
-app.delete('/api/v1/entries/:collection/:slug', (req, res) => {
+app.delete('/api/v1/entries/:collection/:slug?', (req, res) => {
   const { collection, slug } = req.params;
   
   try {
     let filePath;
     
-    if (collection === 'settings' || collection === 'about' || collection === 'contact') {
+    // Determine if this is a data file or content collection
+    const isDataFile = isDataFileCollection(collection, slug);
+    
+    if (isDataFile) {
       filePath = path.join(__dirname, '_data', `${collection}.yml`);
     } else {
       filePath = path.join(__dirname, '_content', collection, `${slug}.md`);
