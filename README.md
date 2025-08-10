@@ -1,6 +1,6 @@
 # Personal Artist Portfolio
 
-This is a minimalist artist portfolio website designed to showcase work in a clean, elegant interface. The site features responsive design, image carousels, video integration, and a contact form that works on GitHub Pages.
+This is a minimalist artist portfolio website designed to showcase work in a clean, elegant interface. The site features responsive design, image carousels, video integration, contact form, and **Netlify CMS for easy content management**.
 
 ## Features
 
@@ -8,8 +8,35 @@ This is a minimalist artist portfolio website designed to showcase work in a cle
 - Clean, minimalist aesthetic
 - Image and video galleries organized by category
 - Contact form (powered by FormSubmit)
+- **🆕 Netlify CMS integration with GitHub OAuth**
+- **🆕 Easy content management without coding**
 - Optimized for fast loading
-- Easy deployment to GitHub Pages
+- Easy deployment to GitHub Pages or Netlify
+
+## Content Management
+
+This site now includes **Netlify CMS** for easy content management:
+
+- **Admin Interface**: Access at `/admin/` to manage all content
+- **GitHub Integration**: Content changes are saved as Git commits
+- **User-Friendly**: Edit text, images, and videos without coding
+- **Backup & Versioning**: All changes are tracked in Git history
+
+For setup instructions, see [NETLIFY_CMS_SETUP.md](NETLIFY_CMS_SETUP.md)
+
+## Quick Start
+
+### For Content Editors
+1. Navigate to `https://your-site.com/admin/`
+2. Log in with your GitHub account
+3. Edit content using the visual interface
+4. Changes are automatically saved and deployed
+
+### For Developers
+The site works with both CMS-managed content and the original `config.js` file:
+- CMS content loads from `_data/` and `_content/` folders
+- Falls back to `config.js` if CMS content fails to load
+- No breaking changes to existing functionality
 
 ## Table of Contents
 
