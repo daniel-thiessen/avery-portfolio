@@ -1,8 +1,8 @@
 backend:
-  # Using GitHub as the backend with direct GitHub authentication
   name: github
   repo: daniel-thiessen/avery-portfolio
   branch: main
+  open_authoring: false
 
 media_folder: "images"
 public_folder: "/images"
