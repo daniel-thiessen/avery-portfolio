@@ -1,6 +1,6 @@
-# Personal Artist Portfolio
+# Avery Smith Portfolio
 
-This is a minimalist artist portfolio website designed to showcase work in a clean, elegant interface. The site features responsive design, image carousels, video integration, contact form, and **Netlify CMS for easy content management**.
+A minimalist artist portfolio website designed to showcase artistic work in a clean, elegant interface. The site features responsive design, image carousels, video integration, contact form, and **simplified local content management**.
 
 ## Features
 
@@ -8,35 +8,71 @@ This is a minimalist artist portfolio website designed to showcase work in a cle
 - Clean, minimalist aesthetic
 - Image and video galleries organized by category
 - Contact form (powered by FormSubmit)
-- **🆕 Netlify CMS integration with GitHub OAuth**
-- **🆕 Easy content management without coding**
+- **🆕 Simplified local content management**
+- **🆕 Content synchronization with GitHub**
 - Optimized for fast loading
-- Easy deployment to GitHub Pages or Netlify
+- Easy deployment to GitHub Pages
 
 ## Content Management
 
-This site now includes **Netlify CMS** for easy content management:
+This site now includes a simplified content management approach:
 
-- **Admin Interface**: Access at `/admin/` to manage all content
-- **GitHub Integration**: Content changes are saved as Git commits
+- **Local Admin Interface**: Access at `/admin/` to manage all content locally
+- **No Authentication Required**: Easy editing without OAuth setup
+- **Manual Synchronization**: Push changes to GitHub when ready
 - **User-Friendly**: Edit text, images, and videos without coding
-- **Backup & Versioning**: All changes are tracked in Git history
-
-For setup instructions, see [NETLIFY_CMS_SETUP.md](NETLIFY_CMS_SETUP.md)
+- **Backup & Versioning**: All changes can be tracked in Git history
 
 ## Quick Start
 
-### For Content Editors
-1. Navigate to `https://your-site.com/admin/`
-2. Log in with your GitHub account
+### For Content Editors (Local Development)
+1. Clone the repository and run `./start.sh`
+2. Access the admin interface at `http://localhost:8080/admin/`
 3. Edit content using the visual interface
-4. Changes are automatically saved and deployed
+4. Use the content sync panel (bottom-right of site) to push changes to GitHub
+
+### For Viewing the Live Site
+- Navigate to `https://daniel-thiessen.github.io/avery-portfolio/`
+- Content is automatically loaded from GitHub repository
 
 ### For Developers
-The site works with both CMS-managed content and the original `config.js` file:
-- CMS content loads from `_data/` and `_content/` folders
-- Falls back to `config.js` if CMS content fails to load
-- No breaking changes to existing functionality
+The site works with content stored in the repository:
+- Content loads from GitHub repository's `_data/` and `_content/` folders
+- Uses GitHub API to fetch content dynamically
+- Local development environment for testing and content editing
+- Enhanced cache busting to ensure fresh content is displayed
+
+### Running Locally
+```bash
+# Make sure start.sh is executable
+chmod +x start.sh
+
+# Install dependencies
+npm install
+
+# Run the local development server and CMS backend
+./start.sh
+
+# Or to start with admin interface
+./start.sh -a
+
+# To specify a different port
+./start.sh -p 3000
+```
+
+### Content Synchronization
+
+To synchronize content between your local environment and GitHub:
+
+```bash
+# Pull latest content from GitHub
+npm run pull-content
+
+# Push your local changes to GitHub
+npm run push-content
+```
+
+Or use the floating control panel that appears when running locally.
 
 ## Table of Contents
 
@@ -57,15 +93,31 @@ The site works with both CMS-managed content and the original `config.js` file:
 To run this site locally:
 
 ```bash
-# If you have Python installed
-python -m http.server
+# Using the included start script (recommended)
+chmod +x start.sh
+./start.sh
 
-# Or if you have Node.js installed
-npm install
-npm start
+# Or with Node.js directly
+node server.js
 ```
 
-Then open your browser to `http://localhost:8000` (Python) or `http://localhost:3000` (Node.js)
+The start script provides these options:
+- `-p PORT` - Specify a custom port (default: 8080)
+- `-a` - Open the admin interface instead of the main site
+
+Examples:
+```bash
+# Run on port 3000
+./start.sh -p 3000
+
+# Open the admin interface directly
+./start.sh -a
+
+# Run admin on port 5000
+./start.sh -p 5000 -a
+```
+
+The server will automatically open your browser to the appropriate page.
 
 ## GitHub Pages Deployment
 

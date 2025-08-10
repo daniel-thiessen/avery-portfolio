@@ -3,102 +3,49 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+  <title>Avery Portfolio - Content Manager</title>
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       margin: 0;
       padding: 0;
     }
-    
-    .loading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      padding: 20px;
-      text-align: center;
-    }
-    
-    .spinner {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(0,0,0,0.1);
-      border-radius: 50%;
-      border-top-color: #07d;
-      animation: spin 1s ease-in-out infinite;
-      margin-bottom: 20px;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    
-    #error-message {
-      color: #d32f2f;
-      margin-top: 20px;
-      padding: 10px;
-      border-left: 3px solid #d32f2f;
-      background: #ffebee;
-      max-width: 500px;
-      text-align: left;
-      display: none;
-    }
   </style>
 </head>
 <body>
-  <div class="loading">
-    <div class="spinner"></div>
-    <h2>Loading Content Manager...</h2>
-    <div id="error-message"></div>
-  </div>
-  
-  <!-- Include the script that builds the page and powers Decap CMS (formerly Netlify CMS) -->
+  <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@3.1.5/dist/decap-cms.js"></script>
   
   <script>
-    // Function to show error messages
-    function showError(message) {
-      const errorElement = document.getElementById('error-message');
-      errorElement.textContent = message;
-      errorElement.style.display = 'block';
-      console.error(message);
-    }
-    
-    // Check if the local backend server is running
-    function checkBackendServer() {
-      return fetch('http://localhost:8082/api/health', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Backend server is not responding correctly');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Backend server status:', data);
-        document.querySelector('.loading h2').textContent = 'CMS Ready';
-        document.querySelector('.spinner').style.borderTopColor = '#4CAF50';
-        return true;
-      })
-      .catch(error => {
-        console.error('Backend server check failed:', error);
-        showError('Local backend server is not running. Please start the server using "node local-backend.js"');
-        return false;
-      });
-    }
-    
-    // When page loads, check backend server
+    // Initialize the CMS
     window.addEventListener('load', function() {
-      checkBackendServer().then(serverRunning => {
-        if (serverRunning) {
-          console.log('CMS initialization starting...');
-        }
-      });
+      console.log('CMS initialization started...');
+      
+      // Initialize local backend if running locally
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Running on localhost - enabling local backend');
+        window.CMS_MANUAL_INIT = true;
+        
+        window.initCMS = function() {
+          window.CMS.init({
+            config: {
+              backend: {
+                name: 'test-repo',
+                local_backend: true
+              }
+            }
+          });
+        };
+        
+        // Load local backend script
+        var script = document.createElement('script');
+        script.src = 'https://unpkg.com/netlify-cms-backend-fs@1.0.0/dist/index.js';
+        script.onload = function() {
+          console.log('Local backend script loaded');
+          window.initCMS();
+        };
+        document.body.appendChild(script);
+      }
     });
   </script>
 </body>
