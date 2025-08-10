@@ -1,6 +1,6 @@
-# Personal Artist Portfolio
+# Avery Smith Portfolio
 
-This is a minimalist artist portfolio website designed to showcase work in a clean, elegant interface. The site features responsive design, image carousels, video integration, contact form, and **Netlify CMS for easy content management**.
+A minimalist artist portfolio website designed to showcase artistic work in a clean, elegant interface. The site features responsive design, image carousels, video integration, contact form, and **Decap CMS (formerly Netlify CMS) for easy content management**.
 
 ## Features
 
@@ -8,35 +8,49 @@ This is a minimalist artist portfolio website designed to showcase work in a cle
 - Clean, minimalist aesthetic
 - Image and video galleries organized by category
 - Contact form (powered by FormSubmit)
-- **🆕 Netlify CMS integration with GitHub OAuth**
+- **🆕 Decap CMS integration with GitHub OAuth**
 - **🆕 Easy content management without coding**
 - Optimized for fast loading
-- Easy deployment to GitHub Pages or Netlify
+- Easy deployment to GitHub Pages
 
 ## Content Management
 
-This site now includes **Netlify CMS** for easy content management:
+This site includes **Decap CMS** for easy content management:
 
 - **Admin Interface**: Access at `/admin/` to manage all content
 - **GitHub Integration**: Content changes are saved as Git commits
 - **User-Friendly**: Edit text, images, and videos without coding
 - **Backup & Versioning**: All changes are tracked in Git history
 
-For setup instructions, see [NETLIFY_CMS_SETUP.md](NETLIFY_CMS_SETUP.md)
-
 ## Quick Start
 
 ### For Content Editors
-1. Navigate to `https://your-site.com/admin/`
+1. Navigate to `https://daniel-thiessen.github.io/avery-portfolio/admin/`
 2. Log in with your GitHub account
 3. Edit content using the visual interface
-4. Changes are automatically saved and deployed
+4. Changes are automatically published to the site
 
 ### For Developers
 The site works with both CMS-managed content and the original `config.js` file:
-- CMS content loads from `_data/` and `_content/` folders
+- CMS content loads from GitHub repository's `_data/` and `_content/` folders
+- Uses GitHub API to fetch content dynamically
 - Falls back to `config.js` if CMS content fails to load
-- No breaking changes to existing functionality
+- Enhanced cache busting to ensure fresh content is displayed
+
+### Running Locally
+```bash
+# Make sure start.sh is executable
+chmod +x start.sh
+
+# Run the local development server
+./start.sh
+
+# Or to start with admin interface
+./start.sh -a
+
+# To specify a different port
+./start.sh -p 3000
+```
 
 ## Table of Contents
 
@@ -57,15 +71,31 @@ The site works with both CMS-managed content and the original `config.js` file:
 To run this site locally:
 
 ```bash
-# If you have Python installed
-python -m http.server
+# Using the included start script (recommended)
+chmod +x start.sh
+./start.sh
 
-# Or if you have Node.js installed
-npm install
-npm start
+# Or with Node.js directly
+node server.js
 ```
 
-Then open your browser to `http://localhost:8000` (Python) or `http://localhost:3000` (Node.js)
+The start script provides these options:
+- `-p PORT` - Specify a custom port (default: 8080)
+- `-a` - Open the admin interface instead of the main site
+
+Examples:
+```bash
+# Run on port 3000
+./start.sh -p 3000
+
+# Open the admin interface directly
+./start.sh -a
+
+# Run admin on port 5000
+./start.sh -p 5000 -a
+```
+
+The server will automatically open your browser to the appropriate page.
 
 ## GitHub Pages Deployment
 
