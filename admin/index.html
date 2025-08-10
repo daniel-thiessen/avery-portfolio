@@ -228,11 +228,20 @@
       
       // Auth success/failure events
       window.CMS.registerEventListener({
-        name: 'login', 
+        name: 'authSuccess', 
         handler: () => {
           console.log('User logged in');
           window.addDebugLog('User authenticated successfully', 'success');
           statusDiv.innerText = 'Authenticated with GitHub';
+        }
+      });
+      
+      window.CMS.registerEventListener({
+        name: 'authFailure',
+        handler: (err) => {
+          console.error('Authentication failed:', err);
+          window.addDebugLog(`Authentication failed: ${err?.message || 'Unknown error'}`, 'error');
+          statusDiv.innerText = 'Authentication failed';
         }
       });
       
@@ -252,34 +261,14 @@
         }
       });
 
-      // Initialize CMS with full config
+      // Initialize CMS with simplified config
       try {
-        window.addDebugLog('Initializing CMS with explicit config');
+        window.addDebugLog('Initializing CMS with config from config.yml');
         
+        // Simply initialize with load_config_file: true to use settings from config.yml
         CMS.init({
           config: {
-            backend: {
-              name: 'github',
-              repo: 'daniel-thiessen/avery-portfolio',
-              branch: 'main',
-              base_url: 'https://github.com',
-              auth_endpoint: '/login/oauth/authorize',
-              api_root: 'https://api.github.com',
-              app_id: '',  // Leave blank for direct GitHub OAuth
-              auth_type: 'implicit',  // Use implicit flow for direct GitHub auth
-              commit_messages: {
-                create: 'Create {{collection}} "{{slug}}"',
-                update: 'Update {{collection}} "{{slug}}"',
-                delete: 'Delete {{collection}} "{{slug}}"',
-                uploadMedia: 'Upload "{{path}}"',
-                deleteMedia: '[skip ci] Delete "{{path}}"'
-              }
-            },
-            load_config_file: true, // Load config from config.yml
-            media_folder: "images",
-            public_folder: "/images",
-            publish_mode: "editorial_workflow",
-            show_preview_links: true,
+            load_config_file: true,
             local_backend: false
           }
         });
