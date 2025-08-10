@@ -10,53 +10,43 @@
       margin: 0;
       padding: 0;
     }
-    
-    .loading {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      text-align: center;
-      padding: 20px;
-    }
-    
-    .loading h1 {
-      font-size: 24px;
-      margin: 0 0 20px 0;
-      color: #333;
-    }
-    
-    .loading p {
-      margin: 0 0 30px 0;
-      color: #666;
-      max-width: 500px;
-    }
-    
-    .spinner {
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      border: 3px solid rgba(0,0,0,0.1);
-      border-radius: 50%;
-      border-top-color: #07d;
-      animation: spin 1s ease-in-out infinite;
-    }
-    
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
   </style>
 </head>
 <body>
-  <!-- Loading indicator -->
-  <div class="loading">
-    <h1>Content Manager</h1>
-    <p>Loading the content management system...</p>
-    <div class="spinner"></div>
-  </div>
+  <!-- Include the script that builds the page and powers Decap CMS -->
+  <script src="https://unpkg.com/decap-cms@3.1.5/dist/decap-cms.js"></script>
   
-  <!-- Load Decap CMS with exact version -->
-  <script src="https://unpkg.com/decap-cms@3.8.3/dist/decap-cms.js"></script>
+  <script>
+    // Initialize the CMS
+    window.addEventListener('load', function() {
+      console.log('CMS initialization started...');
+      
+      // Initialize local backend if running locally
+      if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log('Running on localhost - enabling local backend');
+        window.CMS_MANUAL_INIT = true;
+        
+        window.initCMS = function() {
+          window.CMS.init({
+            config: {
+              backend: {
+                name: 'test-repo',
+                local_backend: true
+              }
+            }
+          });
+        };
+        
+        // Load local backend script
+        var script = document.createElement('script');
+        script.src = 'https://unpkg.com/netlify-cms-backend-fs@1.0.0/dist/index.js';
+        script.onload = function() {
+          console.log('Local backend script loaded');
+          window.initCMS();
+        };
+        document.body.appendChild(script);
+      }
+    });
+  </script>
 </body>
 </html>

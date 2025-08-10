@@ -51,13 +51,28 @@ fi
 # Set environment variables
 export PORT=$PORT
 
-# Start the server
-echo -e "${BLUE}Starting server on port $PORT...${NC}"
+# Install dependencies if needed
+if [ ! -d "node_modules" ]; then
+  echo -e "${YELLOW}Installing dependencies...${NC}"
+  npm install
+fi
+
+# Initialize content directories if needed
+echo -e "${BLUE}Initializing content directories...${NC}"
+node content-sync.js init
+
+# Start the main server
+echo -e "${BLUE}Starting main server on port $PORT...${NC}"
 node server.js &
 SERVER_PID=$!
 
+# Start the local CMS backend (on port 8082)
+echo -e "${BLUE}Starting local CMS backend...${NC}"
+node local-backend.js &
+CMS_PID=$!
+
 # Wait for server to start
-echo "Waiting for server to initialize..."
+echo "Waiting for servers to initialize..."
 sleep 2
 
 # Build the URL
@@ -95,5 +110,7 @@ echo ""
 echo -e "${YELLOW}Press Ctrl+C to stop the server${NC}"
 
 # Handle graceful shutdown
-trap "echo -e '\n${GREEN}Stopping server...${NC}'; kill $SERVER_PID; echo -e '${GREEN}Server stopped${NC}'; exit 0" INT TERM
-wait $SERVER_PID
+trap "echo -e '\n${GREEN}Stopping servers...${NC}'; kill $SERVER_PID; kill $CMS_PID; echo -e '${GREEN}All servers stopped${NC}'; exit 0" INT TERM
+
+# Wait for both processes
+wait $SERVER_PID $CMS_PID

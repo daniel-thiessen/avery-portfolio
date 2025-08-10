@@ -1,6 +1,6 @@
 # Avery Smith Portfolio
 
-A minimalist artist portfolio website designed to showcase artistic work in a clean, elegant interface. The site features responsive design, image carousels, video integration, contact form, and **Decap CMS (formerly Netlify CMS) for easy content management**.
+A minimalist artist portfolio website designed to showcase artistic work in a clean, elegant interface. The site features responsive design, image carousels, video integration, contact form, and **simplified local content management**.
 
 ## Features
 
@@ -8,33 +8,38 @@ A minimalist artist portfolio website designed to showcase artistic work in a cl
 - Clean, minimalist aesthetic
 - Image and video galleries organized by category
 - Contact form (powered by FormSubmit)
-- **🆕 Decap CMS integration with GitHub OAuth**
-- **🆕 Easy content management without coding**
+- **🆕 Simplified local content management**
+- **🆕 Content synchronization with GitHub**
 - Optimized for fast loading
 - Easy deployment to GitHub Pages
 
 ## Content Management
 
-This site includes **Decap CMS** for easy content management:
+This site now includes a simplified content management approach:
 
-- **Admin Interface**: Access at `/admin/` to manage all content
-- **GitHub Integration**: Content changes are saved as Git commits
+- **Local Admin Interface**: Access at `/admin/` to manage all content locally
+- **No Authentication Required**: Easy editing without OAuth setup
+- **Manual Synchronization**: Push changes to GitHub when ready
 - **User-Friendly**: Edit text, images, and videos without coding
-- **Backup & Versioning**: All changes are tracked in Git history
+- **Backup & Versioning**: All changes can be tracked in Git history
 
 ## Quick Start
 
-### For Content Editors
-1. Navigate to `https://daniel-thiessen.github.io/avery-portfolio/admin/`
-2. Log in with your GitHub account
+### For Content Editors (Local Development)
+1. Clone the repository and run `./start.sh`
+2. Access the admin interface at `http://localhost:8080/admin/`
 3. Edit content using the visual interface
-4. Changes are automatically published to the site
+4. Use the content sync panel (bottom-right of site) to push changes to GitHub
+
+### For Viewing the Live Site
+- Navigate to `https://daniel-thiessen.github.io/avery-portfolio/`
+- Content is automatically loaded from GitHub repository
 
 ### For Developers
-The site works with both CMS-managed content and the original `config.js` file:
-- CMS content loads from GitHub repository's `_data/` and `_content/` folders
+The site works with content stored in the repository:
+- Content loads from GitHub repository's `_data/` and `_content/` folders
 - Uses GitHub API to fetch content dynamically
-- Falls back to `config.js` if CMS content fails to load
+- Local development environment for testing and content editing
 - Enhanced cache busting to ensure fresh content is displayed
 
 ### Running Locally
@@ -42,7 +47,10 @@ The site works with both CMS-managed content and the original `config.js` file:
 # Make sure start.sh is executable
 chmod +x start.sh
 
-# Run the local development server
+# Install dependencies
+npm install
+
+# Run the local development server and CMS backend
 ./start.sh
 
 # Or to start with admin interface
@@ -51,6 +59,20 @@ chmod +x start.sh
 # To specify a different port
 ./start.sh -p 3000
 ```
+
+### Content Synchronization
+
+To synchronize content between your local environment and GitHub:
+
+```bash
+# Pull latest content from GitHub
+npm run pull-content
+
+# Push your local changes to GitHub
+npm run push-content
+```
+
+Or use the floating control panel that appears when running locally.
 
 ## Table of Contents
 

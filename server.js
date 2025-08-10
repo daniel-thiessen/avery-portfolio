@@ -65,12 +65,44 @@ const server = http.createServer((req, res) => {
     return;
   }
   
-  // Support admin path routing to admin/index.html
+  // Support admin path routing to admin/index.html and API endpoints
   let filePath;
-  if (pathname === '/' || pathname === '') {
+  
+  // API endpoints for content synchronization
+  if (pathname === '/api/pull-content') {
+    console.log('Pull content request received');
+    try {
+      const { execSync } = require('child_process');
+      const result = execSync('node content-sync.js pull').toString();
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.end('Content pulled successfully: ' + result);
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('Error pulling content: ' + error.message);
+    }
+    return;
+  } else if (pathname === '/api/push-content') {
+    console.log('Push content request received');
+    try {
+      const { execSync } = require('child_process');
+      const result = execSync('node content-sync.js push').toString();
+      res.writeHead(200, { 'Content-Type': 'text/plain' });
+      res.end('Content pushed successfully: ' + result);
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/plain' });
+      res.end('Error pushing content: ' + error.message);
+    }
+    return;
+  } else if (pathname === '/' || pathname === '') {
     filePath = path.join(__dirname, 'index.html');
   } else if (pathname === '/admin' || pathname === '/admin/') {
     filePath = path.join(__dirname, 'admin/index.html');
+  } else if (pathname === '/admin/debug' || pathname === '/admin/debug/') {
+    filePath = path.join(__dirname, 'admin/debug.html');
+  } else if (pathname === '/api/auth' || pathname === '/api/auth/') {
+    // Handle OAuth callback for debugging
+    console.log('OAuth callback received:', req.url);
+    filePath = path.join(__dirname, 'api/auth/index.html');
   } else {
     filePath = path.join(__dirname, pathname);
   }
@@ -82,22 +114,72 @@ const server = http.createServer((req, res) => {
     // Set appropriate MIME type
     const contentType = MIME_TYPES[extname] || 'text/plain';
     
-    fs.readFile(filePath, (err, content) => {
+    // Check if file exists
+    fs.access(filePath, fs.constants.F_OK, (err) => {
       if (err) {
         console.error(`Content file not found: ${filePath}`);
+        
+        // For content files that don't exist, create a directory structure if needed
+        if (req.method === 'GET') {
+          const dirPath = path.dirname(filePath);
+          
+          // Create the directory if it doesn't exist
+          fs.mkdirSync(dirPath, { recursive: true });
+          
+          // For YAML files, create an empty YAML file
+          if (extname === '.yml' || extname === '.yaml') {
+            fs.writeFileSync(filePath, '# Generated empty file\n');
+            console.log(`Created empty content file: ${filePath}`);
+            
+            res.writeHead(200, { 
+              'Content-Type': contentType,
+              'Cache-Control': 'no-cache, no-store, must-revalidate',
+              'Pragma': 'no-cache',
+              'Expires': '0'
+            });
+            res.end('# Generated empty file\n');
+            return;
+          }
+          
+          // For markdown files, create an empty markdown file
+          if (extname === '.md') {
+            fs.writeFileSync(filePath, '# Empty content\n');
+            console.log(`Created empty markdown file: ${filePath}`);
+            
+            res.writeHead(200, { 
+              'Content-Type': contentType,
+              'Cache-Control': 'no-cache, no-store, must-revalidate',
+              'Pragma': 'no-cache',
+              'Expires': '0'
+            });
+            res.end('# Empty content\n');
+            return;
+          }
+        }
+        
         res.writeHead(404, { 'Content-Type': 'text/plain' });
         res.end(`File not found: ${pathname}`);
         return;
       }
       
-      // Serve content file with no-cache headers
-      res.writeHead(200, { 
-        'Content-Type': contentType,
-        'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache',
-        'Expires': '0'
+      // File exists, serve it
+      fs.readFile(filePath, (err, content) => {
+        if (err) {
+          console.error(`Error reading content file: ${filePath}`, err);
+          res.writeHead(500, { 'Content-Type': 'text/plain' });
+          res.end(`Server error reading file: ${pathname}`);
+          return;
+        }
+        
+        // Serve content file with no-cache headers
+        res.writeHead(200, { 
+          'Content-Type': contentType,
+          'Cache-Control': 'no-cache, no-store, must-revalidate',
+          'Pragma': 'no-cache',
+          'Expires': '0'
+        });
+        res.end(content);
       });
-      res.end(content);
     });
     return;
   }

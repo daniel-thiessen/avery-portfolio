@@ -483,6 +483,74 @@ class ContentLoader {
 // Create global content loader instance
 window.contentLoader = new ContentLoader();
 
+// Function to load content from local files when running locally
+async function loadLocalContent() {
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        console.log("Running locally - showing local content sync options");
+        
+        // Create a sync control panel to be shown on the page
+        const syncPanel = document.createElement('div');
+        syncPanel.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-family: system-ui, sans-serif;
+            font-size: 14px;
+        `;
+        
+        syncPanel.innerHTML = `
+            <div style="font-weight:bold; margin-bottom:8px;">Content Management</div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+                <button id="pull-content" style="padding:5px 10px; background:#f0f0f0; border:1px solid #ccc; border-radius:4px; cursor:pointer;">Pull Content</button>
+                <button id="push-content" style="padding:5px 10px; background:#4CAF50; color:white; border:1px solid #388E3C; border-radius:4px; cursor:pointer;">Push to GitHub</button>
+                <button id="open-cms" style="padding:5px 10px; background:#2196F3; color:white; border:1px solid #1976D2; border-radius:4px; cursor:pointer;">Open CMS</button>
+            </div>
+        `;
+        
+        // Add panel to the document body when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            document.body.appendChild(syncPanel);
+            
+            // Add event listeners to the buttons
+            document.getElementById('pull-content').addEventListener('click', () => {
+                fetch('/api/pull-content')
+                    .then(response => response.text())
+                    .then(text => {
+                        alert('Content pulled from GitHub. Reloading page.');
+                        window.location.reload();
+                    })
+                    .catch(err => {
+                        alert('Error pulling content: ' + err.message);
+                    });
+            });
+            
+            document.getElementById('push-content').addEventListener('click', () => {
+                fetch('/api/push-content')
+                    .then(response => response.text())
+                    .then(text => {
+                        alert('Content pushed to GitHub successfully.');
+                    })
+                    .catch(err => {
+                        alert('Error pushing content: ' + err.message);
+                    });
+            });
+            
+            document.getElementById('open-cms').addEventListener('click', () => {
+                window.open('/admin/', '_blank');
+            });
+        });
+    }
+}
+
+// Initialize local content management
+loadLocalContent();
+
 // Debug function to check if content files are available
 (async function debugContentFiles() {
     try {
