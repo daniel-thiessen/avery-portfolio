@@ -3,281 +3,200 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
+  <title>Avery Portfolio - Content Manager</title>
   <style>
-    /* Custom styles for debugging panel */
-    #debug-panel {
+    /* Status display styling */
+    #login-status {
+      padding: 20px;
+      color: #333;
+      background: #f7f7f7;
+      border-radius: 4px;
+      margin: 20px auto;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .spinner {
+      width: 30px;
+      height: 30px;
+      margin: 10px auto;
+      border: 3px solid rgba(0,0,0,0.1);
+      border-radius: 50%;
+      border-top-color: #07d;
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    /* Debug console */
+    #debug-console {
       position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
-      background: #f3f3f3;
+      background: #f5f5f5;
       border-top: 1px solid #ddd;
-      padding: 10px 20px;
+      padding: 10px;
       font-family: monospace;
       font-size: 12px;
       z-index: 1000;
       max-height: 30vh;
       overflow-y: auto;
-      box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-      transition: transform 0.3s ease;
+      display: none;
     }
-    
-    #debug-panel.collapsed {
-      transform: translateY(calc(100% - 30px));
+
+    #debug-console.visible {
+      display: block;
     }
-    
-    #debug-panel h3 {
-      margin: 0;
-      font-size: 14px;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-    }
-    
-    #debug-content {
-      margin-top: 10px;
-    }
-    
+
     #debug-log {
-      max-height: 150px;
+      height: 150px;
       overflow-y: auto;
       background: #fff;
-      padding: 5px;
+      padding: 8px;
       border: 1px solid #ddd;
       border-radius: 3px;
+      margin-top: 10px;
     }
-    
+
     #debug-log p {
-      margin: 5px 0;
+      margin: 3px 0;
+      padding: 2px 0;
       border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
     }
-    
-    #debug-log p:last-child {
-      border-bottom: none;
+
+    #debug-log p.error {
+      color: #d32f2f;
     }
-    
-    .btn {
+
+    #debug-log p.success {
+      color: #388e3c;
+    }
+
+    /* Debug console toggle button */
+    #debug-toggle {
+      position: fixed;
+      bottom: 0;
+      right: 20px;
+      background: #333;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px 4px 0 0;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    button {
       background: #2d2d2d;
       color: white;
       border: none;
       padding: 5px 10px;
       border-radius: 3px;
       cursor: pointer;
-      font-size: 12px;
       margin-right: 5px;
     }
-    
-    .btn:hover {
-      background: #444;
-    }
   </style>
-  <!-- Debug logging for Netlify CMS -->
-  <script>
-    window.CMS_MANUAL_INIT = true; // Prevent auto initialization
-  </script>
 </head>
 <body>
-  <!-- Add login status indicator -->
-  <div id="login-status" style="padding: 20px; color: #666; display: none;">
-    Checking authentication status...
+  <!-- Login status indicator -->
+  <div id="login-status">
+    <h2>Content Manager</h2>
+    <p>Initializing the content management system...</p>
+    <div class="spinner"></div>
+  </div>
+
+  <!-- Debug toggle button -->
+  <button id="debug-toggle">Debug Console</button>
+  
+  <!-- Debug console -->
+  <div id="debug-console">
+    <h3>Debug Console</h3>
+    <button id="clear-log">Clear Log</button>
+    <button id="test-api">Test GitHub API</button>
+    <div id="debug-log"></div>
   </div>
   
-  <!-- Debug panel for authentication and content loading -->
-  <div id="debug-panel" class="collapsed">
-    <h3 id="debug-header">
-      <span>Debug Panel (click to toggle)</span>
-      <span id="debug-indicator">●</span>
-    </h3>
-    <div id="debug-content">
-      <div id="debug-buttons">
-        <button class="btn" id="test-auth">Test Auth</button>
-        <button class="btn" id="clear-cache">Clear Cache</button>
-        <button class="btn" id="reload-cms">Reload CMS</button>
-        <button class="btn" id="clear-log">Clear Log</button>
-      </div>
-      <div id="debug-log"></div>
-    </div>
-  </div>
-  
-  <!-- Include the script that builds the page and powers Netlify CMS -->
+  <!-- Load Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    // Debug panel functionality
-    (function setupDebugPanel() {
-      const debugPanel = document.getElementById('debug-panel');
-      const debugHeader = document.getElementById('debug-header');
+    // Debug console functionality
+    (function setupDebugConsole() {
+      const debugConsole = document.getElementById('debug-console');
+      const debugToggle = document.getElementById('debug-toggle');
       const debugLog = document.getElementById('debug-log');
-      const testAuthBtn = document.getElementById('test-auth');
-      const clearCacheBtn = document.getElementById('clear-cache');
-      const reloadCmsBtn = document.getElementById('reload-cms');
       const clearLogBtn = document.getElementById('clear-log');
-      const debugIndicator = document.getElementById('debug-indicator');
+      const testApiBtn = document.getElementById('test-api');
       
-      // Toggle debug panel
-      debugHeader.addEventListener('click', () => {
-        debugPanel.classList.toggle('collapsed');
-      });
-      
-      // Add log entry
-      window.addDebugLog = function(message, type = 'info') {
-        const entry = document.createElement('p');
-        entry.textContent = `${new Date().toLocaleTimeString()} [${type}] ${message}`;
-        entry.className = type;
-        debugLog.appendChild(entry);
-        debugLog.scrollTop = debugLog.scrollHeight;
-        
-        // Update indicator
-        if (type === 'error') {
-          debugIndicator.style.color = 'red';
-        } else if (type === 'success') {
-          debugIndicator.style.color = 'green';
-        } else {
-          debugIndicator.style.color = 'blue';
-        }
-      };
-      
-      // Test authentication
-      testAuthBtn.addEventListener('click', async () => {
-        try {
-          window.addDebugLog('Testing GitHub API authentication...');
-          const response = await fetch('https://api.github.com/repos/daniel-thiessen/avery-portfolio/contents/_data/settings.yml');
-          const status = response.status;
-          window.addDebugLog(`API response status: ${status}`, status === 200 ? 'success' : 'error');
-          
-          if (status === 200) {
-            const data = await response.json();
-            window.addDebugLog(`Successfully retrieved file info: ${data.name}, size: ${data.size} bytes`, 'success');
-          }
-        } catch (err) {
-          window.addDebugLog(`Authentication test failed: ${err.message}`, 'error');
-        }
-      });
-      
-      // Clear cache
-      clearCacheBtn.addEventListener('click', () => {
-        window.addDebugLog('Clearing local storage and cache...');
-        try {
-          localStorage.clear();
-          sessionStorage.clear();
-          
-          // Clear application cache if supported
-          if (window.caches) {
-            caches.keys().then(names => {
-              names.forEach(name => {
-                caches.delete(name);
-              });
-            });
-          }
-          
-          window.addDebugLog('Cache cleared successfully', 'success');
-        } catch (err) {
-          window.addDebugLog(`Failed to clear cache: ${err.message}`, 'error');
-        }
-      });
-      
-      // Reload CMS
-      reloadCmsBtn.addEventListener('click', () => {
-        window.addDebugLog('Reloading CMS...');
-        window.location.reload();
+      // Toggle debug console
+      debugToggle.addEventListener('click', () => {
+        debugConsole.classList.toggle('visible');
+        debugToggle.textContent = debugConsole.classList.contains('visible') 
+          ? 'Hide Debug Console' 
+          : 'Debug Console';
       });
       
       // Clear log
       clearLogBtn.addEventListener('click', () => {
         debugLog.innerHTML = '';
-        window.addDebugLog('Log cleared');
+        log('Log cleared');
       });
+      
+      // Test GitHub API
+      testApiBtn.addEventListener('click', async () => {
+        try {
+          log('Testing GitHub API access...');
+          const response = await fetch('https://api.github.com/repos/daniel-thiessen/avery-portfolio');
+          log(`GitHub API response: ${response.status}`);
+          
+          if (response.ok) {
+            const data = await response.json();
+            log(`Repository: ${data.full_name}, Default branch: ${data.default_branch}`, 'success');
+          } else {
+            log(`API error: ${response.statusText}`, 'error');
+          }
+        } catch (err) {
+          log(`API test failed: ${err.message}`, 'error');
+        }
+      });
+      
+      // Global logging function
+      window.log = function(message, type = 'info') {
+        const entry = document.createElement('p');
+        entry.className = type;
+        entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+        debugLog.appendChild(entry);
+        debugLog.scrollTop = debugLog.scrollHeight;
+        console.log(`[${type}] ${message}`);
+      };
       
       // Initial log entry
-      window.addDebugLog('Debug panel initialized');
-      window.addDebugLog(`User agent: ${navigator.userAgent}`);
+      log('Debug console initialized');
+      log(`User agent: ${navigator.userAgent}`);
     })();
     
-    // Initialize CMS with enhanced debugging
+    // Initialize Decap CMS
     (function initCMS() {
       const statusDiv = document.getElementById('login-status');
-      statusDiv.style.display = 'block';
       
-      if (window.netlifyIdentity) {
-        statusDiv.innerText = 'Netlify Identity is enabled';
-        window.addDebugLog('Netlify Identity detected');
-      }
-      
-      // Log CMS lifecycle events
-      window.CMS.registerEventListener({
-        name: 'preSave',
-        handler: ({ entry }) => {
-          const entryData = entry.get('data').toJS();
-          console.log('About to save entry:', entryData);
-          window.addDebugLog(`Saving: ${entryData.title || entry.get('slug')}`);
-          statusDiv.innerText = 'Saving content...';
-          return entry;
-        },
-      });
-
-      window.CMS.registerEventListener({
-        name: 'postSave',
-        handler: ({ entry }) => {
-          const entryData = entry.get('data').toJS();
-          console.log('Entry was saved:', entryData);
-          window.addDebugLog(`Saved: ${entryData.title || entry.get('slug')}`, 'success');
-          statusDiv.innerText = 'Content saved successfully!';
-        },
-      });
-      
-      // Auth success/failure events
-      window.CMS.registerEventListener({
-        name: 'authSuccess', 
-        handler: () => {
-          console.log('User logged in');
-          window.addDebugLog('User authenticated successfully', 'success');
-          statusDiv.innerText = 'Authenticated with GitHub';
-        }
-      });
-      
-      window.CMS.registerEventListener({
-        name: 'authFailure',
-        handler: (err) => {
-          console.error('Authentication failed:', err);
-          window.addDebugLog(`Authentication failed: ${err?.message || 'Unknown error'}`, 'error');
-          statusDiv.innerText = 'Authentication failed';
-        }
-      });
-      
-      window.CMS.registerEventListener({
-        name: 'auth',
-        handler: (auth) => {
-          console.log('Auth status update:', auth);
-          window.addDebugLog(`Auth status updated: ${auth ? 'authenticated' : 'not authenticated'}`);
-        }
-      });
-      
-      window.CMS.registerEventListener({
-        name: 'error',
-        handler: (err) => {
-          console.error('CMS error:', err);
-          window.addDebugLog(`Error: ${err.message || 'Unknown error'}`, 'error');
-        }
-      });
-
-      // Initialize CMS with simplified config
       try {
-        window.addDebugLog('Initializing CMS with config from config.yml');
+        window.log('Initializing Decap CMS');
         
-        // Simply initialize with load_config_file: true to use settings from config.yml
-        CMS.init({
-          config: {
-            load_config_file: true,
-            local_backend: false
-          }
-        });
+        // Most basic initialization - no event handlers, just initialize
+        window.CMS.init();
         
-        window.addDebugLog('CMS initialized successfully');
+        window.log('CMS initialized successfully');
       } catch (err) {
-        console.error('CMS initialization error:', err);
-        window.addDebugLog(`CMS init error: ${err.message}`, 'error');
-        statusDiv.innerText = `Error initializing CMS: ${err.message}`;
+        window.log(`CMS initialization error: ${err.message}`, 'error');
+        statusDiv.innerHTML = `
+          <h2>Error</h2>
+          <p>Failed to initialize content manager: ${err.message}</p>
+        `;
       }
     })();
   </script>
