@@ -1,8 +1,6 @@
 backend:
-  name: github
-  repo: daniel-thiessen/avery-portfolio
-  branch: main
-  open_authoring: false
+  name: test-repo
+  local_backend: true
 
 media_folder: "images"
 public_folder: "/images"
