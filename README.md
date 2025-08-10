@@ -15,13 +15,15 @@ A minimalist artist portfolio website designed to showcase artistic work in a cl
 
 ## Content Management
 
-This site now includes a simplified content management approach:
+This site includes a simplified content management approach using Decap CMS:
 
 - **Local Admin Interface**: Access at `/admin/` to manage all content locally
 - **No Authentication Required**: Easy editing without OAuth setup
 - **Manual Synchronization**: Push changes to GitHub when ready
 - **User-Friendly**: Edit text, images, and videos without coding
 - **Backup & Versioning**: All changes can be tracked in Git history
+
+For detailed CMS documentation, see [docs/cms-setup.md](docs/cms-setup.md)
 
 ## Quick Start
 

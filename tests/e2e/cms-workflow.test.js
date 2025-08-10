@@ -297,8 +297,13 @@ This content is missing required fields.`;
       expect(invalidResult.errors).toContain('Missing thumbnail field');
 
       // Clean up
-      fs.unlinkSync(validPath);
-      fs.unlinkSync(invalidPath);
+      if (fs.existsSync(validPath)) {
+        fs.unlinkSync(validPath);
+      }
+      
+      if (fs.existsSync(invalidPath)) {
+        fs.unlinkSync(invalidPath);
+      }
     });
   });
 
