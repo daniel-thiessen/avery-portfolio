@@ -144,23 +144,37 @@ Presented at Festival of Recorded Movement 2018.
 Presented at REELING Film Festival (Edmonton) 2018.
 
 Presented at New Blue Dance Festival (Toronto) 2018.`
-            },{
+            },
+            {
                 id: "choreo6",
                 title: "Most Things",
                 thumbnail: "images/most-things-thumb.png",
                 fullImage: "most-things.png",
                 video: "",
-                description: `every part explores a contradicting desire to reveal and retreat; to be the audience of one moment and the performer of the next. The film finds a single dancer unearthing, tangling, and deconstructing habitual movement patterns and rhythms. This process manifests in a physical investigation of calculated precision. Contrasting environments and camera perspectives work to challenge and disrupt this intimate experience. What is lost in the camera's translation of this experience? What feelings of intimacy are gained, forgotten, and revealed? 
+                description: `Most things is a process of investing in the things that are already there, the things that have been there all along. It’s an attempt to deconstruct the body’s intuition in order to discover more about it’s history and it’s possible futures. 
 
-Director, Choreographer, Performer: Avery Smith
+ 
 
-DOP, Cinematographer: Alex Tam 
+The work simultaneously deconstructs and celebrates the worn-in patterning that the body quietly carries. While exploring a specific way of being, the solo tangles demonstrative precision with unconscious flow. Known movements are dissected again and again until they transform into foreign pathways. These pathways are then crafted into hyper-choreographed sequences of movement. This process revealed the nuance and capacity that survives in, and perhaps because of, restriction. 
 
-Presented at Festival of Recorded Movement 2018.
+Choreographed and Performed by Avery Smith
 
-Presented at REELING Film Festival (Edmonton) 2018.
+Presented at The Dance Centre in 12 Minutes Max Showcase, April 2019.
+Presented at Bonfire Festival (New Brunswick), August 2019.
 
-Presented at New Blue Dance Festival (Toronto) 2018.`
+https://thedancecentre.ca/story/12-minutes-max-4-choreographic-perspectives/`
+            },
+            {
+                id: "choreo7",
+                title: "Do you include this too?",
+                thumbnail: "images/do-you-include-this-too-thumb.png",
+                fullImage: "",
+                video: "https://www.youtube.com/embed/uLvbDgBZuLY",
+                description: `Created for Dance Café, hosted by response dance on Instagram Live
+
+Sound by Zachari Smith
+
+August 30, 2020 `
             }
         ]
     },
@@ -171,17 +185,21 @@ Presented at New Blue Dance Festival (Toronto) 2018.`
         items: [
             {
                 id: "project1",
-                title: "Project Title 1",
+                title: "Making Conversation",
                 thumbnail: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
                 fullImage: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
                 video: "",
-                description: `This is a multiline description for Project 1.
+                description: `Launched in partnership with The Dance Centre and piloted by Avery Smith and Company 605, Making Conversation allowed eight professional artists from Vancouver to form a cohort in which they developed works alongside one another and shared their experiences of making dance work. This artist driven learning space provided artists a place to practice showing work, articulating ideas, and offering feedback. Participants had the opportunity to practice showing work, articulating their ideas, and offering feedback. 
 
-It can contain multiple paragraphs.
+"Making Conversation is an experiment to learn about how diverse choreographers might support one another through the creative process by simply showing and talking about what they’re attempting to do/find/make and discussing methods and strategies they might be undertaking." 
 
-• It can include bullet points
-• And other formatting
-• That will be rendered as HTML`
+      - Josh Martin
+
+Co-creators, Producers, Facilitators: Josh Martin, Lisa Gelley-Martin, Avery Smith 
+
+Supported and funded by The Dance Centre, Company 605, CADA/West.  
+
+Spring 2019.`
             },
             {
                 id: "project2",
