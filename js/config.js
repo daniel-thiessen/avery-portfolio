@@ -133,9 +133,34 @@ Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa,
                 thumbnail: "images/every-part-thumb.png",
                 fullImage: "",
                 video: "https://vimeo.com/269486806?fl=pl&fe=sh",
-                description: `Occupying physical and conceptual spaces of politics and home, the body is ground for conflict. “Capsule” addresses the body as a site for this multiplicity. This solo explores a singular performer, grappling with this and her efforts to reconcile an identity within it.
+                description: `every part explores a contradicting desire to reveal and retreat; to be the audience of one moment and the performer of the next. The film finds a single dancer unearthing, tangling, and deconstructing habitual movement patterns and rhythms. This process manifests in a physical investigation of calculated precision. Contrasting environments and camera perspectives work to challenge and disrupt this intimate experience. What is lost in the camera's translation of this experience? What feelings of intimacy are gained, forgotten, and revealed? 
 
-September 2020 Artistic Residency at Waterfront Theatre, provided by New Works. `
+Director, Choreographer, Performer: Avery Smith
+
+DOP, Cinematographer: Alex Tam 
+
+Presented at Festival of Recorded Movement 2018.
+
+Presented at REELING Film Festival (Edmonton) 2018.
+
+Presented at New Blue Dance Festival (Toronto) 2018.`
+            },{
+                id: "choreo6",
+                title: "Most Things",
+                thumbnail: "images/most-things-thumb.png",
+                fullImage: "most-things.png",
+                video: "",
+                description: `every part explores a contradicting desire to reveal and retreat; to be the audience of one moment and the performer of the next. The film finds a single dancer unearthing, tangling, and deconstructing habitual movement patterns and rhythms. This process manifests in a physical investigation of calculated precision. Contrasting environments and camera perspectives work to challenge and disrupt this intimate experience. What is lost in the camera's translation of this experience? What feelings of intimacy are gained, forgotten, and revealed? 
+
+Director, Choreographer, Performer: Avery Smith
+
+DOP, Cinematographer: Alex Tam 
+
+Presented at Festival of Recorded Movement 2018.
+
+Presented at REELING Film Festival (Edmonton) 2018.
+
+Presented at New Blue Dance Festival (Toronto) 2018.`
             }
         ]
     },
