@@ -319,7 +319,7 @@ Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Za
                 title: "Paradise Replica | Jamie Robinson",
                 thumbnail: "images/paradise-replica-thumb.jpg",
                 fullImage: "",
-                video: "https://vimeo.com/586889852?fl=pl&fe=sh",
+                video: "https://player.vimeo.com/video/586889852",
                 description: `Jamie Robinson’s first full-length ensemble creation takes repetitive, ever-evolving groove patterns to consider the possibilities of transcendence as a shared movement experience. An ever changing score developed with Kate Franklin, Avery Smith, Jessica Wilkie, and Shion Carter considers a deconstruction of the choreographic role, pursuing a synchronization of experience to connect with the dances already happened and happening.
 
 ​
@@ -335,7 +335,7 @@ Cinematography/Editing: Caleb Ford`
                 title: "Pathways | Vision Impure",
                 thumbnail: "images/pathways-thumb.jpg",
                 fullImage: "",
-                video: "https://vimeo.com/303619299?fl=pl&fe=sh",
+                video: "https://player.vimeo.com/video/303619299",
                 description: `Pathways is Vision Impure’s latest contemporary dance work for ten dancers by choreographer Noam Gagnon. Employing themes of vision and perception, Pathways explores the intricate push and pull of relationships impacted by urban living. Ten extraordinary dancers draw on all their strength, speed, and agility to power through the explosive choreography, striving to find moments of emotional connection amidst the visceral intensity. Pathways questions our ability or inability to connect with one another and what makes us react more strongly to some than to others.
 
  
@@ -396,7 +396,7 @@ Presented at PushOFF (Theatre Replacement, Company 605), February 2020.`
                 title: "Looping | Company 605",
                 thumbnail: "images/looping-thumb.jpg",
                 fullImage: "",
-                video: "https://vimeo.com/412849875?fl=pl&fe=sh",
+                video: "https://player.vimeo.com/video/412849875",
                 description: `Looping is Company 605's installation piece built upon concepts from their ensemble work, Loop, Lull, which first premiered at the Push International Performing Arts Festival in January 2019. Over three nights, a rotating cast of fifteen performers trades in and out of a repeating improvised looping score. A durational practice of continuously tracking and responding to change, in themselves and in relation to one another, 605’s Looping is a complex test of endurance and capacity for adaptation, keeping the virtuosic physicality and individual choices of each unique performer at play.
 
 ​
