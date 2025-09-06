@@ -167,14 +167,14 @@ https://thedancecentre.ca/story/12-minutes-max-4-choreographic-perspectives/`
             {
                 id: "choreo7",
                 title: "Do you include this too?",
-                thumbnail: "images/do-you-include-this-too-thumb.png",
+                thumbnail: "images/do-you-include-this-too-thumb.jpg",
                 fullImage: "",
                 video: "https://www.youtube.com/embed/uLvbDgBZuLY",
                 description: `Created for Dance Café, hosted by response dance on Instagram Live
 
 Sound by Zachari Smith
 
-August 30, 2020 `
+August 30, 2020`
             }
         ]
     },
@@ -186,8 +186,8 @@ August 30, 2020 `
             {
                 id: "project1",
                 title: "Making Conversation",
-                thumbnail: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                fullImage: "https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                thumbnail: "images/making-conversation-thumb.png",
+                fullImage: "images/making-conversation.png",
                 video: "",
                 description: `Launched in partnership with The Dance Centre and piloted by Avery Smith and Company 605, Making Conversation allowed eight professional artists from Vancouver to form a cohort in which they developed works alongside one another and shared their experiences of making dance work. This artist driven learning space provided artists a place to practice showing work, articulating ideas, and offering feedback. Participants had the opportunity to practice showing work, articulating their ideas, and offering feedback. 
 
