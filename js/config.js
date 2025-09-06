@@ -255,9 +255,9 @@ FREE SPACE is made possible through the organizational support and full financia
             {
                 id: "perf1",
                 title: "lossy | Company 605",
-                thumbnail: "lossy-thumb.jpg",
-                fullImage: "lossy.png",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                thumbnail: "images/lossy-thumb.jpg",
+                fullImage: "images/lossy.png",
+                video: "",
                 description: `lossy is about an inability to take it all with us.
 
 ​
@@ -291,11 +291,27 @@ Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew
             },
             {
                 id: "perf2",
-                title: "Performance 2",
-                thumbnail: "https://images.unsplash.com/photo-1523780981236-15187fc5b04f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
-                fullImage: "https://images.unsplash.com/photo-1523780981236-15187fc5b04f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
+                title: "FUTURE FUTURES | Company 605",
+                thumbnail: "future-futures-thumb.jpg",
+                fullImage: "",
                 video: "",
-                description: `Description of performance 2`
+                description: `Collaboratively conceived by Director Brian J. Johnson and Vancouver’s acclaimed Company 605, Future Futures is a collection of 5 short dance films that explore the digital destiny of humankind through a unique merging of camera and visual effects with an intensely specific choreographic vision. FUTURE FUTURES taps into the Sci-Fi genre to explore a digital evolution of the future human through a series of short experimental dance films.
+
+​
+
+Premiere: November 26, 2022 at the F-O-R-M Festival
+Streaming on CBC Gem
+
+​
+
+A CBC Arts Original
+Produced by Company 605 and Screen Siren Pictures
+
+​
+
+Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Zahra Shahab, Avery Smith, Jessica Wilkie, Shion Skye Carter, Lisa Mariko Gelley, Antonio Somera, Mika Manning, Billy Marchenski, Kate Franklin, Arash Khakpour, Kylie Miller, Brandon Alley
+
+​`
             },
             {
                 id: "perf3",
