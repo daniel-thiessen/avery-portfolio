@@ -362,11 +362,34 @@ Presented at Vancouver International Dance Festival 2019.
 Presented at Dancing on the Edge Festival 2018.`
             },{
                 id: "perf5",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+                title: "Midlight",
+                thumbnail: "images/midlight-thumb.jpg",
+                fullImage: "images/midlight.jpg",
+                video: "",
+                description: `This story takes place a long time ago in a future that has not yet arrived. It begins with two beings in a mid-light world. One asks “Will you show me who you really are?” The other peels the skin back and says, “          .” 
+
+​
+
+Some things are best left unexplained. 
+
+​
+
+Mid-Light is a multi-disciplinary work involving movement, projection, sound, and text. This work is part of a larger ongoing project that is being supported by the COLLIDER Residency under the mentorship of Theatre Replacement and Company 605. This piece represents part one of three. The intention is to build three modular pieces that can stand on their own and simultaneously coexist within the larger scope of a full length work allowing for flexibility and the ability fit into many contexts. 
+
+Each section is a moment. A moment is not the full picture. One is a beginning, another a middle, and then an end. They do not come from the same picture. They are not a journey from start to finish. Each moment is a window, an opportunity to peer into an existence that is not your own. Or maybe, they are a moment to recognize something that has so far remained intangible. They are not held by the rules of time. They exist in a vacuum of space. They are simple and distant, and it is hard to tell if the characters are human or something else entirely. They are worlds of fiction and gesture. 
+
+​
+
+Created by Mahaila Patterson-O’Brien
+
+
+Dancers: Eowynn Enquist, Isak Enquist, Avery Smith, Matthew Wyllie
+Music: Paul Paroczai
+Projections: Mahaila Patterson-O’Brien, Remy Siu
+Text: Mahaila Patterson-O’Brien
+
+
+Presented at PushOFF (Theatre Replacement, Company 605), February 2020.`
             },
             {
                 id: "perf6",
