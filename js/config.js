@@ -316,19 +316,50 @@ Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Za
             },
             {
                 id: "perf3",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+                title: "Paradise Replica | Jamie Robinson",
+                thumbnail: "images/paradise-replica-thumb.jpg",
+                fullImage: "",
+                video: "https://vimeo.com/586889852?fl=pl&fe=sh",
+                description: `Jamie Robinson’s first full-length ensemble creation takes repetitive, ever-evolving groove patterns to consider the possibilities of transcendence as a shared movement experience. An ever changing score developed with Kate Franklin, Avery Smith, Jessica Wilkie, and Shion Carter considers a deconstruction of the choreographic role, pursuing a synchronization of experience to connect with the dances already happened and happening.
+
+​
+
+Presented through the Iris Garland Emerging Choreographer Award.
+
+​
+
+Cinematography/Editing: Caleb Ford`
             },
             {
                 id: "perf4",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+                title: "Pathways | Vision Impure",
+                thumbnail: "images/pathways-thumb.jpg",
+                fullImage: "",
+                video: "https://vimeo.com/303619299?fl=pl&fe=sh",
+                description: `Pathways is Vision Impure’s latest contemporary dance work for ten dancers by choreographer Noam Gagnon. Employing themes of vision and perception, Pathways explores the intricate push and pull of relationships impacted by urban living. Ten extraordinary dancers draw on all their strength, speed, and agility to power through the explosive choreography, striving to find moments of emotional connection amidst the visceral intensity. Pathways questions our ability or inability to connect with one another and what makes us react more strongly to some than to others.
+
+ 
+
+Created and choreographed by Noam Gagnon
+
+​
+
+Sound design: James Coomber (Vancouver), Guillaume Cliche (Montreal)
+
+​
+
+Dancers: Chelsea DesLauriers, Eowynn Enquist, Isak Enquist, Sarah Formosa, Ted Littlemore, Brenna Metzmeier, Avery Smith, Lynnelle Sura, Matthew Wyllie 
+
+ 
+
+Presented at Dance In Vancouver 2020.
+
+
+Presented at Vancouver International Dance Festival 2019. 
+
+​
+
+Presented at Dancing on the Edge Festival 2018.`
             },{
                 id: "perf5",
                 title: "Performance 3",
