@@ -132,7 +132,7 @@ Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa,
                 title: "every part",
                 thumbnail: "images/every-part-thumb.jpg",
                 fullImage: "",
-                video: "https://vimeo.com/269486806?fl=pl&fe=sh",
+                video: "https://player.vimeo.com/video/269486806",
                 description: `every part explores a contradicting desire to reveal and retreat; to be the audience of one moment and the performer of the next. The film finds a single dancer unearthing, tangling, and deconstructing habitual movement patterns and rhythms. This process manifests in a physical investigation of calculated precision. Contrasting environments and camera perspectives work to challenge and disrupt this intimate experience. What is lost in the camera's translation of this experience? What feelings of intimacy are gained, forgotten, and revealed? 
 
 Director, Choreographer, Performer: Avery Smith
@@ -206,7 +206,7 @@ Spring 2019.`
                 title: "Training Share",
                 thumbnail: "images/training-share-thumb.jpg",
                 fullImage: "images/training-share.jpg",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                video: "",
                 description: `Training Share is a peer-to-peer training initiative piloted by Avery Smith, through the support of Company 605. Together they are interested in creating a space for dancers of all backgrounds and experiences to come together and exchange ideas, skills, and techniques with one another. Training Share was born from Avery's craving to continue learning and collaborating with her peer group beyond a post-secondary training program, and to connect with other dancers within the community. 
 
  
@@ -287,7 +287,7 @@ FREE SPACE is made possible through the organizational support and full financia
             instagram: "https://instagram.com/yourusername",
             facebook: "https://facebook.com/yourpage",
             youtube: "https://youtube.com/yourchannel",
-            vimeo: "https://vimeo.com/youraccount"
+            vimeo: "https://vimeo.com/averysmith"
         },
         formEnabled: true // Set to false to disable the contact form
     },
