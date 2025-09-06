@@ -362,7 +362,7 @@ Presented at Vancouver International Dance Festival 2019.
 Presented at Dancing on the Edge Festival 2018.`
             },{
                 id: "perf5",
-                title: "Midlight",
+                title: "Mid-light | Mahaila Patterson-O'Brien",
                 thumbnail: "images/midlight-thumb.jpg",
                 fullImage: "images/midlight.jpg",
                 video: "",
@@ -393,19 +393,66 @@ Presented at PushOFF (Theatre Replacement, Company 605), February 2020.`
             },
             {
                 id: "perf6",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+                title: "Looping | Company 605",
+                thumbnail: "images/looping-thumb.jpg",
+                fullImage: "",
+                video: "https://vimeo.com/412849875?fl=pl&fe=sh",
+                description: `Looping is Company 605's installation piece built upon concepts from their ensemble work, Loop, Lull, which first premiered at the Push International Performing Arts Festival in January 2019. Over three nights, a rotating cast of fifteen performers trades in and out of a repeating improvised looping score. A durational practice of continuously tracking and responding to change, in themselves and in relation to one another, 605’s Looping is a complex test of endurance and capacity for adaptation, keeping the virtuosic physicality and individual choices of each unique performer at play.
+
+​
+
+---
+
+Looping is an ongoing practice that is improvised and therefore never the same. We are always working on Recognizing and Responding to Change. Audiences stay as long as they wish. There is no beginning and no end. We are in a score that will loop multiple times throughout each session. 
+
+---
+
+​
+
+Created by Josh Martin and Lisa Gelley-Martin 
+
+​
+
+Performers: Brandon Alley, Laura Avery, Jade Chong, Kate Franklin, Francesca Frewer, Bynh Ho, Josh Martin, Kylie Miller, James-Amzin Nahirnick, Jamie Robinson, Zahra Shahab, Avery Smith, Jessica Wilkie, Sophia Wolfe
+
+​
+
+Sound: Matt Tomkinson
+Lighting consultant: James Proudfoot
+
+Video: David Cooper
+
+​
+
+Presented at Dance In Vancouver 2019.`
             },
             {
                 id: "perf7",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+                title: "Animal and the Agon | Kristen Lewis",
+                thumbnail: "images/animal-and-the-agon-thumb.jpg",
+                fullImage: "",
+                video: "",
+                description: `In pursuit of some answers to the question: why do ‘we’ (a Western ‘we’) abhor nature?, Agon and the Animal examines the roots of the “flight from nature” in the common experience of being subject to a mother, and indeed to matter itself.
+
+"Agony and the Animal" is an experiment in how words and concepts inform the body's trajectories through space and history, and how the body/ies' trajectories in turn create new conceptual apparatus, including new modes of being-in language--shaping a future that is truly new.
+
+Agon and the Animal is, at its heart, an invitation to an adventure, unfolding on the precipices of ever-new thresholds, where performing bodies discover, through the process of their own perpetual becoming, emergent truths about the possibilities of love, friendship and community built on the ashes of a culture with a deeply troubled, often denied relationship to maternity, to matter, and to nature.
+
+​
+
+The research for this work began in the late spring of 2019 in Vancouver, and unfolded through time together in the studio moving to a verbal/conceptual score Kristen created based on deep theoretical reflection, reading, writing, and personal solo-improvisational dance work. The work deepened through a 4-day residency in Victoria, B.C. in August 2019, and continues.
+
+​
+
+This work is part of a bigger multidisciplinary, dance-based project involving an eventual hybrid performance in the summer of 2020, supported by collaborative research with dance artists, performance artists, and theorists.
+
+​
+
+Agon and the Animal is a performance project directed by Kristen Lewis, in collaboration with dance artists, Avery Smith and Lucas Wilson-Bilbro.
+
+​
+
+Presented at The Dance Centre, October 2019.`
             },
             {
                 id: "perf3",
