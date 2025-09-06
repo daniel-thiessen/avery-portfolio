@@ -24,13 +24,3 @@ package-lock.json
 # Ignore build output
 dist/
 build/
-
-# Ignore test artifacts and coverage
-coverage/
-_test_*/
-_*test*/
-*.test.log
-
-# Ignore temporary content created during testing
-_content/test*/
-_data/test*

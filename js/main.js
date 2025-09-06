@@ -1,23 +1,8 @@
 // Main JavaScript file for the Artist Portfolio site
 
-document.addEventListener('DOMContentLoaded', async () => {
-    let config;
-    
-    // Try to load from CMS first, fallback to config.js
-    if (window.contentLoader) {
-        try {
-            config = await window.contentLoader.getSiteConfig();
-        } catch (error) {
-            console.warn('Failed to load CMS content, using config.js:', error);
-            config = window.siteConfig;
-        }
-    } else {
-        // Fallback to original config.js
-        config = window.siteConfig;
-    }
-    
+document.addEventListener('DOMContentLoaded', () => {
     // Initialize the site
-    initSite(config);
+    initSite(siteConfig);
 });
 
 // Initialize the site with the provided configuration
