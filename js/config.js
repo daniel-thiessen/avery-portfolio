@@ -20,18 +20,14 @@ const siteConfig = {
         items: [
             {
                 id: "current1",
-                title: "Here We Are",
-                thumbnail: "images/here-we-are.png",
-                fullImage: "images/here-we-are.png",
+                title: "A room for holding",
+                thumbnail: "images/a-room-for-holding-thumb.png",
+                fullImage: "images/a-room-for-holding.png",
                 video: "", // Leave empty if no video
-                description: `"Here We Are" explores the artifice of identity. 
-                
-Together, Avery and Kate have created states of being that attempt to consolidate multiple versions of self. 
+                description: `"A room for holding is an attempt to unpack my relationship to being responsible for the “literal survival of an actual human person.” Through this dance, I’m exploring my ambivalent and joyous surrender to carrying, waiting, watching. I’m considering these acts of care as a continuous thread, where small actions, repeated over time, quietly accumulate and contribute to a larger pattern of attention. 
 
-The attempt of presenting oneself in a neat package fails and dissolves in different ways. Cracks in formality and persona soften the performer and make space for multiple identities to exist.
-
-Performed by Kate Franklin
-Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)`
+                                Presented at Boombox, June 2025 
+                                Performed by Andrea Cownden, Emily Clarke, Avery Smith"`
             }
         ]
     },
@@ -40,38 +36,47 @@ Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)`
     choreography: {
         title: "Choreography",
         items: [
-            {
+             {
                 id: "choreo1",
+                title: "Here We Are",
+                thumbnail: "images/here-we-are.png",
+                fullImage: "images/here-we-are.png",
+                video: "",
+                description: `"Here We Are" explores the artifice of identity.
+
+Together, Avery and Kate have created states of being that attempt to consolidate multiple versions of self.
+
+The attempt of presenting oneself in a neat package fails and dissolves in different ways. Cracks in formality and persona soften the performer and make space for multiple identities to exist.
+
+Performed by Kate Franklin
+Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)`
+            },
+            {
+                id: "choreo2",
                 title: "-273.15: a series of body rituals",
                 thumbnail: "images/a_series_of_body_rituals_thumb.png",
                 fullImage: "https://images.unsplash.com/photo-1536063211352-0b94219f6212?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 video: "https://www.youtube.com/embed/B9127D5o_3A",
                 description: `Body and camera collaborate to create three distinct visual experiences of ritual. Through rigorous processes of imagination, performers experiment with specific ways of meeting and being with the body. Inspired by the fundamental states of matter, the movement explorations draw on scientific phenomena in the search of reaching an altered state of being.
 
-Created in collaboration by Jamie Robinson & Avery Smith
-Performed by Jamie Robinson & Avery Smith
-Filmed by Jamie Robinson & Avery Smith
-Edited by Jamie Robinson
-Lighting and Technical support by Anna Brancato
-
-​
-
-Supported and funded by The Dance Centre
-
-​
-
-https://bodyrituals.cargo.site/`
-            },
-            {
-                id: "choreo2",
-                title: "Choreography Piece 2",
-                thumbnail: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-                fullImage: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
-                video: "",
-                description: "Description of choreography piece 2"
+                            Created in collaboration by Jamie Robinson & Avery Smith
+                            Performed by Jamie Robinson & Avery Smith
+                            Filmed by Jamie Robinson & Avery Smith
+                            Edited by Jamie Robinson
+                            Lighting and Technical support by Anna Brancato
+                            Supported and funded by The Dance Centre​
+                            https://bodyrituals.cargo.site/`
             },
             {
                 id: "choreo3",
+                title: "Choreography Piece 3",
+                thumbnail: "-",
+                fullImage: "-",
+                video: "",
+                description: `""`
+            },
+            {
+                id: "choreo4",
                 title: "Choreography Piece 3",
                 thumbnail: "https://images.unsplash.com/photo-1551989745-347c28b620e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
                 fullImage: "https://images.unsplash.com/photo-1551989745-347c28b620e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
