@@ -96,16 +96,6 @@ Premiered June 2022`
             },
             {
                 id: "choreo4",
-                title: "Capsule",
-                thumbnail: "images/capsule-thumb.png",
-                fullImage: "images/capsule.png",
-                video: "",
-                description: `Occupying physical and conceptual spaces of politics and home, the body is ground for conflict. “Capsule” addresses the body as a site for this multiplicity. This solo explores a singular performer, grappling with this and her efforts to reconcile an identity within it.
-
-September 2020 Artistic Residency at Waterfront Theatre, provided by New Works. `
-            },
-            {
-                id: "choreo5",
                 title: "Sally's World",
                 thumbnail: "images/sallys-world-thumb.png",
                 fullImage: "images/sallys-world.png",
@@ -136,6 +126,16 @@ Composer and Live-Musician: Anna Atkinson
 
 
 Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa, October 2019.`
+            },
+            {
+                id: "choreo5",
+                title: "every part",
+                thumbnail: "images/every-part-thumb.png",
+                fullImage: "",
+                video: "https://vimeo.com/269486806?fl=pl&fe=sh",
+                description: `Occupying physical and conceptual spaces of politics and home, the body is ground for conflict. “Capsule” addresses the body as a site for this multiplicity. This solo explores a singular performer, grappling with this and her efforts to reconcile an identity within it.
+
+September 2020 Artistic Residency at Waterfront Theatre, provided by New Works. `
             }
         ]
     },
