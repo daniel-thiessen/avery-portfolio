@@ -254,11 +254,40 @@ FREE SPACE is made possible through the organizational support and full financia
         items: [
             {
                 id: "perf1",
-                title: "Performance 1",
-                thumbnail: "https://images.unsplash.com/photo-1484755560615-a4c64e778a6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1489&q=80",
-                fullImage: "https://images.unsplash.com/photo-1484755560615-a4c64e778a6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1489&q=80",
+                title: "lossy | Company 605",
+                thumbnail: "lossy-thumb.jpg",
+                fullImage: "lossy.png",
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 1`
+                description: `lossy is about an inability to take it all with us.
+
+​
+
+These are bodies at a loss, gathering together in a stream of movement. a state of recovery. seeking and sifting. grasping for an anchor. it is at once real and science fiction, digital and embodied.
+
+ 
+
+This liminal space holds a confrontation with the promise of future, a collision between our inexorable, ecstatic draw towards the limitless new, and a continuous loss — a perpetual state of mourning for what we are leaving behind. there is no answer. It is overwhelming and incomplete. there is only the stream, and the blurring fragments of what we attempt to bring with us.
+
+​
+
+Created collaboratively with the ensemble, lossy is a shared ritual of transcendence. It is a carefree conjuring of a shiny new future “us”, and a collective grieving for what the future may no longer hold, once we finally arrive.
+
+​
+
+Premiere: July 14, 2023 at Dancing on the Edge in Vancouver
+
+ 
+
+Direction and Staging: Lisa Mariko Gelley & Josh Martin
+Choreography in collaboration with Performers
+Creative Contributor / Dramaturgy: Marcus Youssef
+Sound Design: Matthew Tomkinson
+Lighting Design: James Proudfoot
+Wardrobe Design: Justine A. Chambers
+
+​
+
+Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew Tomkinson, Sophia Mai Wolfe, Shana Ai Wolfe, and Jade Chong (understudy).`
             },
             {
                 id: "perf2",
@@ -270,6 +299,61 @@ FREE SPACE is made possible through the organizational support and full financia
             },
             {
                 id: "perf3",
+                title: "Performance 3",
+                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: `Description of performance 3`
+            },
+            {
+                id: "perf4",
+                title: "Performance 3",
+                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: `Description of performance 3`
+            },{
+                id: "perf5",
+                title: "Performance 3",
+                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: `Description of performance 3`
+            },
+            {
+                id: "perf6",
+                title: "Performance 3",
+                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: `Description of performance 3`
+            },
+            {
+                id: "perf7",
+                title: "Performance 3",
+                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: `Description of performance 3`
+            },
+            {
+                id: "perf3",
+                title: "Performance 3",
+                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: `Description of performance 3`
+            },
+            {
+                id: "perf8",
+                title: "Performance 3",
+                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+                description: `Description of performance 3`
+            },
+            {
+                id: "perf9",
                 title: "Performance 3",
                 thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
