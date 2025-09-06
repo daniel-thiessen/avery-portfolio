@@ -225,7 +225,7 @@ Training Share is made possible through the organizational support and full fina
                 id: "project3",
                 title: "Free Space",
                 thumbnail: "images/free-space-thumb.jpg",
-                fullImage: "images/free-space.jpg",
+                fullImage: "images/free-space.jpeg",
                 video: "",
                 description: `FREE SPACE is free space. Launched in partnership with Avery Smith and Company 605, FREE SPACE is free studio real-estate in which dancers of all backgrounds, experiences, and levels are invited to come and use however they see fit. Other than respecting the shared use of the space and the people occupying it, there are no expectations on how to use the space. There are no obligations, responsibilities, or unspoken desires on how to take advantage of FREE SPACE.
 
