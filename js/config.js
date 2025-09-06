@@ -203,19 +203,47 @@ Spring 2019.`
             },
             {
                 id: "project2",
-                title: "Project Title 2",
-                thumbnail: "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1511715282680-fbf93a50e721?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                title: "Training Share",
+                thumbnail: "images/training-share-thumb.jpg",
+                fullImage: "images/training-share.jpg",
                 video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of project 2`
+                description: `Training Share is a peer-to-peer training initiative piloted by Avery Smith, through the support of Company 605. Together they are interested in creating a space for dancers of all backgrounds and experiences to come together and exchange ideas, skills, and techniques with one another. Training Share was born from Avery's craving to continue learning and collaborating with her peer group beyond a post-secondary training program, and to connect with other dancers within the community. 
+
+ 
+
+There is no single teacher and instead everyone takes turns offering knowledge and learning from one another, with no obligation other than to respect the shared use of the space. 
+
+Training Share is a place to engage with Vancouver's broad and inspiring community of dance artists. It is a resource to grow your practice, both technically and artistically, outside of a formalized school, class or contract. We hope this initiative strengthens our community by developing new connections and future collaborations among peers.
+
+Creator, Producer, Facilitator: Avery Smith
+
+Training Share is made possible through the organizational support and full financial sponsorship from Company 605, as well as the CADA/West Studio Subsidy Program.
+
+2017/2018.`
             },
             {
                 id: "project3",
-                title: "Project Title 3",
-                thumbnail: "https://images.unsplash.com/photo-1594125674956-61a9b49c8ecc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
-                fullImage: "https://images.unsplash.com/photo-1594125674956-61a9b49c8ecc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                title: "Free Space",
+                thumbnail: "images/free-space-thumb.jpg",
+                fullImage: "images/free-space.jpg",
                 video: "",
-                description: `Description of project 3`
+                description: `FREE SPACE is free space. Launched in partnership with Avery Smith and Company 605, FREE SPACE is free studio real-estate in which dancers of all backgrounds, experiences, and levels are invited to come and use however they see fit. Other than respecting the shared use of the space and the people occupying it, there are no expectations on how to use the space. There are no obligations, responsibilities, or unspoken desires on how to take advantage of FREE SPACE.
+
+This is an experiment on sharing space together. Some questions Avery has for this experiment:
+
+Do we know how to be together without being told? What different ways can we be together? Can collaboration exist without a leader? How do we use the resources and people around us to inform our own decision making?
+
+Other questions I recognize:
+
+Is anything really free? Is there always an unspoken expectation?
+
+FREE SPACE is a resource to grow your practice, technically and artistically, outside of a formalized school, class, or contract. 
+
+Creator, Producer, Facilitator: Avery Smith
+
+FREE SPACE is made possible through the organizational support and full financial sponsorship from Company 605 and Mascall Dance. 
+
+2018/2019.`
             }
         ]
     },
