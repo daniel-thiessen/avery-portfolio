@@ -292,8 +292,8 @@ Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew
             {
                 id: "perf2",
                 title: "FUTURE FUTURES | Company 605",
-                thumbnail: "future-futures-thumb.jpg",
-                fullImage: "",
+                thumbnail: "images/future-futures-thumb.png",
+                fullImage: "images/future-futures.jpg",
                 video: "",
                 description: `Collaboratively conceived by Director Brian J. Johnson and Vancouver’s acclaimed Company 605, Future Futures is a collection of 5 short dance films that explore the digital destiny of humankind through a unique merging of camera and visual effects with an intensely specific choreographic vision. FUTURE FUTURES taps into the Sci-Fi genre to explore a digital evolution of the future human through a series of short experimental dance films.
 
@@ -301,6 +301,7 @@ Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew
 
 Premiere: November 26, 2022 at the F-O-R-M Festival
 Streaming on CBC Gem
+https://gem.cbc.ca/future-futures/s01
 
 ​
 
