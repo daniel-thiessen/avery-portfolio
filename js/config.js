@@ -51,8 +51,8 @@ Performed by Andrea Cownden, Emily Clarke, Avery Smith`
              {
                 id: "choreo1",
                 title: "Here We Are",
-                thumbnail: "images/here-we-are.png",
-                fullImage: "images/here-we-are-thumb.png",
+                thumbnail: "images/here-we-are-thumb.png",
+                fullImage: "images/here-we-are.png",
                 video: "",
                 description: `"Here We Are" explores the artifice of identity.
 
