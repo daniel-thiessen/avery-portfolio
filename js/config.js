@@ -130,7 +130,7 @@ Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa,
             {
                 id: "choreo5",
                 title: "every part",
-                thumbnail: "images/every-part-thumb.png",
+                thumbnail: "images/every-part-thumb.jpg",
                 fullImage: "",
                 video: "https://vimeo.com/269486806?fl=pl&fe=sh",
                 description: `every part explores a contradicting desire to reveal and retreat; to be the audience of one moment and the performer of the next. The film finds a single dancer unearthing, tangling, and deconstructing habitual movement patterns and rhythms. This process manifests in a physical investigation of calculated precision. Contrasting environments and camera perspectives work to challenge and disrupt this intimate experience. What is lost in the camera's translation of this experience? What feelings of intimacy are gained, forgotten, and revealed? 
