@@ -51,8 +51,8 @@ Performed by Andrea Cownden, Emily Clarke, Avery Smith`
              {
                 id: "choreo1",
                 title: "Here We Are",
-                thumbnail: "images/here-we-are.png",
-                fullImage: "images/here-we-are-thumb.png",
+                thumbnail: "images/here-we-are-thumb.png",
+                fullImage: "images/here-we-are.png",
                 video: "",
                 description: `"Here We Are" explores the artifice of identity.
 
@@ -103,6 +103,39 @@ Premiered June 2022`
                 description: `Occupying physical and conceptual spaces of politics and home, the body is ground for conflict. “Capsule” addresses the body as a site for this multiplicity. This solo explores a singular performer, grappling with this and her efforts to reconcile an identity within it.
 
 September 2020 Artistic Residency at Waterfront Theatre, provided by New Works. `
+            },
+            {
+                id: "choreo5",
+                title: "Sally's World",
+                thumbnail: "images/sallys-world-thumb.png",
+                fullImage: "images/sallys-world.png",
+                video: "",
+                description: `Sally’s World is a new interdisciplinary work, involving dance, live music, and text. The work explores a singular character's shift from a composed, performance facade to an unhinged, private experience.
+
+ 
+
+The collaborators drew on their personal relationships with the universal themes of grief and joy to craft a performance that reveals the struggle and pain of a crippling inner monologue. Using improvisation as a basis for creation and exploration, a distinct yet ever-shifting fictional character was birthed. This character was researched through experimenting with adopting one another's histories, amalgamating identities, and shifting personas. A character who has the will to conquer her relentless anxieties but lacks the tools to do so began to appear. Through the marriage of movement, sound, and text, the work aims to explore this intimate and isolating experience.  
+
+​
+
+The collaborators use this project to practice excellence in interdisciplinary collaboration. They aim to create a creative process in which movement and sound inform one another equally. 
+
+​
+
+Created at The Banff Centre for Arts and Creativity.
+
+​
+
+Created in collaboration by
+
+Choreographer: Kimberley de Jong
+
+Performer: Avery Smith 
+
+Composer and Live-Musician: Anna Atkinson 
+
+
+Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa, October 2019.`
             }
         ]
     },
