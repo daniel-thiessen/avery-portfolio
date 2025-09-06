@@ -149,7 +149,7 @@ Presented at New Blue Dance Festival (Toronto) 2018.`
                 id: "choreo6",
                 title: "Most Things",
                 thumbnail: "images/most-things-thumb.png",
-                fullImage: "most-things.png",
+                fullImage: "images/most-things.png",
                 video: "",
                 description: `Most things is a process of investing in the things that are already there, the things that have been there all along. It’s an attempt to deconstruct the body’s intuition in order to discover more about it’s history and it’s possible futures. 
 
