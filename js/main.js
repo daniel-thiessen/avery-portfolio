@@ -461,43 +461,21 @@ function createContactSection(contact) {
         contactInfo.appendChild(emailPara);
     }
     
-    // Phone
-    if (contact.phone) {
-        const phonePara = document.createElement('p');
-        const phoneStrong = document.createElement('strong');
-        phoneStrong.textContent = 'Phone: ';
-        
-        phonePara.appendChild(phoneStrong);
-        phonePara.appendChild(document.createTextNode(contact.phone));
-        contactInfo.appendChild(phonePara);
-    }
-    
-    // Social media
+    // Social media (restricted to Instagram & Facebook per request)
     if (contact.socialMedia) {
         const socialMedia = document.createElement('div');
         socialMedia.className = 'social-media';
-        
-        // Instagram
-        if (contact.socialMedia.instagram) {
-            createSocialLink(socialMedia, contact.socialMedia.instagram, 'instagram', 'Instagram');
+        const allowed = ['instagram','facebook'];
+        allowed.forEach(platform => {
+            const url = contact.socialMedia[platform];
+            if (url) {
+                const label = platform.charAt(0).toUpperCase() + platform.slice(1);
+                createSocialLink(socialMedia, url, platform, label);
+            }
+        });
+        if (socialMedia.childNodes.length) {
+            contactInfo.appendChild(socialMedia);
         }
-        
-        // Facebook
-        if (contact.socialMedia.facebook) {
-            createSocialLink(socialMedia, contact.socialMedia.facebook, 'facebook', 'Facebook');
-        }
-        
-        // YouTube
-        if (contact.socialMedia.youtube) {
-            createSocialLink(socialMedia, contact.socialMedia.youtube, 'youtube', 'YouTube');
-        }
-        
-        // Vimeo
-        if (contact.socialMedia.vimeo) {
-            createSocialLink(socialMedia, contact.socialMedia.vimeo, 'vimeo', 'Vimeo');
-        }
-        
-        contactInfo.appendChild(socialMedia);
     }
     
     container.appendChild(contactInfo);

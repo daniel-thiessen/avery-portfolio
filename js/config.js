@@ -509,12 +509,10 @@ Presented as part of Dance in Vancouver's Choreography Walk 2015, curated by Jus
     // Contact section
     contact: {
         email: "averymileahsmith@gmail.com",
-        phone: "+1 (123) 456-7890",
+        // Phone and other platforms intentionally removed per minimalist contact request
         socialMedia: {
-            instagram: "https://instagram.com/yourusername",
-            facebook: "https://facebook.com/yourpage",
-            youtube: "https://youtube.com/yourchannel",
-            vimeo: "https://vimeo.com/averysmith"
+            instagram: "https://www.instagram.com/averymileah/",
+            facebook: "https://www.facebook.com/avery.smith.3192"
         },
         formEnabled: true // Set to false to disable the contact form
     },
