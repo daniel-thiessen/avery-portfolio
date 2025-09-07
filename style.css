@@ -636,8 +636,8 @@ main {
     background-position: center;
 }
 
-.instagram::after { background-image: url(assets/icons/instagram.svg); }
-.facebook::after { background-image: url(assets/icons/facebook.svg); }
+.instagram::after { background-image: url(assets/icons/instagram-outline.svg); }
+.facebook::after { background-image: url(assets/icons/facebook-outline.svg); }
 .youtube::after { background-image: url(assets/icons/youtube.svg); }
 .vimeo::after { background-image: url(assets/icons/vimeo.svg); }
 
