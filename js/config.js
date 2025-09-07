@@ -1,3 +1,4 @@
+// @ts-nocheck
 // Configuration file for site content
 // This file is designed to be easily edited by non-technical users
 
@@ -80,7 +81,7 @@ Performed by Jamie Robinson & Avery Smith
 Filmed by Jamie Robinson & Avery Smith
 Edited by Jamie Robinson
 Lighting and Technical support by Anna Brancato
-Supported and funded by The Dance Centre​`
+Supported and funded by The Dance Centre`
             },
             {
                 id: "choreo3",
@@ -106,15 +107,15 @@ Premiered June 2022`
 
 The collaborators drew on their personal relationships with the universal themes of grief and joy to craft a performance that reveals the struggle and pain of a crippling inner monologue. Using improvisation as a basis for creation and exploration, a distinct yet ever-shifting fictional character was birthed. This character was researched through experimenting with adopting one another's histories, amalgamating identities, and shifting personas. A character who has the will to conquer her relentless anxieties but lacks the tools to do so began to appear. Through the marriage of movement, sound, and text, the work aims to explore this intimate and isolating experience.  
 
-​
+
 
 The collaborators use this project to practice excellence in interdisciplinary collaboration. They aim to create a creative process in which movement and sound inform one another equally. 
 
-​
+
 
 Created at The Banff Centre for Arts and Creativity.
 
-​
+
 
 Created in collaboration by
 
@@ -260,7 +261,7 @@ FREE SPACE is made possible through the organizational support and full financia
                 video: "",
                 description: `lossy is about an inability to take it all with us.
 
-​
+
 
 These are bodies at a loss, gathering together in a stream of movement. a state of recovery. seeking and sifting. grasping for an anchor. it is at once real and science fiction, digital and embodied.
 
@@ -268,11 +269,11 @@ These are bodies at a loss, gathering together in a stream of movement. a state 
 
 This liminal space holds a confrontation with the promise of future, a collision between our inexorable, ecstatic draw towards the limitless new, and a continuous loss — a perpetual state of mourning for what we are leaving behind. there is no answer. It is overwhelming and incomplete. there is only the stream, and the blurring fragments of what we attempt to bring with us.
 
-​
+
 
 Created collaboratively with the ensemble, lossy is a shared ritual of transcendence. It is a carefree conjuring of a shiny new future “us”, and a collective grieving for what the future may no longer hold, once we finally arrive.
 
-​
+
 
 Premiere: July 14, 2023 at Dancing on the Edge in Vancouver
 
@@ -285,7 +286,7 @@ Sound Design: Matthew Tomkinson
 Lighting Design: James Proudfoot
 Wardrobe Design: Justine A. Chambers
 
-​
+
 
 Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew Tomkinson, Sophia Mai Wolfe, Shana Ai Wolfe, and Jade Chong (understudy).`
             },
@@ -297,22 +298,22 @@ Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew
                 video: "",
                 description: `Collaboratively conceived by Director Brian J. Johnson and Vancouver’s acclaimed Company 605, Future Futures is a collection of 5 short dance films that explore the digital destiny of humankind through a unique merging of camera and visual effects with an intensely specific choreographic vision. FUTURE FUTURES taps into the Sci-Fi genre to explore a digital evolution of the future human through a series of short experimental dance films.
 
-​
+
 
 Premiere: November 26, 2022 at the F-O-R-M Festival
 Streaming on CBC Gem
 https://gem.cbc.ca/future-futures/s01
 
-​
+
 
 A CBC Arts Original
 Produced by Company 605 and Screen Siren Pictures
 
-​
+
 
 Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Zahra Shahab, Avery Smith, Jessica Wilkie, Shion Skye Carter, Lisa Mariko Gelley, Antonio Somera, Mika Manning, Billy Marchenski, Kate Franklin, Arash Khakpour, Kylie Miller, Brandon Alley
 
-​`
+`
             },
             {
                 id: "perf3",
@@ -322,11 +323,11 @@ Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Za
                 video: "https://player.vimeo.com/video/586889852",
                 description: `Jamie Robinson’s first full-length ensemble creation takes repetitive, ever-evolving groove patterns to consider the possibilities of transcendence as a shared movement experience. An ever changing score developed with Kate Franklin, Avery Smith, Jessica Wilkie, and Shion Carter considers a deconstruction of the choreographic role, pursuing a synchronization of experience to connect with the dances already happened and happening.
 
-​
+
 
 Presented through the Iris Garland Emerging Choreographer Award.
 
-​
+
 
 Cinematography/Editing: Caleb Ford`
             },
@@ -342,11 +343,11 @@ Cinematography/Editing: Caleb Ford`
 
 Created and choreographed by Noam Gagnon
 
-​
+
 
 Sound design: James Coomber (Vancouver), Guillaume Cliche (Montreal)
 
-​
+
 
 Dancers: Chelsea DesLauriers, Eowynn Enquist, Isak Enquist, Sarah Formosa, Ted Littlemore, Brenna Metzmeier, Avery Smith, Lynnelle Sura, Matthew Wyllie 
 
@@ -357,28 +358,28 @@ Presented at Dance In Vancouver 2020.
 
 Presented at Vancouver International Dance Festival 2019. 
 
-​
+
 
 Presented at Dancing on the Edge Festival 2018.`
             },{
                 id: "perf5",
-                title: "Mid-light | Mahaila Patterson-O'Brien",
+                title: "Midlight | Mahaila Patterson-O'Brien",
                 thumbnail: "images/midlight-thumb.jpg",
                 fullImage: "images/midlight.jpg",
                 video: "",
                 description: `This story takes place a long time ago in a future that has not yet arrived. It begins with two beings in a mid-light world. One asks “Will you show me who you really are?” The other peels the skin back and says, “          .” 
 
-​
+
 
 Some things are best left unexplained. 
 
-​
+
 
 Mid-Light is a multi-disciplinary work involving movement, projection, sound, and text. This work is part of a larger ongoing project that is being supported by the COLLIDER Residency under the mentorship of Theatre Replacement and Company 605. This piece represents part one of three. The intention is to build three modular pieces that can stand on their own and simultaneously coexist within the larger scope of a full length work allowing for flexibility and the ability fit into many contexts. 
 
 Each section is a moment. A moment is not the full picture. One is a beginning, another a middle, and then an end. They do not come from the same picture. They are not a journey from start to finish. Each moment is a window, an opportunity to peer into an existence that is not your own. Or maybe, they are a moment to recognize something that has so far remained intangible. They are not held by the rules of time. They exist in a vacuum of space. They are simple and distant, and it is hard to tell if the characters are human or something else entirely. They are worlds of fiction and gesture. 
 
-​
+
 
 Created by Mahaila Patterson-O’Brien
 
@@ -399,7 +400,7 @@ Presented at PushOFF (Theatre Replacement, Company 605), February 2020.`
                 video: "https://player.vimeo.com/video/412849875",
                 description: `Looping is Company 605's installation piece built upon concepts from their ensemble work, Loop, Lull, which first premiered at the Push International Performing Arts Festival in January 2019. Over three nights, a rotating cast of fifteen performers trades in and out of a repeating improvised looping score. A durational practice of continuously tracking and responding to change, in themselves and in relation to one another, 605’s Looping is a complex test of endurance and capacity for adaptation, keeping the virtuosic physicality and individual choices of each unique performer at play.
 
-​
+
 
 ---
 
@@ -407,22 +408,22 @@ Looping is an ongoing practice that is improvised and therefore never the same. 
 
 ---
 
-​
+
 
 Created by Josh Martin and Lisa Gelley-Martin 
 
-​
+
 
 Performers: Brandon Alley, Laura Avery, Jade Chong, Kate Franklin, Francesca Frewer, Bynh Ho, Josh Martin, Kylie Miller, James-Amzin Nahirnick, Jamie Robinson, Zahra Shahab, Avery Smith, Jessica Wilkie, Sophia Wolfe
 
-​
+
 
 Sound: Matt Tomkinson
 Lighting consultant: James Proudfoot
 
 Video: David Cooper
 
-​
+
 
 Presented at Dance In Vancouver 2019.`
             },
@@ -438,26 +439,25 @@ Presented at Dance In Vancouver 2019.`
 
 Agon and the Animal is, at its heart, an invitation to an adventure, unfolding on the precipices of ever-new thresholds, where performing bodies discover, through the process of their own perpetual becoming, emergent truths about the possibilities of love, friendship and community built on the ashes of a culture with a deeply troubled, often denied relationship to maternity, to matter, and to nature.
 
-​
+
 
 The research for this work began in the late spring of 2019 in Vancouver, and unfolded through time together in the studio moving to a verbal/conceptual score Kristen created based on deep theoretical reflection, reading, writing, and personal solo-improvisational dance work. The work deepened through a 4-day residency in Victoria, B.C. in August 2019, and continues.
 
-​
+
 
 This work is part of a bigger multidisciplinary, dance-based project involving an eventual hybrid performance in the summer of 2020, supported by collaborative research with dance artists, performance artists, and theorists.
 
-​
+
 
 Agon and the Animal is a performance project directed by Kristen Lewis, in collaboration with dance artists, Avery Smith and Lucas Wilson-Bilbro.
 
-​
+
 
 Presented at The Dance Centre, October 2019.`
-
             },
             {
                 id: "perf8",
-                title: "Jamie Robinson | 11p1p1a",
+                title: "11p1p1a | Jamie Robinson",
                 thumbnail: "image/11p1p1a-thumb.jpg",
                 fullImage: "image/11p1p1a-thumb.png",
                 video: "",
@@ -469,7 +469,7 @@ Presented at WhatLab, July 2019.`
             },
             {
                 id: "perf9",
-                title: "Jamie Robinson | Spaceman's Word for Irritating Disturbances",
+                title: "Spaceman's Word for Irritating Disturbances | Jamie Robinson",
                 thumbnail: "images/spaceman.png",
                 fullImage: "images/spaceman.png",
                 video: "",
@@ -477,7 +477,7 @@ Presented at WhatLab, July 2019.`
 Choreographer, Artistic Director: Jamie RobinsonDirector: Kurtis YuPerformers: Avery Smith, Elya Grant, Jamie Robinson, Katie Lowen, Zahra Shahab
 
 Sound Design: Patrick FioreCamera Operation: Jevan CrittendenProduction Assistant: Lauren ThuCostuming: Lululemon Lab
- 
+ 
 Commissioned by and presented at Festival of Recorded Movement 2017.`
             },
             {
@@ -485,7 +485,7 @@ Commissioned by and presented at Festival of Recorded Movement 2017.`
                 title: "Farouche | We Talk Disco One Day",
                 thumbnail: "images/we-talk-disco-thumb.png",
                 fullImage: "",
-                video: "https://vimeo.com/374286088?fl=pl&fe=vl ",
+                video: "https://player.vimeo.com/video/374286088",
                 description: `We Talk Disco One Day is Farouche Collective's exploration in creating a clear macro structure for three micro dances. AInheriting Choreography (similar to telephone). We have spent three months passing off choreography and allowing each individual to reshape the movement with their values, interests, and desires. Part of this process is that we have not shared the outcomes with one another. The first time you see them will be the first time we see them too.
 BStructured Disco. Our collective memory of curated and distilled disco moves in an accumulation of pattern, phasing, and complexity.
 CThe Same Thing Every Time. Resting our brains but working our bodies.
@@ -495,6 +495,91 @@ EEpilogue.
 Created and performed by Felicia Lau, Erika Mitsuhashi, Mahaila Patterson-O'Brien, in collaboration with dance artists Lexi Vajda and Avery Smith.
 
 Presented at the Gold Saucer, September 2018.`
+            },
+            {
+                id: "perf11",
+                title: "In Circulation | Company 605",
+                thumbnail: "images/in-circulation-thumb.png",
+                fullImage: "images/in-circulation-thumb.png",
+                video: "",
+                description: `In Circulation is a mixed program of Company 605's repertoire, consisting of excerpts from two recent full-length works, Albatross and Vital Few, as well as the premiere of a short piece. Each of these distinct works circle around the same current interests of 605’s artists: individuals united, a shared experience held between separate bodies, and moving as one.
+
+Created and choreographed by Josh Martin and Lisa Gelley-Martin
+
+Dancers: Laura Avery, Hayden Fong, Lisa Gelley, Josh Martin, Renee Sigouin, Avery Smith, Jessica Wilkie, Sophia Wolfe
+
+Presented at Shadbolt Centre for the Arts, November 2017`
+            },
+            {
+                id: "perf12",
+                title: "Wayfaring Stranger | Robin Pineda Gould + Jacques Poulin-Denis",
+                thumbnail: "",
+                fullImage: "",
+                video: "https://player.vimeo.com/video/274383781",
+                description: `Created at Transformation Danse in Montreal, QC. 
+Created by Robin Pineda Gould & Jacques Poulin-Denis with:
+
+Marie-Michelle Darveau 
+Marilyn Daoust
+Virginie Desroches 
+Marie
+Claude Guérin 
+Susannah Haight
+Chloe Hart 
+Rumi Jeraj
+Chloe Ouellet
+Anna Patterson 
+Jamie Robinson 
+Avery Smith
+Anne Trudel`
+            },
+            {
+                id: "perf13",
+                title: "Debauchery | Mu",
+                thumbnail: "images/debauchery-thumb.png",
+                fullImage: "",
+                video: "https://www.youtube.com/embed/XQsZfPnz7Ow?start=48",
+                description: `Debauchery is the first single of Mu's second album 'II.'
+
+Director: Mandy-Lyn
+Choreographer: Layla Marcelle Mrozowski
+Dancers: Layla Marcelle Mrozowski, Andrea Cownden, Avery Smith, Ileanna Cheladyn, Ja Pace
+
+Videography: Peter Hagge
+Lighting: Craig Trudeau
+Camera Assistant: Evan Mason
+Lighting Assistant: Rob Anderson
+Editing: Mandy-Lyn, Evan Mason`
+            },
+            {
+                id: "perf14",
+                title: "ISOLATION:RECLAIM | Karissa Barry",
+                thumbnail: "images/isolation-reclaim-thumb.png",
+                fullImage: "images/isolation-reclaim.png",
+                video: "",
+                description: `A solo work by Karissa Barry exploring the physical response to isolation and finality, using only battery powered LEDs and recycled materials such as tetra packs/juice boxes to light and animate the space. 
+Choreographer: Karissa Barry
+Performer: Avery Smith
+ 
+Set and lighting designer: Karissa Barry, Matthew Barry
+Music: Heather Pearls
+
+Presented at BC Buds Festival 2016.`
+            },
+            {
+                id: "perf15",
+                title: "p(l)ace | Emmalena Fredriksson",
+                thumbnail: "images/place-thumb.png",
+                fullImage: "",
+                video: "https://www.youtube.com/embed/eBo8JEyZg6k?start=28",
+                description: `p(l)ace is a site-responsive work created and performed in Yaletown Park.  As a response to the social choreography of Yaletown Park, this colourful intersection of movements playfully explore notions of filling and emptying within the structure of the body, the dancing collective and the city itself.
+
+Created by Emmalena Fredriksson
+
+Performers: Robert Azavedo, Emmalena Fredriksson, Felicia Lau, Hailey McCloskey, Layla Mrozowski, Avery Smith
+Video: Jenna Mazur
+ 
+Presented as part of Dance in Vancouver's Choreography Walk 2015, curated by Justine A. Chambers.`
             }
         ]
     },
