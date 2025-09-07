@@ -458,8 +458,8 @@ Presented at The Dance Centre, October 2019.`
             {
                 id: "perf8",
                 title: "11p1p1a | Jamie Robinson",
-                thumbnail: "image/11p1p1a-thumb.jpg",
-                fullImage: "image/11p1p1a-thumb.png",
+                thumbnail: "images/11p1p1a-thumb.png",
+                fullImage: "images/11p1p1a-thumb.png",
                 video: "",
                 description: `11p1p11a is an experiment in movement and time. With four new works being presented by What Lab at vastly different times of day (11:00pm, 1:00pm, and 11:00am), Vancouver-based artists Ileanna Cheladyn, Emmalena Fredriksson, Jamie Robinson, and Zahra Shahab share with audiences a process that subverts traditional performance structures, be it by moonlight or sunlight.
 
@@ -513,7 +513,7 @@ Presented at Shadbolt Centre for the Arts, November 2017`
             {
                 id: "perf12",
                 title: "Wayfaring Stranger | Robin Pineda Gould + Jacques Poulin-Denis",
-                thumbnail: "",
+                thumbnail: "images/wayfaring-stranger-thumb.png",
                 fullImage: "",
                 video: "https://player.vimeo.com/video/274383781",
                 description: `Created at Transformation Danse in Montreal, QC. 
