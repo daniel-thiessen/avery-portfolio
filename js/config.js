@@ -429,9 +429,9 @@ Presented at Dance In Vancouver 2019.`
             {
                 id: "perf7",
                 title: "Animal and the Agon | Kristen Lewis",
-                thumbnail: "images/animal-and-the-agon-thumb.jpg",
+                thumbnail: "images/animal-and-the-agon-thumb.png",
                 fullImage: "",
-                video: "",
+                video: "https://www.youtube.com/embed/OjOqMgHbz5Q",
                 description: `In pursuit of some answers to the question: why do ‘we’ (a Western ‘we’) abhor nature?, Agon and the Animal examines the roots of the “flight from nature” in the common experience of being subject to a mother, and indeed to matter itself.
 
 "Agony and the Animal" is an experiment in how words and concepts inform the body's trajectories through space and history, and how the body/ies' trajectories in turn create new conceptual apparatus, including new modes of being-in language--shaping a future that is truly new.
@@ -453,30 +453,48 @@ Agon and the Animal is a performance project directed by Kristen Lewis, in colla
 ​
 
 Presented at The Dance Centre, October 2019.`
-            },
-            {
-                id: "perf3",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+
             },
             {
                 id: "perf8",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+                title: "Jamie Robinson | 11p1p1a",
+                thumbnail: "image/11p1p1a-thumb.jpg",
+                fullImage: "image/11p1p1a-thumb.png",
+                video: "",
+                description: `11p1p11a is an experiment in movement and time. With four new works being presented by What Lab at vastly different times of day (11:00pm, 1:00pm, and 11:00am), Vancouver-based artists Ileanna Cheladyn, Emmalena Fredriksson, Jamie Robinson, and Zahra Shahab share with audiences a process that subverts traditional performance structures, be it by moonlight or sunlight.
+
+Choreographer: Jamie RobinsonPerformers: Avery Smith, Kate Franklin, and Jamie Robinson
+
+Presented at WhatLab, July 2019.`
             },
             {
                 id: "perf9",
-                title: "Performance 3",
-                thumbnail: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                fullImage: "https://images.unsplash.com/photo-1557264305-7e2764da873b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
-                video: "https://www.youtube.com/embed/dQw4w9WgXcQ",
-                description: `Description of performance 3`
+                title: "Jamie Robinson | Spaceman's Word for Irritating Disturbances",
+                thumbnail: "images/spaceman.png",
+                fullImage: "images/spaceman.png",
+                video: "",
+                description: `Questioning societies ever-changing relationship with technology, the reliance we are developing with it, and recognizing that, just like human relationships, technology has flaws and perception-changing failures.
+Choreographer, Artistic Director: Jamie RobinsonDirector: Kurtis YuPerformers: Avery Smith, Elya Grant, Jamie Robinson, Katie Lowen, Zahra Shahab
+
+Sound Design: Patrick FioreCamera Operation: Jevan CrittendenProduction Assistant: Lauren ThuCostuming: Lululemon Lab
+ 
+Commissioned by and presented at Festival of Recorded Movement 2017.`
+            },
+            {
+                id: "perf10",
+                title: "Farouche | We Talk Disco One Day",
+                thumbnail: "images/we-talk-disco-thumb.png",
+                fullImage: "",
+                video: "https://vimeo.com/374286088?fl=pl&fe=vl ",
+                description: `We Talk Disco One Day is Farouche Collective's exploration in creating a clear macro structure for three micro dances. AInheriting Choreography (similar to telephone). We have spent three months passing off choreography and allowing each individual to reshape the movement with their values, interests, and desires. Part of this process is that we have not shared the outcomes with one another. The first time you see them will be the first time we see them too.
+BStructured Disco. Our collective memory of curated and distilled disco moves in an accumulation of pattern, phasing, and complexity.
+CThe Same Thing Every Time. Resting our brains but working our bodies.
+DSomething Different.
+EEpilogue.
+
+Created and performed by Felicia Lau, Erika Mitsuhashi, Mahaila Patterson-O'Brien, in collaboration with dance artists Lexi Vajda and Avery Smith.
+
+Presented at the Gold Saucer, September 2018.`
             }
         ]
     },
