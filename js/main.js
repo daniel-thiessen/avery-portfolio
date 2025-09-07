@@ -204,6 +204,8 @@ function createCarouselSection(id, sectionData) {
 function createCarousel(items) {
     const carouselContainer = document.createElement('div');
     carouselContainer.className = 'carousel-container';
+    carouselContainer.setAttribute('role', 'region');
+    carouselContainer.setAttribute('aria-label', 'Carousel');
     
     const carouselWrapper = document.createElement('div');
     carouselWrapper.className = 'carousel-wrapper';
@@ -224,12 +226,16 @@ function createCarousel(items) {
     // Create carousel items container
     const carouselItems = document.createElement('div');
     carouselItems.className = 'carousel-items';
+    carouselItems.setAttribute('tabindex', '0');
+    carouselItems.setAttribute('role', 'list');
     
     // Add items to carousel
     items.forEach(item => {
         const carouselItem = document.createElement('div');
         carouselItem.className = 'carousel-item';
         carouselItem.dataset.id = item.id;
+        carouselItem.setAttribute('role', 'listitem');
+        carouselItem.setAttribute('tabindex', '-1');
         
         // Thumbnail container
         const thumbnailContainer = document.createElement('div');
@@ -276,66 +282,119 @@ function createCarousel(items) {
     carouselWrapper.appendChild(carouselItems);
     carouselContainer.appendChild(carouselWrapper);
     
-    // Add scroll hint if there are enough items
+    // Navigation buttons
+    if (items.length > 1) {
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'carousel-nav-btn prev';
+        prevBtn.setAttribute('aria-label', 'Scroll previous');
+        prevBtn.innerHTML = '&#10094;';
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'carousel-nav-btn next';
+        nextBtn.setAttribute('aria-label', 'Scroll next');
+        nextBtn.innerHTML = '&#10095;';
+        carouselContainer.appendChild(prevBtn);
+        carouselContainer.appendChild(nextBtn);
+        prevBtn.addEventListener('click', () => scrollByAmount(-1));
+        nextBtn.addEventListener('click', () => scrollByAmount(1));
+    }
+
+    // Progress bar
+    if (items.length > 1) {
+        const progress = document.createElement('div');
+        progress.className = 'carousel-progress';
+        const progressBar = document.createElement('div');
+        progressBar.className = 'carousel-progress-bar';
+        progress.appendChild(progressBar);
+        carouselContainer.appendChild(progress);
+    }
+
+    // Enhanced scroll hint
     if (items.length > 3) {
         const scrollHint = document.createElement('div');
         scrollHint.className = 'scroll-hint';
-        scrollHint.innerHTML = '<span>Scroll for more</span>';
+        scrollHint.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14" stroke="currentColor"/><path d="M13 6l6 6-6 6" stroke="currentColor"/></svg><span>Scroll</span>';
         carouselContainer.appendChild(scrollHint);
     }
     
     // Handle carousel scrolling
-    setupCarouselScrolling(carouselWrapper, carouselItems, leftEdge, rightEdge);
+    setupCarouselScrolling(carouselWrapper, carouselItems, leftEdge, rightEdge, carouselContainer);
     
     return carouselContainer;
 }
 
 // Set up carousel scrolling behavior
-function setupCarouselScrolling(wrapper, container, leftEdge, rightEdge) {
+function setupCarouselScrolling(wrapper, container, leftEdge, rightEdge, rootContainer) {
     // Initial state check
-    updateEdgeIndicators();
+    updateIndicators();
+    updateProgress();
     
     // Update edge indicators when scrolling
     container.addEventListener('scroll', () => {
-        updateEdgeIndicators();
-        
-        // Hide scroll hint after user has scrolled
-        const scrollHint = wrapper.parentElement.querySelector('.scroll-hint');
-        if (scrollHint) {
-            scrollHint.style.display = 'none';
+        updateIndicators();
+        updateProgress();
+        hideHint();
+    });
+    
+    // Horizontal scroll with mouse wheel (desktop ergonomics)
+    container.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+            e.preventDefault();
+            container.scrollBy({ left: e.deltaY * 0.9, behavior: 'smooth' });
+        }
+    }, { passive: false });
+    
+    // Keyboard navigation when carousel has focus
+    container.addEventListener('keydown', (e) => {
+        if (['ArrowRight','ArrowDown'].includes(e.key)) {
+            e.preventDefault();
+            scrollByAmount(1);
+        } else if (['ArrowLeft','ArrowUp'].includes(e.key)) {
+            e.preventDefault();
+            scrollByAmount(-1);
+        } else if (e.key === 'Home') {
+            e.preventDefault();
+            container.scrollTo({ left: 0, behavior: 'smooth' });
+        } else if (e.key === 'End') {
+            e.preventDefault();
+            container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
         }
     });
     
-    // Add click handling for the carousel wrapper
-    wrapper.addEventListener('click', (e) => {
-        const rect = container.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const containerWidth = rect.width;
-        
-        if (x < containerWidth / 2) {
-            // Left side clicked
-            container.scrollBy({ left: -300, behavior: 'smooth' });
-        } else {
-            // Right side clicked
-            container.scrollBy({ left: 300, behavior: 'smooth' });
-        }
-    });
+    function scrollByAmount(direction) {
+        const itemWidth = container.querySelector('.carousel-item')?.getBoundingClientRect().width || 300;
+        const gap = parseFloat(getComputedStyle(container).columnGap || 32) || 32;
+        container.scrollBy({ left: direction * (itemWidth + gap), behavior: 'smooth' });
+    }
     
-    function updateEdgeIndicators() {
+    function hideHint() {
+        const hint = rootContainer.querySelector('.scroll-hint');
+        if (!hint) return;
+        if (!hint.dataset.dismissed) {
+            hint.style.opacity = '0';
+            hint.style.transition = 'opacity 0.6s ease';
+            hint.dataset.dismissed = 'true';
+            setTimeout(() => hint.remove(), 800);
+        }
+    }
+    
+    function updateIndicators() {
         const isAtStart = container.scrollLeft < 10;
         const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;
         
-        if (isAtStart) {
-            leftEdge.classList.remove('active');
-        } else {
-            leftEdge.classList.add('active');
-        }
-        
-        if (isAtEnd) {
-            rightEdge.classList.remove('active');
-        } else {
-            rightEdge.classList.add('active');
-        }
+        leftEdge.classList.toggle('inactive', isAtStart);
+        rightEdge.classList.toggle('inactive', isAtEnd);
+        const prevBtn = rootContainer.querySelector('.carousel-nav-btn.prev');
+        const nextBtn = rootContainer.querySelector('.carousel-nav-btn.next');
+        if (prevBtn) prevBtn.disabled = isAtStart;
+        if (nextBtn) nextBtn.disabled = isAtEnd;
+    }
+    
+    function updateProgress() {
+        const bar = rootContainer.querySelector('.carousel-progress-bar');
+        if (!bar) return;
+        const maxScroll = container.scrollWidth - container.clientWidth;
+        const pct = maxScroll <= 0 ? 0 : (container.scrollLeft / maxScroll) * 100;
+        bar.style.width = pct + '%';
     }
 }
 
