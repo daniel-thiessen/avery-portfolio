@@ -429,7 +429,7 @@ Presented at Dance In Vancouver 2019.`
             {
                 id: "perf7",
                 title: "Animal and the Agon | Kristen Lewis",
-                thumbnail: "images/animal-and-the-agon-thumb.jpg",
+                thumbnail: "images/animal-and-the-agon-thumb.png",
                 fullImage: "",
                 video: "",
                 description: `In pursuit of some answers to the question: why do ‘we’ (a Western ‘we’) abhor nature?, Agon and the Animal examines the roots of the “flight from nature” in the common experience of being subject to a mother, and indeed to matter itself.
