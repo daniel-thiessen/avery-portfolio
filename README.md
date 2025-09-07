@@ -19,6 +19,7 @@ This is a minimalist artist portfolio website designed to showcase work in a cle
   - [How to Deploy](#how-to-deploy)
   - [Troubleshooting](#troubleshooting-deployment)
   - [Custom Domain](#custom-domain-optional)
+  - [Image Optimization](#image-optimization)
 - [Contact Form Integration](#contact-form-integration)
   - [How It Works](#how-the-form-works)
   - [Setup Instructions](#contact-form-setup-instructions)
@@ -185,6 +186,41 @@ FormSubmit supports many configuration options:
 ### Privacy Considerations
 
 FormSubmit's free tier adds a small "Powered by FormSubmit" branding to emails. If you want to remove this, you can upgrade to their paid plan.
+
+### Image Optimization
+
+This project can generate modern image formats (AVIF + WebP) for better performance while keeping original PNG/JPG as fallback.
+
+#### Convert Images
+
+Run:
+
+```bash
+npm run images:convert
+```
+
+Creates `*.avif` and `*.webp` siblings (max width 1200px) for each `.png/.jpg` in `images/` if missing or outdated.
+
+#### Runtime Usage
+
+`js/main.js` builds `<picture>` elements with sources in order: AVIF → WebP → original. No manual HTML changes needed—just reference the original path in `config.js`.
+
+#### Quality Targets
+
+- WebP quality ~72
+- AVIF quality ~55
+- Focus on perceptible quality over pixel-perfection; no separate retina assets.
+
+#### Adding New Images
+1. Drop new PNG/JPG in `images/`
+2. Run the convert script
+3. Reference original path in config
+
+#### Optional Future Enhancements
+- Multi-size responsive `srcset`
+- Prefetch hovered modal images
+- Hash-based cache busting
+
 
 ## File Structure
 
