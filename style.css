@@ -34,8 +34,8 @@
     --border-color: #e0e0e0;
     --subtle-color: #e5e5e5;
     --subtle-color-rgb: 229, 229, 229; /* RGB value for subtle effects */
-    --section-padding: 3.5rem 2rem;
-    --section-vertical: clamp(2.2rem, 5vw, 3.5rem);
+    --section-padding: 2.75rem 1.75rem; /* tighter overall */
+    --section-vertical: clamp(1.8rem, 4.5vw, 3rem); /* reduced vertical rhythm */
     --transition-speed: 0.3s;
     --transition-fast: 0.2s;
     --transition-slow: 0.5s;
@@ -282,7 +282,7 @@ main {
 
 .section {
     padding: var(--section-padding);
-    min-height: 60vh;
+    min-height: 50vh; /* slightly less vertical stretch */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -338,8 +338,8 @@ main {
 /* Carousel Sections */
 .carousel-section {
     position: relative;
-    padding-top: calc(var(--section-vertical) + 1rem);
-    padding-bottom: calc(var(--section-vertical) + 1rem);
+    padding-top: calc(var(--section-vertical) + 0.5rem);
+    padding-bottom: calc(var(--section-vertical) + 0.5rem);
 }
 
 .carousel-container {
@@ -349,90 +349,23 @@ main {
     border-radius: 1px;
 }
 
-/* Carousel enhancements */
-.carousel-nav-btn {
+/* Subtle single-character hint */
+.subtle-hint {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.4rem;
-    cursor: pointer;
-    z-index: 5;
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-    transition: background 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
-    opacity: 0;
-}
-.carousel-container:hover .carousel-nav-btn { opacity: 1; }
-.carousel-nav-btn:hover { background: rgba(0,0,0,0.65); transform: translateY(-50%) scale(1.05); }
-.carousel-nav-btn:active { transform: translateY(-50%) scale(0.96); }
-.carousel-nav-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
-.carousel-nav-btn[disabled] { opacity: 0.25; cursor: not-allowed; }
-.carousel-nav-btn.prev { left: 6px; }
-.carousel-nav-btn.next { right: 6px; }
-
-.carousel-progress {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 100%;
-    background: rgba(0,0,0,0.06);
-    overflow: hidden;
-}
-.carousel-progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, var(--accent-color), #000);
-    transition: width 0.3s ease;
-}
-
-.scroll-hint {
+    bottom: -22px;
+    right: 8px;
+    font-size: 0.85rem;
+    opacity: 0.5;
+    transition: opacity 0.4s ease;
+    user-select: none;
     pointer-events: none;
-    display: flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
     font-weight: 400;
-    background: rgba(0,0,0,0.55);
-    color: #fff;
-    padding: 0.4rem 0.75rem 0.4rem 0.6rem;
-    border-radius: 2rem;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    animation: hintPulse 2.8s ease-in-out infinite;
+    letter-spacing: 0.05em;
 }
-.scroll-hint svg { width: 12px; height: 12px; stroke: currentColor; }
-@keyframes hintPulse { 0%,100%{opacity:0.15; transform: translateY(2px);} 40%{opacity:0.9; transform: translateY(0);} }
+.subtle-hint:hover { opacity: 0.75; }
 
-/* Keyboard focus indicator for carousel items */
-.carousel-items:focus { outline: none; }
-.carousel-item:focus-within, .carousel-item:focus { outline: 2px solid var(--accent-color); outline-offset: 2px; }
-
-/* Edge gradients always visible subtly */
-.carousel-edge { opacity: 1; transition: opacity 0.4s ease; }
-.carousel-edge.left.inactive, .carousel-edge.right.inactive { opacity: 0; }
-
-.carousel-wrapper {
-    position: relative;
-    padding: 0 1.5rem;
-    cursor: grab;
-    border-radius: 1px;
-}
-
-.carousel-wrapper:active {
-    cursor: grabbing;
-}
+ .carousel-wrapper { position: relative; padding: 0 1.5rem; border-radius: 1px; }
+ .carousel-items.dragging { cursor: grabbing !important; }
 
 .carousel-items {
     display: flex;
@@ -689,7 +622,8 @@ main {
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
-.social-icon span {
+/* Visually hidden utility */
+.social-icon span.visually-hidden {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -697,25 +631,44 @@ main {
     margin: -1px;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
     border: 0;
 }
 
- .social-icon::after {
-     content: '';
-     display: block;
-     width: 24px; /* slightly larger for clarity */
-     height: 24px;
-     background-size: contain;
-     background-repeat: no-repeat;
-     background-position: center;
-     transition: transform 0.25s ease;
- }
+/* Inline icon image (new reliable approach) */
+.social-icon.has-inline-icon {
+    background-color: var(--primary-color);
+}
+.social-icon .icon-img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    pointer-events: none;
+    filter: brightness(1.1) grayscale(0) contrast(1.05);
+    transition: transform 0.3s ease;
+}
+.social-icon:hover .icon-img { transform: scale(1.08); }
+.social-icon.icon-fallback-text { font-size: 0.9rem; font-weight: 500; letter-spacing: 0.04em; }
+.social-icon .icon-fallback-initial { color: var(--light-text); }
 
-/* Provide fallback to filled icons if outline fails (second image) */
-.instagram::after { background-image: url(assets/icons/instagram-outline.svg), url(assets/icons/instagram.svg); }
-.facebook::after { background-image: url(assets/icons/facebook-outline.svg), url(assets/icons/facebook.svg); }
-.youtube::after { background-image: url(assets/icons/youtube.svg); }
-.vimeo::after { background-image: url(assets/icons/vimeo.svg); }
+/* Legacy pseudo-element fallback kept for any icon links without inline <img> */
+.social-icon:not(.has-inline-icon)::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: transform 0.25s ease;
+}
+.social-icon:not(.has-inline-icon):hover::after { transform: scale(1.08); }
+
+/* Provide fallback layering (used only if JS inline load skipped) */
+.instagram:not(.has-inline-icon)::after { background-image: url(assets/icons/instagram-outline.svg), url(assets/icons/instagram.svg); }
+.facebook:not(.has-inline-icon)::after { background-image: url(assets/icons/facebook-outline.svg), url(assets/icons/facebook.svg); }
+.youtube:not(.has-inline-icon)::after { background-image: url(assets/icons/youtube.svg); }
+.vimeo:not(.has-inline-icon)::after { background-image: url(assets/icons/vimeo.svg); }
 
 .contact-form {
     display: flex;
@@ -894,9 +847,8 @@ section:nth-child(6) { animation-delay: 0.6s; }
 }
 
 /* Reduced vertical spacing strategy */
-:root {
-    --section-vertical: clamp(2.2rem, 5vw, 3.5rem);
-}
+/* Override after reduction not needed; ensure consistency */
+:root { --section-vertical: clamp(1.8rem, 4.5vw, 3rem); }
 
 /* Slightly tighter separation line */
 section:not(:last-child)::after {
@@ -906,9 +858,7 @@ section:not(:last-child)::after {
 }
 
 /* Dense layout modifier (future toggle) */
-body.layout-dense .section {
-    --section-vertical: clamp(1.6rem, 4vw, 2.6rem);
-}
+body.layout-dense .section { --section-vertical: clamp(1.4rem, 3.5vw, 2.3rem); }
 
 /* Adjust carousel section internal padding */
 .carousel-section {
