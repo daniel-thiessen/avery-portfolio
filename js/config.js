@@ -6,7 +6,7 @@ const siteConfig = {
     // Site information
     siteTitle: "Avery Smith",
     siteDescription: "Showcase of artistic work and performances",
-    
+    cvPdf: "images/WebsiteCV_Sept2025_Avery.pdf",
     // About section
     about: {
         name: "Avery Smith",
