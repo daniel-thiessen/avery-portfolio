@@ -349,6 +349,80 @@ main {
     border-radius: 1px;
 }
 
+/* Carousel enhancements */
+.carousel-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 5;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background 0.25s ease, transform 0.25s ease, opacity 0.25s ease;
+    opacity: 0;
+}
+.carousel-container:hover .carousel-nav-btn { opacity: 1; }
+.carousel-nav-btn:hover { background: rgba(0,0,0,0.65); transform: translateY(-50%) scale(1.05); }
+.carousel-nav-btn:active { transform: translateY(-50%) scale(0.96); }
+.carousel-nav-btn:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+.carousel-nav-btn[disabled] { opacity: 0.25; cursor: not-allowed; }
+.carousel-nav-btn.prev { left: 6px; }
+.carousel-nav-btn.next { right: 6px; }
+
+.carousel-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background: rgba(0,0,0,0.06);
+    overflow: hidden;
+}
+.carousel-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent-color), #000);
+    transition: width 0.3s ease;
+}
+
+.scroll-hint {
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    padding: 0.4rem 0.75rem 0.4rem 0.6rem;
+    border-radius: 2rem;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: hintPulse 2.8s ease-in-out infinite;
+}
+.scroll-hint svg { width: 12px; height: 12px; stroke: currentColor; }
+@keyframes hintPulse { 0%,100%{opacity:0.15; transform: translateY(2px);} 40%{opacity:0.9; transform: translateY(0);} }
+
+/* Keyboard focus indicator for carousel items */
+.carousel-items:focus { outline: none; }
+.carousel-item:focus-within, .carousel-item:focus { outline: 2px solid var(--accent-color); outline-offset: 2px; }
+
+/* Edge gradients always visible subtly */
+.carousel-edge { opacity: 1; transition: opacity 0.4s ease; }
+.carousel-edge.left.inactive, .carousel-edge.right.inactive { opacity: 0; }
+
 .carousel-wrapper {
     position: relative;
     padding: 0 1.5rem;
@@ -626,18 +700,20 @@ main {
     border: 0;
 }
 
-.social-icon::after {
-    content: '';
-    display: block;
-    width: 20px;
-    height: 20px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-}
+ .social-icon::after {
+     content: '';
+     display: block;
+     width: 24px; /* slightly larger for clarity */
+     height: 24px;
+     background-size: contain;
+     background-repeat: no-repeat;
+     background-position: center;
+     transition: transform 0.25s ease;
+ }
 
-.instagram::after { background-image: url(assets/icons/instagram-outline.svg); }
-.facebook::after { background-image: url(assets/icons/facebook-outline.svg); }
+/* Provide fallback to filled icons if outline fails (second image) */
+.instagram::after { background-image: url(assets/icons/instagram-outline.svg), url(assets/icons/instagram.svg); }
+.facebook::after { background-image: url(assets/icons/facebook-outline.svg), url(assets/icons/facebook.svg); }
 .youtube::after { background-image: url(assets/icons/youtube.svg); }
 .vimeo::after { background-image: url(assets/icons/vimeo.svg); }
 
