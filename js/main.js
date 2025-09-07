@@ -365,19 +365,6 @@ function setupCarouselScrolling(wrapper, container, leftEdge, rightEdge) {
     window.addEventListener('pointerup', () => { if(isDown){ isDown=false; container.classList.remove('dragging'); container.style.scrollBehavior='smooth'; }});
     window.addEventListener('pointermove', (e) => { if(!isDown) return; const dx = e.clientX - startX; container.scrollLeft = scrollStart - dx; });
 
-    // Wheel to horizontal scroll (desktop usability)
-    container.addEventListener('wheel', (e) => {
-        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // user already scrolling horizontally
-        const atStart = container.scrollLeft < 5;
-        const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 5;
-        if ((atStart && e.deltaY < 0) || (atEnd && e.deltaY > 0)) {
-            return; // allow page scroll when at edges
-        }
-        // Prevent vertical page scroll while actively translating
-        e.preventDefault();
-        container.scrollBy({ left: e.deltaY * 0.9, behavior: 'auto' });
-    }, { passive: false });
-
     function updateEdgeIndicators() {
         const isAtStart = container.scrollLeft < 10;
         const isAtEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 10;

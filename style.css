@@ -378,6 +378,10 @@ main {
 .carousel-nav:disabled { opacity: 0.35; cursor: default; }
 .carousel-nav:focus-visible { outline: 2px solid var(--accent-color); outline-offset: 2px; }
 
+@media (max-width: 680px) {
+    .carousel-nav { display: none; }
+}
+
 /* Subtle single-character hint */
 .subtle-hint {
     position: absolute;
