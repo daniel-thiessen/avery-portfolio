@@ -114,6 +114,18 @@ function createHeader(config) {
     
     // Add header to page
     document.body.insertBefore(header, document.body.firstChild);
+    
+    // CV link
+    if (config.cvPdf) {
+        const cvLink = document.createElement('a');
+        cvLink.href = config.cvPdf;
+        cvLink.target = '_blank';
+        cvLink.rel = 'noopener noreferrer';
+        cvLink.className = 'cv-link';
+        cvLink.textContent = 'CV (PDF)';
+        // Insert before hamburger for visibility
+        headerContent.insertBefore(cvLink, headerContent.querySelector('.hamburger'));
+    }
 }
 
 // Create About section
