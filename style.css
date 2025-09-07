@@ -34,8 +34,8 @@
     --border-color: #e0e0e0;
     --subtle-color: #e5e5e5;
     --subtle-color-rgb: 229, 229, 229; /* RGB value for subtle effects */
-    --section-padding: 2.75rem 1.75rem; /* tighter overall */
-    --section-vertical: clamp(1.8rem, 4.5vw, 3rem); /* reduced vertical rhythm */
+    --section-padding: 2.1rem 1.5rem; /* further tightened */
+    --section-vertical: clamp(1.4rem, 4vw, 2.4rem); /* more compact vertical rhythm */
     --transition-speed: 0.3s;
     --transition-fast: 0.2s;
     --transition-slow: 0.5s;
@@ -123,7 +123,7 @@ h2 {
     font-size: 1.4rem;
     letter-spacing: var(--ls-tight);
     font-weight: 500;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.05rem; /* tightened */
     position: relative;
     display: inline-block;
 }
@@ -426,6 +426,9 @@ main {
     margin-bottom: 1rem;
 }
 
+/* Add space between thumbnail and title */
+.carousel-item h3 { margin-top: 0.75rem; }
+
 .carousel-item:hover {
     transform: translateY(-5px);
     opacity: 1;
@@ -631,8 +634,11 @@ main {
 .social-media {
     display: flex;
     gap: 1rem;
-    margin-top: 2rem;
+    margin-top: 0.85rem; /* tighter spacing below email */
 }
+
+/* Tighter spacing for contact info paragraphs to bring icons closer */
+.contact-info p { margin-bottom: 0.6rem; }
 
 .social-icon {
     width: 40px;
@@ -877,7 +883,7 @@ section:nth-child(6) { animation-delay: 0.6s; }
 
 /* Reduced vertical spacing strategy */
 /* Override after reduction not needed; ensure consistency */
-:root { --section-vertical: clamp(1.8rem, 4.5vw, 3rem); }
+:root { --section-vertical: clamp(1.4rem, 4vw, 2.4rem); }
 
 /* Slightly tighter separation line */
 section:not(:last-child)::after {
@@ -891,8 +897,8 @@ body.layout-dense .section { --section-vertical: clamp(1.4rem, 3.5vw, 2.3rem); }
 
 /* Adjust carousel section internal padding */
 .carousel-section {
-    padding-top: calc(var(--section-vertical) + 1rem);
-    padding-bottom: calc(var(--section-vertical) + 1rem);
+    padding-top: calc(var(--section-vertical) + 0.35rem);
+    padding-bottom: calc(var(--section-vertical) + 0.35rem);
 }
 
 /* About spacing tweak */

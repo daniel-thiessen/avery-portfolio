@@ -148,6 +148,7 @@ function createAboutSection(about) {
     image.src = about.profileImage;
     image.alt = about.name;
     image.className = 'profile-image';
+    image.loading = 'lazy';
     image.onerror = function() {
         this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='18' text-anchor='middle' dominant-baseline='middle'%3EProfile%3C/text%3E%3C/svg%3E";
     };
@@ -158,9 +159,6 @@ function createAboutSection(about) {
     const bioContainer = document.createElement('div');
     bioContainer.className = 'bio-container';
     
-    const name = document.createElement('h3');
-    name.textContent = about.name;
-    
     const bio = document.createElement('p');
     bio.className = 'bio';
     bio.innerHTML = formatText(about.bio);
@@ -169,7 +167,6 @@ function createAboutSection(about) {
     longBio.className = 'long-bio';
     longBio.innerHTML = formatText(about.longBio);
     
-    bioContainer.appendChild(name);
     bioContainer.appendChild(bio);
     bioContainer.appendChild(longBio);
     
@@ -246,6 +243,7 @@ function createCarousel(items) {
         thumbnail.src = item.thumbnail;
         thumbnail.alt = item.title;
         thumbnail.className = 'thumbnail';
+    thumbnail.loading = 'lazy';
         thumbnail.onerror = function() {
             this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='12' text-anchor='middle' dominant-baseline='middle'%3EImage%3C/text%3E%3C/svg%3E";
         };
@@ -420,6 +418,7 @@ function createModal(item) {
         image.src = item.fullImage || item.thumbnail;
         image.alt = item.title;
         image.className = 'full-image';
+    image.loading = 'lazy';
         image.onerror = function() {
             this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EImage%3C/text%3E%3C/svg%3E";
         };
