@@ -204,6 +204,8 @@ function createCarouselSection(id, sectionData) {
 function createCarousel(items) {
     const carouselContainer = document.createElement('div');
     carouselContainer.className = 'carousel-container';
+    carouselContainer.setAttribute('role','group');
+    carouselContainer.setAttribute('aria-roledescription','carousel');
     
     const carouselWrapper = document.createElement('div');
     carouselWrapper.className = 'carousel-wrapper';
@@ -224,6 +226,7 @@ function createCarousel(items) {
     // Create carousel items container
     const carouselItems = document.createElement('div');
     carouselItems.className = 'carousel-items';
+    carouselItems.setAttribute('role','list');
     // Keep DOM light—no tabindex list semantics needed now
     
     // Add items to carousel
@@ -231,6 +234,7 @@ function createCarousel(items) {
         const carouselItem = document.createElement('div');
         carouselItem.className = 'carousel-item';
         carouselItem.dataset.id = item.id;
+        carouselItem.setAttribute('role','listitem');
     // Accessibility kept simple—modal provides detail disclosure
         
         // Thumbnail container
@@ -277,6 +281,30 @@ function createCarousel(items) {
     
     carouselWrapper.appendChild(carouselItems);
     carouselContainer.appendChild(carouselWrapper);
+
+    // Navigation buttons (desktop enhancement)
+    const prevBtn = document.createElement('button');
+    prevBtn.className = 'carousel-nav prev';
+    prevBtn.type = 'button';
+    prevBtn.setAttribute('aria-label', 'Scroll left');
+    prevBtn.innerHTML = '<span aria-hidden="true">←</span>';
+    const nextBtn = document.createElement('button');
+    nextBtn.className = 'carousel-nav next';
+    nextBtn.type = 'button';
+    nextBtn.setAttribute('aria-label', 'Scroll right');
+    nextBtn.innerHTML = '<span aria-hidden="true">→</span>';
+
+    function scrollByAmount(dir){
+        const amount = Math.round(carouselItems.clientWidth * 0.8) * dir;
+        carouselItems.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+    prevBtn.addEventListener('click', ()=>scrollByAmount(-1));
+    nextBtn.addEventListener('click', ()=>scrollByAmount(1));
+    prevBtn.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); scrollByAmount(-1);} });
+    nextBtn.addEventListener('keydown', e=>{ if(e.key==='Enter'||e.key===' ') { e.preventDefault(); scrollByAmount(1);} });
+
+    carouselContainer.appendChild(prevBtn);
+    carouselContainer.appendChild(nextBtn);
     
     // Subtle affordance hint ("→ more") only if overflow expected
     if (items.length > 3) {
@@ -288,6 +316,16 @@ function createCarousel(items) {
     
     // Handle carousel scrolling
     setupCarouselScrolling(carouselWrapper, carouselItems, leftEdge, rightEdge);
+    // Update button disabled state
+    function updateButtons(){
+        const atStart = carouselItems.scrollLeft < 10;
+        const atEnd = carouselItems.scrollLeft + carouselItems.clientWidth >= carouselItems.scrollWidth - 10;
+        prevBtn.disabled = atStart;
+        nextBtn.disabled = atEnd;
+    }
+    carouselItems.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
+    requestAnimationFrame(updateButtons);
     
     return carouselContainer;
 }
@@ -326,6 +364,19 @@ function setupCarouselScrolling(wrapper, container, leftEdge, rightEdge) {
     });
     window.addEventListener('pointerup', () => { if(isDown){ isDown=false; container.classList.remove('dragging'); container.style.scrollBehavior='smooth'; }});
     window.addEventListener('pointermove', (e) => { if(!isDown) return; const dx = e.clientX - startX; container.scrollLeft = scrollStart - dx; });
+
+    // Wheel to horizontal scroll (desktop usability)
+    container.addEventListener('wheel', (e) => {
+        if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return; // user already scrolling horizontally
+        const atStart = container.scrollLeft < 5;
+        const atEnd = container.scrollLeft + container.clientWidth >= container.scrollWidth - 5;
+        if ((atStart && e.deltaY < 0) || (atEnd && e.deltaY > 0)) {
+            return; // allow page scroll when at edges
+        }
+        // Prevent vertical page scroll while actively translating
+        e.preventDefault();
+        container.scrollBy({ left: e.deltaY * 0.9, behavior: 'auto' });
+    }, { passive: false });
 
     function updateEdgeIndicators() {
         const isAtStart = container.scrollLeft < 10;
