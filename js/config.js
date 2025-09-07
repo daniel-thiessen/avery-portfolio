@@ -103,19 +103,11 @@ Premiered June 2022`
                 video: "",
                 description: `Sally’s World is a new interdisciplinary work, involving dance, live music, and text. The work explores a singular character's shift from a composed, performance facade to an unhinged, private experience.
 
- 
-
 The collaborators drew on their personal relationships with the universal themes of grief and joy to craft a performance that reveals the struggle and pain of a crippling inner monologue. Using improvisation as a basis for creation and exploration, a distinct yet ever-shifting fictional character was birthed. This character was researched through experimenting with adopting one another's histories, amalgamating identities, and shifting personas. A character who has the will to conquer her relentless anxieties but lacks the tools to do so began to appear. Through the marriage of movement, sound, and text, the work aims to explore this intimate and isolating experience.  
-
-
 
 The collaborators use this project to practice excellence in interdisciplinary collaboration. They aim to create a creative process in which movement and sound inform one another equally. 
 
-
-
 Created at The Banff Centre for Arts and Creativity.
-
-
 
 Created in collaboration by
 
@@ -124,7 +116,6 @@ Choreographer: Kimberley de Jong
 Performer: Avery Smith 
 
 Composer and Live-Musician: Anna Atkinson 
-
 
 Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa, October 2019.`
             },
@@ -153,8 +144,6 @@ Presented at New Blue Dance Festival (Toronto) 2018.`
                 fullImage: "images/most-things.png",
                 video: "",
                 description: `Most things is a process of investing in the things that are already there, the things that have been there all along. It’s an attempt to deconstruct the body’s intuition in order to discover more about it’s history and it’s possible futures. 
-
- 
 
 The work simultaneously deconstructs and celebrates the worn-in patterning that the body quietly carries. While exploring a specific way of being, the solo tangles demonstrative precision with unconscious flow. Known movements are dissected again and again until they transform into foreign pathways. These pathways are then crafted into hyper-choreographed sequences of movement. This process revealed the nuance and capacity that survives in, and perhaps because of, restriction. 
 
@@ -210,8 +199,6 @@ Spring 2019.`
                 video: "",
                 description: `Training Share is a peer-to-peer training initiative piloted by Avery Smith, through the support of Company 605. Together they are interested in creating a space for dancers of all backgrounds and experiences to come together and exchange ideas, skills, and techniques with one another. Training Share was born from Avery's craving to continue learning and collaborating with her peer group beyond a post-secondary training program, and to connect with other dancers within the community. 
 
- 
-
 There is no single teacher and instead everyone takes turns offering knowledge and learning from one another, with no obligation other than to respect the shared use of the space. 
 
 Training Share is a place to engage with Vancouver's broad and inspiring community of dance artists. It is a resource to grow your practice, both technically and artistically, outside of a formalized school, class or contract. We hope this initiative strengthens our community by developing new connections and future collaborations among peers.
@@ -261,23 +248,13 @@ FREE SPACE is made possible through the organizational support and full financia
                 video: "",
                 description: `lossy is about an inability to take it all with us.
 
-
-
 These are bodies at a loss, gathering together in a stream of movement. a state of recovery. seeking and sifting. grasping for an anchor. it is at once real and science fiction, digital and embodied.
-
- 
 
 This liminal space holds a confrontation with the promise of future, a collision between our inexorable, ecstatic draw towards the limitless new, and a continuous loss — a perpetual state of mourning for what we are leaving behind. there is no answer. It is overwhelming and incomplete. there is only the stream, and the blurring fragments of what we attempt to bring with us.
 
-
-
 Created collaboratively with the ensemble, lossy is a shared ritual of transcendence. It is a carefree conjuring of a shiny new future “us”, and a collective grieving for what the future may no longer hold, once we finally arrive.
 
-
-
 Premiere: July 14, 2023 at Dancing on the Edge in Vancouver
-
- 
 
 Direction and Staging: Lisa Mariko Gelley & Josh Martin
 Choreography in collaboration with Performers
@@ -285,8 +262,6 @@ Creative Contributor / Dramaturgy: Marcus Youssef
 Sound Design: Matthew Tomkinson
 Lighting Design: James Proudfoot
 Wardrobe Design: Justine A. Chambers
-
-
 
 Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew Tomkinson, Sophia Mai Wolfe, Shana Ai Wolfe, and Jade Chong (understudy).`
             },
@@ -298,18 +273,12 @@ Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew
                 video: "",
                 description: `Collaboratively conceived by Director Brian J. Johnson and Vancouver’s acclaimed Company 605, Future Futures is a collection of 5 short dance films that explore the digital destiny of humankind through a unique merging of camera and visual effects with an intensely specific choreographic vision. FUTURE FUTURES taps into the Sci-Fi genre to explore a digital evolution of the future human through a series of short experimental dance films.
 
-
-
 Premiere: November 26, 2022 at the F-O-R-M Festival
 Streaming on CBC Gem
 https://gem.cbc.ca/future-futures/s01
 
-
-
 A CBC Arts Original
 Produced by Company 605 and Screen Siren Pictures
-
-
 
 Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Zahra Shahab, Avery Smith, Jessica Wilkie, Shion Skye Carter, Lisa Mariko Gelley, Antonio Somera, Mika Manning, Billy Marchenski, Kate Franklin, Arash Khakpour, Kylie Miller, Brandon Alley
 
@@ -323,11 +292,7 @@ Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Za
                 video: "https://player.vimeo.com/video/586889852",
                 description: `Jamie Robinson’s first full-length ensemble creation takes repetitive, ever-evolving groove patterns to consider the possibilities of transcendence as a shared movement experience. An ever changing score developed with Kate Franklin, Avery Smith, Jessica Wilkie, and Shion Carter considers a deconstruction of the choreographic role, pursuing a synchronization of experience to connect with the dances already happened and happening.
 
-
-
 Presented through the Iris Garland Emerging Choreographer Award.
-
-
 
 Cinematography/Editing: Caleb Ford`
             },
@@ -339,26 +304,15 @@ Cinematography/Editing: Caleb Ford`
                 video: "https://player.vimeo.com/video/303619299",
                 description: `Pathways is Vision Impure’s latest contemporary dance work for ten dancers by choreographer Noam Gagnon. Employing themes of vision and perception, Pathways explores the intricate push and pull of relationships impacted by urban living. Ten extraordinary dancers draw on all their strength, speed, and agility to power through the explosive choreography, striving to find moments of emotional connection amidst the visceral intensity. Pathways questions our ability or inability to connect with one another and what makes us react more strongly to some than to others.
 
- 
-
 Created and choreographed by Noam Gagnon
-
-
 
 Sound design: James Coomber (Vancouver), Guillaume Cliche (Montreal)
 
-
-
 Dancers: Chelsea DesLauriers, Eowynn Enquist, Isak Enquist, Sarah Formosa, Ted Littlemore, Brenna Metzmeier, Avery Smith, Lynnelle Sura, Matthew Wyllie 
-
- 
 
 Presented at Dance In Vancouver 2020.
 
-
 Presented at Vancouver International Dance Festival 2019. 
-
-
 
 Presented at Dancing on the Edge Festival 2018.`
             },{
@@ -369,26 +323,18 @@ Presented at Dancing on the Edge Festival 2018.`
                 video: "",
                 description: `This story takes place a long time ago in a future that has not yet arrived. It begins with two beings in a mid-light world. One asks “Will you show me who you really are?” The other peels the skin back and says, “          .” 
 
-
-
 Some things are best left unexplained. 
-
-
 
 Mid-Light is a multi-disciplinary work involving movement, projection, sound, and text. This work is part of a larger ongoing project that is being supported by the COLLIDER Residency under the mentorship of Theatre Replacement and Company 605. This piece represents part one of three. The intention is to build three modular pieces that can stand on their own and simultaneously coexist within the larger scope of a full length work allowing for flexibility and the ability fit into many contexts. 
 
 Each section is a moment. A moment is not the full picture. One is a beginning, another a middle, and then an end. They do not come from the same picture. They are not a journey from start to finish. Each moment is a window, an opportunity to peer into an existence that is not your own. Or maybe, they are a moment to recognize something that has so far remained intangible. They are not held by the rules of time. They exist in a vacuum of space. They are simple and distant, and it is hard to tell if the characters are human or something else entirely. They are worlds of fiction and gesture. 
 
-
-
 Created by Mahaila Patterson-O’Brien
-
 
 Dancers: Eowynn Enquist, Isak Enquist, Avery Smith, Matthew Wyllie
 Music: Paul Paroczai
 Projections: Mahaila Patterson-O’Brien, Remy Siu
 Text: Mahaila Patterson-O’Brien
-
 
 Presented at PushOFF (Theatre Replacement, Company 605), February 2020.`
             },
@@ -400,30 +346,20 @@ Presented at PushOFF (Theatre Replacement, Company 605), February 2020.`
                 video: "https://player.vimeo.com/video/412849875",
                 description: `Looping is Company 605's installation piece built upon concepts from their ensemble work, Loop, Lull, which first premiered at the Push International Performing Arts Festival in January 2019. Over three nights, a rotating cast of fifteen performers trades in and out of a repeating improvised looping score. A durational practice of continuously tracking and responding to change, in themselves and in relation to one another, 605’s Looping is a complex test of endurance and capacity for adaptation, keeping the virtuosic physicality and individual choices of each unique performer at play.
 
-
-
 ---
 
 Looping is an ongoing practice that is improvised and therefore never the same. We are always working on Recognizing and Responding to Change. Audiences stay as long as they wish. There is no beginning and no end. We are in a score that will loop multiple times throughout each session. 
 
 ---
 
-
-
 Created by Josh Martin and Lisa Gelley-Martin 
 
-
-
 Performers: Brandon Alley, Laura Avery, Jade Chong, Kate Franklin, Francesca Frewer, Bynh Ho, Josh Martin, Kylie Miller, James-Amzin Nahirnick, Jamie Robinson, Zahra Shahab, Avery Smith, Jessica Wilkie, Sophia Wolfe
-
-
 
 Sound: Matt Tomkinson
 Lighting consultant: James Proudfoot
 
 Video: David Cooper
-
-
 
 Presented at Dance In Vancouver 2019.`
             },
@@ -439,19 +375,11 @@ Presented at Dance In Vancouver 2019.`
 
 Agon and the Animal is, at its heart, an invitation to an adventure, unfolding on the precipices of ever-new thresholds, where performing bodies discover, through the process of their own perpetual becoming, emergent truths about the possibilities of love, friendship and community built on the ashes of a culture with a deeply troubled, often denied relationship to maternity, to matter, and to nature.
 
-
-
 The research for this work began in the late spring of 2019 in Vancouver, and unfolded through time together in the studio moving to a verbal/conceptual score Kristen created based on deep theoretical reflection, reading, writing, and personal solo-improvisational dance work. The work deepened through a 4-day residency in Victoria, B.C. in August 2019, and continues.
-
-
 
 This work is part of a bigger multidisciplinary, dance-based project involving an eventual hybrid performance in the summer of 2020, supported by collaborative research with dance artists, performance artists, and theorists.
 
-
-
 Agon and the Animal is a performance project directed by Kristen Lewis, in collaboration with dance artists, Avery Smith and Lucas Wilson-Bilbro.
-
-
 
 Presented at The Dance Centre, October 2019.`
             },
