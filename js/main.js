@@ -5,6 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
     initSite(siteConfig);
 });
 
+// Format text to handle line breaks and links
+function formatText(text) {
+    if (!text) return '';
+    
+    // Convert line breaks to <br> tags
+    let formatted = text.replace(/\n/g, '<br>');
+    
+    // Convert URLs to clickable links
+    // This regex matches http/https URLs
+    const urlRegex = /(https?:\/\/[^\s<>"']+)/gi;
+    formatted = formatted.replace(urlRegex, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
+    
+    // Convert email addresses to mailto links
+    const emailRegex = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/gi;
+    formatted = formatted.replace(emailRegex, '<a href="mailto:$1">$1</a>');
+    
+    return formatted;
+}
+
 // Initialize the site with the provided configuration
 function initSite(config) {
     // Create site structure
@@ -132,11 +151,11 @@ function createAboutSection(about) {
     
     const bio = document.createElement('p');
     bio.className = 'bio';
-    bio.textContent = about.bio;
+    bio.innerHTML = formatText(about.bio);
     
     const longBio = document.createElement('p');
     longBio.className = 'long-bio';
-    longBio.textContent = about.longBio;
+    longBio.innerHTML = formatText(about.longBio);
     
     bioContainer.appendChild(name);
     bioContainer.appendChild(bio);
@@ -361,7 +380,7 @@ function createModal(item) {
     // Item description
     const description = document.createElement('div');
     description.className = 'item-description';
-    description.textContent = item.description;
+    description.innerHTML = formatText(item.description);
     
     // Assemble modal
     modalContent.appendChild(closeButton);
