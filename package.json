@@ -5,6 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "serve",
+    "images:convert": "node scripts/convert-images.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,6 +16,7 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "serve": "^14.0.0"
+    "serve": "^14.0.0",
+    "sharp": "^0.33.3"
   }
 }

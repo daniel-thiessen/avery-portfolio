@@ -24,6 +24,43 @@ function formatText(text) {
     return formatted;
 }
 
+// Build a <picture> element for an image path (expects optional .avif/.webp beside original)
+function buildResponsivePicture(src, alt, className, sizesAttr) {
+    const picture = document.createElement('picture');
+    const extIndex = src.lastIndexOf('.');
+    if (extIndex === -1) {
+        // Fallback: no extension
+        const imgOnly = document.createElement('img');
+        imgOnly.src = src;
+        imgOnly.alt = alt || '';
+        if (className) imgOnly.className = className;
+        imgOnly.loading = 'lazy';
+        picture.appendChild(imgOnly);
+        return picture;
+    }
+    const base = src.substring(0, extIndex);
+    const avif = base + '.avif';
+    const webp = base + '.webp';
+    // Order: AVIF then WebP then original
+    const sourceAvif = document.createElement('source');
+    sourceAvif.type = 'image/avif';
+    sourceAvif.srcset = avif;
+    const sourceWebp = document.createElement('source');
+    sourceWebp.type = 'image/webp';
+    sourceWebp.srcset = webp;
+    picture.appendChild(sourceAvif);
+    picture.appendChild(sourceWebp);
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = alt || '';
+    img.decoding = 'async';
+    img.loading = 'lazy';
+    if (sizesAttr) img.sizes = sizesAttr;
+    if (className) img.className = className;
+    picture.appendChild(img);
+    return picture;
+}
+
 // Initialize the site with the provided configuration
 function initSite(config) {
     // Create site structure
@@ -144,16 +181,15 @@ function createAboutSection(about) {
     const imageContainer = document.createElement('div');
     imageContainer.className = 'profile-image-container';
     
-    const image = document.createElement('img');
-    image.src = about.profileImage;
-    image.alt = about.name;
-    image.className = 'profile-image';
-    image.loading = 'lazy';
-    image.onerror = function() {
-        this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='18' text-anchor='middle' dominant-baseline='middle'%3EProfile%3C/text%3E%3C/svg%3E";
-    };
-    
-    imageContainer.appendChild(image);
+    const profilePicture = buildResponsivePicture(about.profileImage, about.name, 'profile-image');
+    // Error fallback on underlying img
+    const fallbackImg = profilePicture.querySelector('img');
+    if (fallbackImg) {
+        fallbackImg.onerror = function() {
+            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='18' text-anchor='middle' dominant-baseline='middle'%3EProfile%3C/text%3E%3C/svg%3E";
+        };
+    }
+    imageContainer.appendChild(profilePicture);
     
     // Bio content
     const bioContainer = document.createElement('div');
@@ -239,16 +275,14 @@ function createCarousel(items) {
         thumbnailContainer.className = 'thumbnail-container';
         
         // Thumbnail image
-        const thumbnail = document.createElement('img');
-        thumbnail.src = item.thumbnail;
-        thumbnail.alt = item.title;
-        thumbnail.className = 'thumbnail';
-    thumbnail.loading = 'lazy';
-        thumbnail.onerror = function() {
-            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='12' text-anchor='middle' dominant-baseline='middle'%3EImage%3C/text%3E%3C/svg%3E";
-        };
-        
-        thumbnailContainer.appendChild(thumbnail);
+        const thumbPicture = buildResponsivePicture(item.thumbnail, item.title, 'thumbnail');
+        const thumbImg = thumbPicture.querySelector('img');
+        if (thumbImg) {
+            thumbImg.onerror = function() {
+                this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='12' text-anchor='middle' dominant-baseline='middle'%3EImage%3C/text%3E%3C/svg%3E";
+            };
+        }
+        thumbnailContainer.appendChild(thumbPicture);
         
         // Add video indicator if it's a video
         if (item.video) {
@@ -414,16 +448,16 @@ function createModal(item) {
         videoContainer.appendChild(iframe);
         modalContent.appendChild(videoContainer);
     } else {
-        const image = document.createElement('img');
-        image.src = item.fullImage || item.thumbnail;
-        image.alt = item.title;
-        image.className = 'full-image';
-    image.loading = 'lazy';
-        image.onerror = function() {
-            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EImage%3C/text%3E%3C/svg%3E";
-        };
-        
-        modalContent.appendChild(image);
+        const fullSrc = item.fullImage || item.thumbnail;
+        const fullPicture = buildResponsivePicture(fullSrc, item.title, 'full-image');
+        const fullImg = fullPicture.querySelector('img');
+        if (fullImg) {
+            fullImg.loading = 'eager'; // user explicitly requested
+            fullImg.onerror = function() {
+                this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EImage%3C/text%3E%3C/svg%3E";
+            };
+        }
+        modalContent.appendChild(fullPicture);
     }
     
     // Item title
