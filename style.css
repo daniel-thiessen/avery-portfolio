@@ -322,6 +322,7 @@ main {
 .bio-container {
     flex: 1;
     padding-top: 0.5rem;
+    font-family: var(--font-body) !important; /* ensure Inter inheritance */
 }
 
 .bio {
@@ -332,6 +333,7 @@ main {
     max-width: var(--max-measure);
     color: var(--text-color) !important;
     opacity: 0.95 !important; /* ensure same for all paragraphs */
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important; /* force Inter directly */
 }
 
 /* Remove extra bottom margin on final bio paragraph for tighter rhythm */
