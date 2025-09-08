@@ -83,6 +83,9 @@ function initSite(config) {
     
     // Initialize intersection observer for active section detection
     initSectionObserver();
+
+    // Schedule intelligent prefetching of full-size images to improve perceived performance
+    schedulePrefetchFullImages(config);
 }
 
 // Create the site header
@@ -307,6 +310,10 @@ function createCarousel(items) {
         carouselItem.addEventListener('click', () => {
             createModal(item);
         });
+
+    // Warm (prefetch) the full-size image on hover/focus intent for faster modal open
+    carouselItem.addEventListener('pointerenter', () => warmItem(item));
+    carouselItem.addEventListener('focus', () => warmItem(item));
         
         carouselItems.appendChild(carouselItem);
     });
@@ -438,24 +445,57 @@ function createModal(item) {
     if (item.video) {
         const videoContainer = document.createElement('div');
         videoContainer.className = 'video-container';
-        
+        // Placeholder shimmer to soften embed pop-in
+        const placeholder = document.createElement('div');
+    placeholder.className = 'video-placeholder';
+        videoContainer.appendChild(placeholder);
+
         const iframe = document.createElement('iframe');
         iframe.src = item.video;
         iframe.title = item.title;
         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture');
         iframe.setAttribute('allowFullscreen', '');
-        
+        // Fade in iframe on load
+        iframe.addEventListener('load', () => {
+            requestAnimationFrame(()=>{
+                videoContainer.classList.add('ready');
+                // Remove placeholder after transition
+                setTimeout(()=> placeholder.remove(), 450);
+            });
+        }, { once: true });
+        // Safety timeout (if load never fires due to network block)
+        setTimeout(()=>{
+            if(!videoContainer.classList.contains('ready')){
+                videoContainer.classList.add('ready');
+                placeholder.remove();
+            }
+        }, 4000);
         videoContainer.appendChild(iframe);
         modalContent.appendChild(videoContainer);
     } else {
         const fullSrc = item.fullImage || item.thumbnail;
+        // Skeleton placeholder to mask perceived delay
+        const skeleton = document.createElement('div');
+        skeleton.className = 'modal-image-skeleton';
+        modalContent.appendChild(skeleton);
         const fullPicture = buildResponsivePicture(fullSrc, item.title, 'full-image');
         const fullImg = fullPicture.querySelector('img');
         if (fullImg) {
-            fullImg.loading = 'eager'; // user explicitly requested
+            fullImg.loading = 'eager';
+            fullImg.classList.add('progressive-image');
+            // If already warmed, it *should* be in cache and load quickly
+            fullImg.addEventListener('load', () => {
+                skeleton.remove();
+                fullImg.classList.add('loaded');
+            }, { once: true });
             fullImg.onerror = function() {
+                skeleton.remove();
                 this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='24' text-anchor='middle' dominant-baseline='middle'%3EImage%3C/text%3E%3C/svg%3E";
             };
+            // Try to decode early for smoother paint
+            if (fullImg.decode) {
+                fullImg.decode().catch(()=>{});
+            }
         }
         modalContent.appendChild(fullPicture);
     }
@@ -503,6 +543,107 @@ function createModal(item) {
     document.body.appendChild(modalOverlay);
     document.body.style.overflow = 'hidden';
 }
+
+// ---------------- Precaching & Perceived Performance Enhancements ----------------
+
+const _warmedItems = new Set();
+const _prefetchedUrls = new Set();
+
+function warmItem(item){
+    if(!item || _warmedItems.has(item.id)) return;
+    _warmedItems.add(item.id);
+    prefetchFullImageForItem(item);
+}
+
+function schedulePrefetchFullImages(config){
+    // Add immediate preload hints for the most likely first interactions
+    try {
+        const priorityCandidates = [
+            config.current?.items?.[0],
+            config.choreography?.items?.[0]
+        ].filter(Boolean);
+        priorityCandidates.forEach(item => {
+            const base = item.fullImage || item.thumbnail;
+            if(!base) return;
+            const avif = swapExt(base, 'avif');
+            appendPreloadLink(avif, 'image/avif');
+        });
+    } catch(e) { /* silent */ }
+
+    idle(()=>{
+        // Progressive, throttled prefetch of remaining gallery images
+        const all = [
+            ...(config.current?.items||[]),
+            ...(config.choreography?.items||[]),
+            ...(config.projects?.items||[]),
+            ...(config.performances?.items||[])
+        ];
+        let i = 0;
+        (function next(){
+            if(i >= all.length) return;
+            prefetchFullImageForItem(all[i++]);
+            setTimeout(next, 280); // gentle cadence to avoid saturating network
+        })();
+    });
+}
+
+function prefetchFullImageForItem(item){
+    if(!item) return;
+    const src = item.fullImage || item.thumbnail;
+    if(!src) return;
+    // Skip remote (cross-origin) heavy URLs until user intent (avoid excessive cost)
+    if(/^https?:\/\//i.test(src) && !src.startsWith(location.origin)) return;
+    const variants = deriveVariants(src);
+    variants.forEach(url => prefetchImage(url));
+}
+
+function deriveVariants(original){
+    const dot = original.lastIndexOf('.');
+    if(dot === -1) return [original];
+    const base = original.slice(0,dot);
+    const ext = original.slice(dot+1).toLowerCase();
+    const out = [];
+    // Order of likelihood: avif, webp, original
+    if(ext !== 'avif') out.push(base + '.avif');
+    if(ext !== 'webp') out.push(base + '.webp');
+    out.push(original);
+    return out;
+}
+
+function prefetchImage(url){
+    if(!url || _prefetchedUrls.has(url)) return;
+    _prefetchedUrls.add(url);
+    const img = new Image();
+    img.decoding = 'async';
+    img.loading = 'eager';
+    img.src = url;
+}
+
+function appendPreloadLink(href, type){
+    if(!href) return;
+    if(document.querySelector(`link[rel="preload"][href="${href}"]`)) return;
+    const link = document.createElement('link');
+    link.rel = 'preload';
+    link.as = 'image';
+    if(type) link.type = type;
+    link.href = href;
+    document.head.appendChild(link);
+}
+
+function swapExt(path, newExt){
+    const dot = path.lastIndexOf('.');
+    if(dot === -1) return path + '.' + newExt;
+    return path.slice(0,dot+1) + newExt;
+}
+
+function idle(fn){
+    if('requestIdleCallback' in window){
+        window.requestIdleCallback(fn, { timeout: 2500 });
+    } else {
+        setTimeout(fn, 600);
+    }
+}
+
 
 // Create Contact section
 function createContactSection(contact) {

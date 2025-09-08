@@ -591,6 +591,38 @@ main {
     box-shadow: var(--shadow);
 }
 
+/* Modal large image perceived performance enhancements */
+ .modal-image-skeleton {
+    width: 100%;
+    max-height: 70vh;
+    aspect-ratio: 16/10;
+    background: linear-gradient(110deg, #efefef 8%, #f7f7f7 22%, #efefef 38%);
+    background-size: 180% 100%;
+    border-radius: 2px;
+    animation: skeletonShimmer 1.6s linear infinite;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes skeletonShimmer {
+    to { background-position: -200% 0; }
+}
+
+.progressive-image { 
+    filter: blur(5px) saturate(1.05);
+    opacity: 0.55;
+    transition: filter 0.65s ease, opacity 0.5s ease;
+    will-change: filter, opacity;
+}
+.progressive-image.loaded { 
+    filter: blur(0) saturate(1);
+    opacity: 1;
+}
+
+/* Prevent layout shift when image loads */
+.modal-content picture { display: block; }
+
 .video-container {
     position: relative;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
@@ -607,7 +639,42 @@ main {
     height: 100%;
     border: 0;
     box-shadow: var(--shadow);
+    opacity: 0;
+    transition: opacity 0.5s ease;
 }
+
+/* Video loading placeholder */
+ .video-placeholder {
+     position: absolute;
+     inset: 0;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+     background-size: 200% 100%;
+     animation: skeletonShimmer 1.35s linear infinite;
+     overflow: hidden;
+     transition: opacity 0.35s ease;
+ }
+
+ .video-placeholder::after {
+     content: 'Loading video…';
+     font-size: 0.75rem;
+     letter-spacing: 0.06em;
+     color: #666;
+     position: absolute;
+     bottom: 8px;
+     left: 12px;
+     background: rgba(255,255,255,0.6);
+     padding: 2px 6px;
+     border-radius: 2px;
+     font-weight: 400;
+ }
+
+
+.video-container.ready iframe { opacity: 1; }
+.video-container.ready .video-placeholder { opacity: 0; transition: opacity 0.35s ease; }
+.video-container.ready .video-placeholder { pointer-events: none; }
 
 .item-description {
     margin-top: 1rem;
