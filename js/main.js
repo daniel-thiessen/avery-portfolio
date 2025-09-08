@@ -198,14 +198,22 @@ function createAboutSection(about) {
     const bioContainer = document.createElement('div');
     bioContainer.className = 'bio-container';
     
-    // Split the single bio field on blank line to preserve two-paragraph structure visually
-    const paragraphs = (about.bio || '').split(/\n\s*\n/).filter(p=>p.trim().length);
-    paragraphs.forEach(text => {
-        const p = document.createElement('p');
-        p.className = 'bio';
-        p.innerHTML = formatText(text.trim());
-        bioContainer.appendChild(p);
-    });
+    // Create a single paragraph with a break for visual separation
+    const p = document.createElement('p');
+    p.className = 'bio';
+    
+    // Parse the bio content from the config
+    const paragraphs = (about.bio || '').split(/\n\s*\n/).filter(p => p.trim().length);
+    
+    if (paragraphs.length > 1) {
+        // Combine paragraphs with a line break between them
+        p.innerHTML = formatText(paragraphs[0]) + '<br><br>' + formatText(paragraphs[1]);
+    } else {
+        // Just use the single paragraph if there's only one
+        p.innerHTML = formatText(about.bio);
+    }
+    
+    bioContainer.appendChild(p);
     
     content.appendChild(imageContainer);
     content.appendChild(bioContainer);
