@@ -70,11 +70,18 @@ function initSite(config) {
     // Create header
     createHeader(config);
     
-    // Create new hero section with prominent image
-    createHeroSection('images/avery.jpg', config.siteTitle);
-    
-    // Create other sections
-    createAboutSection(config.about);
+    // Build hero and about first (custom split layout)
+    const heroEl = createHeroSection('images/avery.jpg', config.siteTitle);
+    const aboutEl = createAboutSection(config.about);
+    const introWrapper = document.createElement('div');
+    introWrapper.className = 'intro-split';
+    // Mobile/narrow: hero on top, then about. Desktop: we already flipped image left via CSS order, so DOM order can stay logical (hero then about).
+    introWrapper.appendChild(heroEl);
+    introWrapper.appendChild(aboutEl);
+    document.querySelector('main').appendChild(introWrapper);
+
+    // Remaining sections
+    createCarouselSection('current', config.current);
     createCarouselSection('current', config.current);
     createCarouselSection('choreography', config.choreography);
     createCarouselSection('projects', config.projects);
@@ -95,28 +102,24 @@ function initSite(config) {
 function createHeroSection(imagePath, title) {
     const section = document.createElement('section');
     section.id = 'hero';
-    section.className = 'section hero-section';
-    
+    section.className = 'hero-section';
     const heroContainer = document.createElement('div');
     heroContainer.className = 'hero-container';
-    
-    // Add the responsive hero image
     const heroImage = buildResponsivePicture(imagePath, title, 'hero-image');
-    
-    // Error fallback
     const img = heroImage.querySelector('img');
     if (img) {
-        img.decoding = 'sync'; // Force synchronous decode for hero image
-        img.loading = 'eager'; // Load immediately
-        img.onerror = function() {
-            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='800' viewBox='0 0 1200 800'%3E%3Crect width='1200' height='800' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='32' text-anchor='middle' dominant-baseline='middle'%3EHero Image%3C/text%3E%3C/svg%3E";
+        img.decoding = 'sync';
+        img.loading = 'eager';
+        img.style.objectFit = 'contain'; // ensure no cropping
+        img.style.width = '100%';
+        img.style.height = '100%';
+        img.onerror = function(){
+            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' viewBox='0 0 800 800'%3E%3Crect width='800' height='800' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='32' text-anchor='middle' dominant-baseline='middle'%3EHero%3C/text%3E%3C/svg%3E";
         };
     }
-    
     heroContainer.appendChild(heroImage);
     section.appendChild(heroContainer);
-    
-    document.querySelector('main').appendChild(section);
+    return section;
 }
 
 // Create the site header
@@ -203,7 +206,7 @@ function createHeader(config) {
 function createAboutSection(about) {
     const section = document.createElement('section');
     section.id = 'about';
-    section.className = 'section';
+    section.className = 'about-section';
     
     const heading = document.createElement('h2');
     heading.textContent = 'About';
@@ -211,7 +214,7 @@ function createAboutSection(about) {
     const content = document.createElement('div');
     content.className = 'about-content';
     
-    // Bio content (now comes first for more emphasis)
+    // Bio content only - portrait removed
     const bioContainer = document.createElement('div');
     bioContainer.className = 'bio-container';
     
@@ -232,28 +235,13 @@ function createAboutSection(about) {
     
     bioContainer.appendChild(p);
     
-    // Profile image (now secondary and more subtle)
-    const imageContainer = document.createElement('div');
-    imageContainer.className = 'profile-image-container';
-    
-    const profilePicture = buildResponsivePicture(about.profileImage, about.name, 'profile-image');
-    // Error fallback on underlying img
-    const fallbackImg = profilePicture.querySelector('img');
-    if (fallbackImg) {
-        fallbackImg.onerror = function() {
-            this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300' viewBox='0 0 300 300'%3E%3Crect width='300' height='300' fill='%23f0f0f0'/%3E%3Ctext x='50%25' y='50%25' font-family='Arial' font-size='18' text-anchor='middle' dominant-baseline='middle'%3EProfile%3C/text%3E%3C/svg%3E";
-        };
-    }
-    imageContainer.appendChild(profilePicture);
-    
-    // Order has changed: bio first, then image
+    // Only add bio to the content
     content.appendChild(bioContainer);
-    content.appendChild(imageContainer);
     
     section.appendChild(heading);
     section.appendChild(content);
     
-    document.querySelector('main').appendChild(section);
+    return section;
 }
 
 // Create carousel section (Current, Choreography, Projects, Performances)
