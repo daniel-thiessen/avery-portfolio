@@ -325,16 +325,19 @@ main {
     font-family: var(--font-body) !important; /* ensure Inter inheritance */
 }
 
-.bio {
-    font-size: 0.9rem !important;
-    margin-bottom: 1.5rem !important;
-    font-weight: 350 !important;
-    line-height: 1.65 !important;
+/* Simple styling for bio paragraph */
+.bio-container .bio {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    font-weight: 350;
+    line-height: 1.65;
     max-width: var(--max-measure);
-    color: var(--text-color) !important;
-    opacity: 0.95 !important; /* ensure same for all paragraphs */
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif !important; /* force Inter directly */
+    color: var(--text-color);
+    opacity: 0.95;
 }
+
+/* Removed duplicate .bio style as it's now defined above */
 
 /* Remove extra bottom margin on final bio paragraph for tighter rhythm */
 .bio-container .bio:last-child { margin-bottom: 0; }
