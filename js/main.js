@@ -198,16 +198,14 @@ function createAboutSection(about) {
     const bioContainer = document.createElement('div');
     bioContainer.className = 'bio-container';
     
-    const bio = document.createElement('p');
-    bio.className = 'bio';
-    bio.innerHTML = formatText(about.bio);
-    
-    const longBio = document.createElement('p');
-    longBio.className = 'long-bio';
-    longBio.innerHTML = formatText(about.longBio);
-    
-    bioContainer.appendChild(bio);
-    bioContainer.appendChild(longBio);
+    // Split the single bio field on blank line to preserve two-paragraph structure visually
+    const paragraphs = (about.bio || '').split(/\n\s*\n/).filter(p=>p.trim().length);
+    paragraphs.forEach(text => {
+        const p = document.createElement('p');
+        p.className = 'bio';
+        p.innerHTML = formatText(text.trim());
+        bioContainer.appendChild(p);
+    });
     
     content.appendChild(imageContainer);
     content.appendChild(bioContainer);

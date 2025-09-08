@@ -55,8 +55,8 @@
     --radius-sm: 2px;
     --radius-md: 4px;
     --shadow-soft: 0 2px 6px rgba(0, 0, 0, 0.06), 0 4px 14px rgba(0, 0, 0, 0.04);
-    --font-heading: 'Source Serif 4', serif;
-    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
     --ls-tight:-0.015em;
     --ls-tighter:-0.02em;
     --ls-normal:0;
@@ -70,11 +70,7 @@
    Slightly wide (0.04em) retained for navigation/footer for subtle separation
 */
 
-/* Typography pairing rationale:
-   Headings: Source Serif 4 (slightly expressive, good x-height, modern serifs for character without heaviness)
-   Body: Inter (neutral, high legibility on screens, excellent hinting, wide language support)
-   Goals: Minimal aesthetic, clear hierarchy via contrast in serif vs sans-serif, restrained weights (400–600 only).
-*/
+/* Typography: unified sans-serif (Inter) for headings and body for consistency & reduced font payload */
 
 /* Typography & spacing system additions */
 /* Variables added: font scale, line-heights, max measure, radii, soft shadow */
@@ -321,19 +317,18 @@ main {
 }
 
 .bio {
-    font-size: 1.15rem;
-    margin-bottom: 2rem;
-    font-weight: 300;
-    line-height: 1.8;
+    font-size: 0.95rem !important;
+    margin-bottom: 1.5rem !important;
+    font-weight: 350 !important;
+    line-height: 1.65 !important;
     max-width: var(--max-measure);
+    color: var(--text-color) !important;
+    opacity: 0.95 !important; /* ensure same for all paragraphs */
 }
 
-.long-bio {
-    opacity: 0.85;
-    font-weight: 300;
-    line-height: 1.7;
-    max-width: var(--max-measure);
-}
+/* Remove extra bottom margin on final bio paragraph for tighter rhythm */
+.bio-container .bio:last-child { margin-bottom: 0; }
+
 
 /* Carousel Sections */
 .carousel-section {
