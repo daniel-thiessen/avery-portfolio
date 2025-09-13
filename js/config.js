@@ -26,11 +26,7 @@ Avery's current creative interests reflect and explore her evolving identity as 
                 thumbnail: "images/a-room-for-holding-thumb.png",
                 fullImage: "images/a-room-for-holding.png",
                 video: "", // Leave empty if no video
-                description: `"A room for holding" is an attempt to unpack my relationship to being responsible for the "literal survival of an actual human person."
-
-Through this dance, I'm exploring my ambivalent and joyous surrender to carrying, waiting, watching.
-
-I'm considering these acts of care as a continuous thread, where small actions, repeated over time, quietly accumulate and contribute to a larger pattern of attention.
+                description: `"A room for holding" is an attempt to unpack my relationship to being responsible for the "literal survival of an actual human person." Through this dance, I'm exploring my ambivalent and joyous surrender to carrying, waiting, watching. I'm considering these acts of care as a continuous thread, where small actions, repeated over time, quietly accumulate and contribute to a larger pattern of attention.
 
 Presented at Boombox, June 2025
 Performed by Andrea Cownden, Emily Clarke, Avery Smith`
@@ -48,14 +44,10 @@ Performed by Andrea Cownden, Emily Clarke, Avery Smith`
                 thumbnail: "images/here-we-are-thumb.png",
                 fullImage: "images/here-we-are.png",
                 video: "",
-                description: `"Here We Are" explores the artifice of identity.
+                description: `"Here We Are" explores the artifice of identity. Together, Avery and Kate have created states of being that attempt to consolidate multiple versions of self. The attempt of presenting oneself in a neat package fails and dissolves in different ways. Cracks in formality and persona soften the performer and make space for multiple identities to exist.
 
-Together, Avery and Kate have created states of being that attempt to consolidate multiple versions of self.
-
-The attempt of presenting oneself in a neat package fails and dissolves in different ways. Cracks in formality and persona soften the performer and make space for multiple identities to exist.
-
-Performed by Kate Franklin
-Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)`
+Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)
+Performed by Kate Franklin`
             },
             {
                 id: "choreo2",
@@ -63,12 +55,9 @@ Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)`
                 thumbnail: "images/a_series_of_body_rituals_thumb.png",
                 fullImage: "https://images.unsplash.com/photo-1536063211352-0b94219f6212?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
                 video: "https://www.youtube.com/embed/B9127D5o_3A",
-                description: `Body and camera collaborate to create three distinct visual experiences of ritual.
+                description: `Body and camera collaborate to create three distinct visual experiences of ritual. Through rigorous processes of imagination, performers experiment with specific ways of meeting and being with the body. Inspired by the fundamental states of matter, the movement explorations draw on scientific phenomena in the search of reaching an altered state of being.
 
-Through rigorous processes of imagination, performers experiment with specific ways of meeting and being with the body.
-
-Inspired by the fundamental states of matter, the movement explorations draw on scientific phenomena in the search of reaching an altered state of being.
-
+Presented by The Dance Centre’s Digital Dance Commission, February 2023
 Created in collaboration by Jamie Robinson & Avery Smith
 Performed by Jamie Robinson & Avery Smith
 Filmed by Jamie Robinson & Avery Smith
@@ -82,23 +71,12 @@ Supported and funded by The Dance Centre`
                 thumbnail: "images/sallys-world-thumb.png",
                 fullImage: "images/sallys-world.png",
                 video: "",
-                description: `Sally’s World is a new interdisciplinary work, involving dance, live music, and text. The work explores a singular character's shift from a composed, performance facade to an unhinged, private experience.
+                description: `Sally’s World is an interdisciplinary work, involving dance, live music, and text. The work explores a singular character's shift from a composed, performance facade to an unhinged, private experience.
 
 The collaborators drew on their personal relationships with the universal themes of grief and joy to craft a performance that reveals the struggle and pain of a crippling inner monologue. Using improvisation as a basis for creation and exploration, a distinct yet ever-shifting fictional character was birthed. This character was researched through experimenting with adopting one another's histories, amalgamating identities, and shifting personas. A character who has the will to conquer her relentless anxieties but lacks the tools to do so began to appear. Through the marriage of movement, sound, and text, the work aims to explore this intimate and isolating experience.  
 
-The collaborators use this project to practice excellence in interdisciplinary collaboration. They aim to create a creative process in which movement and sound inform one another equally. 
-
-Created at The Banff Centre for Arts and Creativity.
-
-Created in collaboration by
-
-Choreographer: Kimberley de Jong
-
-Performer: Avery Smith 
-
-Composer and Live-Musician: Anna Atkinson 
-
-Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa, October 2019.`
+Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa, October 2019.
+Created at The Banff Centre for Arts and Creativity in collaboration by Kimberley de Jong, Avery Smith (performer), Anna Atkinson (composer)`
             },
             {
                 id: "choreo3",
@@ -121,13 +99,9 @@ Premiered June 2022`
                 description: `every part explores a contradicting desire to reveal and retreat; to be the audience of one moment and the performer of the next. The film finds a single dancer unearthing, tangling, and deconstructing habitual movement patterns and rhythms. This process manifests in a physical investigation of calculated precision. Contrasting environments and camera perspectives work to challenge and disrupt this intimate experience. What is lost in the camera's translation of this experience? What feelings of intimacy are gained, forgotten, and revealed? 
 
 Director, Choreographer, Performer: Avery Smith
-
 DOP, Cinematographer: Alex Tam 
-
 Presented at Festival of Recorded Movement 2018.
-
 Presented at REELING Film Festival (Edmonton) 2018.
-
 Presented at New Blue Dance Festival (Toronto) 2018.`
             },
             {
@@ -140,10 +114,9 @@ Presented at New Blue Dance Festival (Toronto) 2018.`
 
 The work simultaneously deconstructs and celebrates the worn-in patterning that the body quietly carries. While exploring a specific way of being, the solo tangles demonstrative precision with unconscious flow. Known movements are dissected again and again until they transform into foreign pathways. These pathways are then crafted into hyper-choreographed sequences of movement. This process revealed the nuance and capacity that survives in, and perhaps because of, restriction. 
 
-Choreographed and Performed by Avery Smith
-
 Presented at The Dance Centre in 12 Minutes Max Showcase, April 2019.
 Presented at Bonfire Festival (New Brunswick), August 2019.
+Choreographed and Performed by Avery Smith
 
 https://thedancecentre.ca/story/12-minutes-max-4-choreographic-perspectives/`
             },
@@ -153,11 +126,10 @@ https://thedancecentre.ca/story/12-minutes-max-4-choreographic-perspectives/`
                 thumbnail: "images/do-you-include-this-too-thumb.jpg",
                 fullImage: "",
                 video: "https://www.youtube.com/embed/uLvbDgBZuLY",
-                description: `Created for Dance Café, hosted by response dance on Instagram Live
+                description: `Presented at Dance Café, hosted by response dance., August 2020
 
-Sound by Zachari Smith
-
-August 30, 2020`
+Created and performed by Avery Smith 
+Sound by Zachari Smith`
             }
         ]
     },
@@ -175,14 +147,10 @@ August 30, 2020`
                 description: `Launched in partnership with The Dance Centre and piloted by Avery Smith and Company 605, Making Conversation allowed eight professional artists from Vancouver to form a cohort in which they developed works alongside one another and shared their experiences of making dance work. This artist driven learning space provided artists a place to practice showing work, articulating ideas, and offering feedback. Participants had the opportunity to practice showing work, articulating their ideas, and offering feedback. 
 
 "Making Conversation is an experiment to learn about how diverse choreographers might support one another through the creative process by simply showing and talking about what they’re attempting to do/find/make and discussing methods and strategies they might be undertaking." 
-
-      - Josh Martin
+    - Josh Martin
 
 Co-creators, Producers, Facilitators: Josh Martin, Lisa Gelley-Martin, Avery Smith 
-
-Supported and funded by The Dance Centre, Company 605, CADA/West.  
-
-Spring 2019.`
+Supported and funded by The Dance Centre, Company 605, CADA/West. Spring 2019.`
             },
             {
                 id: "project3",
@@ -287,7 +255,6 @@ Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Za
                 description: `Jamie Robinson’s first full-length ensemble creation takes repetitive, ever-evolving groove patterns to consider the possibilities of transcendence as a shared movement experience. An ever changing score developed with Kate Franklin, Avery Smith, Jessica Wilkie, and Shion Carter considers a deconstruction of the choreographic role, pursuing a synchronization of experience to connect with the dances already happened and happening.
 
 Presented through the Iris Garland Emerging Choreographer Award.
-
 Cinematography/Editing: Caleb Ford`
             },
             {
@@ -299,15 +266,10 @@ Cinematography/Editing: Caleb Ford`
                 description: `Pathways is Vision Impure’s latest contemporary dance work for ten dancers by choreographer Noam Gagnon. Employing themes of vision and perception, Pathways explores the intricate push and pull of relationships impacted by urban living. Ten extraordinary dancers draw on all their strength, speed, and agility to power through the explosive choreography, striving to find moments of emotional connection amidst the visceral intensity. Pathways questions our ability or inability to connect with one another and what makes us react more strongly to some than to others.
 
 Created and choreographed by Noam Gagnon
-
 Sound design: James Coomber (Vancouver), Guillaume Cliche (Montreal)
-
 Dancers: Chelsea DesLauriers, Eowynn Enquist, Isak Enquist, Sarah Formosa, Ted Littlemore, Brenna Metzmeier, Avery Smith, Lynnelle Sura, Matthew Wyllie 
-
 Presented at Dance In Vancouver 2020.
-
 Presented at Vancouver International Dance Festival 2019. 
-
 Presented at Dancing on the Edge Festival 2018.`
             },{
                 id: "perf5",
@@ -349,12 +311,9 @@ Looping is an ongoing practice that is improvised and therefore never the same. 
 Created by Josh Martin and Lisa Gelley-Martin 
 
 Performers: Brandon Alley, Laura Avery, Jade Chong, Kate Franklin, Francesca Frewer, Bynh Ho, Josh Martin, Kylie Miller, James-Amzin Nahirnick, Jamie Robinson, Zahra Shahab, Avery Smith, Jessica Wilkie, Sophia Wolfe
-
 Sound: Matt Tomkinson
 Lighting consultant: James Proudfoot
-
 Video: David Cooper
-
 Presented at Dance In Vancouver 2019.`
             },
             {
@@ -480,12 +439,11 @@ Editing: Mandy-Lyn, Evan Mason`
                 fullImage: "images/isolation-reclaim.png",
                 video: "",
                 description: `A solo work by Karissa Barry exploring the physical response to isolation and finality, using only battery powered LEDs and recycled materials such as tetra packs/juice boxes to light and animate the space. 
-Choreographer: Karissa Barry
-Performer: Avery Smith
- 
+
+                Choreographer: Karissa Barry
+Performer: Avery Smith 
 Set and lighting designer: Karissa Barry, Matthew Barry
 Music: Heather Pearls
-
 Presented at BC Buds Festival 2016.`
             },
             {
