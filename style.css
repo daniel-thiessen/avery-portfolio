@@ -360,6 +360,18 @@ main {
 /* Remove extra bottom margin on final bio paragraph for tighter rhythm */
 .bio-container .bio:last-child { margin-bottom: 0; }
 
+/* Prevent About text from overflowing on narrow widths or long words/links */
+.bio-container .bio,
+.bio-container .bio a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Add subtle right padding on the About column at desktop sizes to avoid edge collisions */
+@media (min-width: 980px) {
+    .intro-split .about-section { padding-right: clamp(12px, 2.2vw, 28px); }
+}
+
 
 /* Carousel Sections */
 .carousel-section {
