@@ -18,7 +18,7 @@ Avery's current creative interests reflect and explore her evolving identity as 
     
     // Current section - current projects, exhibitions or focus
     current: {
-        title: "Current Work",
+    title: "Current",
         items: [
             {
                 id: "current1",
@@ -77,18 +77,6 @@ Lighting and Technical support by Anna Brancato
 Supported and funded by The Dance Centre`
             },
             {
-                id: "choreo3",
-                title: "Born to Dance",
-                thumbnail: "images/born-to-dance-thumb.png",
-                fullImage: "images/born-to-dance.png",
-                video: "https://www.youtube.com/embed/tVg6zt56saw",
-                description: `Performed, choreographed, and filmed by Avery Smith
-
-Music by Zachari Smith and Brieanna Lebel
-
-Premiered June 2022`
-            },
-            {
                 id: "choreo4",
                 title: "Sally's World",
                 thumbnail: "images/sallys-world-thumb.png",
@@ -111,6 +99,18 @@ Performer: Avery Smith
 Composer and Live-Musician: Anna Atkinson 
 
 Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa, October 2019.`
+            },
+            {
+                id: "choreo3",
+                title: "Born to Dance",
+                thumbnail: "images/born-to-dance-thumb.png",
+                fullImage: "images/born-to-dance.png",
+                video: "https://www.youtube.com/embed/tVg6zt56saw",
+                description: `Performed, choreographed, and filmed by Avery Smith
+
+Music by Zachari Smith and Brieanna Lebel
+
+Premiered June 2022`
             },
             {
                 id: "choreo5",
@@ -185,24 +185,6 @@ Supported and funded by The Dance Centre, Company 605, CADA/West.
 Spring 2019.`
             },
             {
-                id: "project2",
-                title: "Training Share",
-                thumbnail: "images/training-share-thumb.jpg",
-                fullImage: "images/training-share.jpg",
-                video: "",
-                description: `Training Share is a peer-to-peer training initiative piloted by Avery Smith, through the support of Company 605. Together they are interested in creating a space for dancers of all backgrounds and experiences to come together and exchange ideas, skills, and techniques with one another. Training Share was born from Avery's craving to continue learning and collaborating with her peer group beyond a post-secondary training program, and to connect with other dancers within the community. 
-
-There is no single teacher and instead everyone takes turns offering knowledge and learning from one another, with no obligation other than to respect the shared use of the space. 
-
-Training Share is a place to engage with Vancouver's broad and inspiring community of dance artists. It is a resource to grow your practice, both technically and artistically, outside of a formalized school, class or contract. We hope this initiative strengthens our community by developing new connections and future collaborations among peers.
-
-Creator, Producer, Facilitator: Avery Smith
-
-Training Share is made possible through the organizational support and full financial sponsorship from Company 605, as well as the CADA/West Studio Subsidy Program.
-
-2017/2018.`
-            },
-            {
                 id: "project3",
                 title: "Free Space",
                 thumbnail: "images/free-space-thumb.jpg",
@@ -225,6 +207,25 @@ Creator, Producer, Facilitator: Avery Smith
 FREE SPACE is made possible through the organizational support and full financial sponsorship from Company 605 and Mascall Dance. 
 
 2018/2019.`
+            }
+            ,
+            {
+                id: "project2",
+                title: "Training Share",
+                thumbnail: "images/training-share-thumb.jpg",
+                fullImage: "images/training-share.jpg",
+                video: "",
+                description: `Training Share is a peer-to-peer training initiative piloted by Avery Smith, through the support of Company 605. Together they are interested in creating a space for dancers of all backgrounds and experiences to come together and exchange ideas, skills, and techniques with one another. Training Share was born from Avery's craving to continue learning and collaborating with her peer group beyond a post-secondary training program, and to connect with other dancers within the community. 
+
+There is no single teacher and instead everyone takes turns offering knowledge and learning from one another, with no obligation other than to respect the shared use of the space. 
+
+Training Share is a place to engage with Vancouver's broad and inspiring community of dance artists. It is a resource to grow your practice, both technically and artistically, outside of a formalized school, class or contract. We hope this initiative strengthens our community by developing new connections and future collaborations among peers.
+
+Creator, Producer, Facilitator: Avery Smith
+
+Training Share is made possible through the organizational support and full financial sponsorship from Company 605, as well as the CADA/West Studio Subsidy Program.
+
+2017/2018.`
             }
         ]
     },
