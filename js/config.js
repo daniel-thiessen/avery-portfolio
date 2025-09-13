@@ -116,6 +116,7 @@ The work simultaneously deconstructs and celebrates the worn-in patterning that 
 
 Presented at The Dance Centre in 12 Minutes Max Showcase, April 2019.
 Presented at Bonfire Festival (New Brunswick), August 2019.
+
 Choreographed and Performed by Avery Smith
 
 https://thedancecentre.ca/story/12-minutes-max-4-choreographic-perspectives/`
@@ -171,9 +172,7 @@ Is anything really free? Is there always an unspoken expectation?
 FREE SPACE is a resource to grow your practice, technically and artistically, outside of a formalized school, class, or contract. 
 
 Creator, Producer, Facilitator: Avery Smith
-
 FREE SPACE is made possible through the organizational support and full financial sponsorship from Company 605 and Mascall Dance. 
-
 2018/2019.`
             }
             ,
@@ -190,9 +189,7 @@ There is no single teacher and instead everyone takes turns offering knowledge a
 Training Share is a place to engage with Vancouver's broad and inspiring community of dance artists. It is a resource to grow your practice, both technically and artistically, outside of a formalized school, class or contract. We hope this initiative strengthens our community by developing new connections and future collaborations among peers.
 
 Creator, Producer, Facilitator: Avery Smith
-
 Training Share is made possible through the organizational support and full financial sponsorship from Company 605, as well as the CADA/West Studio Subsidy Program.
-
 2017/2018.`
             }
         ]
@@ -215,7 +212,6 @@ These are bodies at a loss, gathering together in a stream of movement. a state 
 This liminal space holds a confrontation with the promise of future, a collision between our inexorable, ecstatic draw towards the limitless new, and a continuous loss — a perpetual state of mourning for what we are leaving behind. there is no answer. It is overwhelming and incomplete. there is only the stream, and the blurring fragments of what we attempt to bring with us.
 
 Created collaboratively with the ensemble, lossy is a shared ritual of transcendence. It is a carefree conjuring of a shiny new future “us”, and a collective grieving for what the future may no longer hold, once we finally arrive.
-
 Premiere: July 14, 2023 at Dancing on the Edge in Vancouver
 
 Direction and Staging: Lisa Mariko Gelley & Josh Martin
@@ -224,7 +220,6 @@ Creative Contributor / Dramaturgy: Marcus Youssef
 Sound Design: Matthew Tomkinson
 Lighting Design: James Proudfoot
 Wardrobe Design: Justine A. Chambers
-
 Performers: Kate Franklin, Lisa Mariko Gelley, Josh Martin, Avery Smith, Matthew Tomkinson, Sophia Mai Wolfe, Shana Ai Wolfe, and Jade Chong (understudy).`
             },
             {
@@ -241,7 +236,6 @@ https://gem.cbc.ca/future-futures/s01
 
 A CBC Arts Original
 Produced by Company 605 and Screen Siren Pictures
-
 Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Zahra Shahab, Avery Smith, Jessica Wilkie, Shion Skye Carter, Lisa Mariko Gelley, Antonio Somera, Mika Manning, Billy Marchenski, Kate Franklin, Arash Khakpour, Kylie Miller, Brandon Alley
 
 `
@@ -255,6 +249,7 @@ Featured Performers: Jasmine Chen, Justine A. Chambers, Josh Martin, Bynh Ho, Za
                 description: `Jamie Robinson’s first full-length ensemble creation takes repetitive, ever-evolving groove patterns to consider the possibilities of transcendence as a shared movement experience. An ever changing score developed with Kate Franklin, Avery Smith, Jessica Wilkie, and Shion Carter considers a deconstruction of the choreographic role, pursuing a synchronization of experience to connect with the dances already happened and happening.
 
 Presented through the Iris Garland Emerging Choreographer Award.
+
 Cinematography/Editing: Caleb Ford`
             },
             {
@@ -268,6 +263,7 @@ Cinematography/Editing: Caleb Ford`
 Created and choreographed by Noam Gagnon
 Sound design: James Coomber (Vancouver), Guillaume Cliche (Montreal)
 Dancers: Chelsea DesLauriers, Eowynn Enquist, Isak Enquist, Sarah Formosa, Ted Littlemore, Brenna Metzmeier, Avery Smith, Lynnelle Sura, Matthew Wyllie 
+
 Presented at Dance In Vancouver 2020.
 Presented at Vancouver International Dance Festival 2019. 
 Presented at Dancing on the Edge Festival 2018.`
@@ -286,7 +282,6 @@ Mid-Light is a multi-disciplinary work involving movement, projection, sound, an
 Each section is a moment. A moment is not the full picture. One is a beginning, another a middle, and then an end. They do not come from the same picture. They are not a journey from start to finish. Each moment is a window, an opportunity to peer into an existence that is not your own. Or maybe, they are a moment to recognize something that has so far remained intangible. They are not held by the rules of time. They exist in a vacuum of space. They are simple and distant, and it is hard to tell if the characters are human or something else entirely. They are worlds of fiction and gesture. 
 
 Created by Mahaila Patterson-O’Brien
-
 Dancers: Eowynn Enquist, Isak Enquist, Avery Smith, Matthew Wyllie
 Music: Paul Paroczai
 Projections: Mahaila Patterson-O’Brien, Remy Siu
@@ -309,11 +304,11 @@ Looping is an ongoing practice that is improvised and therefore never the same. 
 ---
 
 Created by Josh Martin and Lisa Gelley-Martin 
-
 Performers: Brandon Alley, Laura Avery, Jade Chong, Kate Franklin, Francesca Frewer, Bynh Ho, Josh Martin, Kylie Miller, James-Amzin Nahirnick, Jamie Robinson, Zahra Shahab, Avery Smith, Jessica Wilkie, Sophia Wolfe
 Sound: Matt Tomkinson
 Lighting consultant: James Proudfoot
 Video: David Cooper
+
 Presented at Dance In Vancouver 2019.`
             },
             {
@@ -355,10 +350,10 @@ Presented at WhatLab, July 2019.`
                 fullImage: "images/spaceman.png",
                 video: "",
                 description: `Questioning societies ever-changing relationship with technology, the reliance we are developing with it, and recognizing that, just like human relationships, technology has flaws and perception-changing failures.
-Choreographer, Artistic Director: Jamie RobinsonDirector: Kurtis YuPerformers: Avery Smith, Elya Grant, Jamie Robinson, Katie Lowen, Zahra Shahab
 
+Choreographer, Artistic Director: Jamie RobinsonDirector: Kurtis YuPerformers: Avery Smith, Elya Grant, Jamie Robinson, Katie Lowen, Zahra Shahab
 Sound Design: Patrick FioreCamera Operation: Jevan CrittendenProduction Assistant: Lauren ThuCostuming: Lululemon Lab
- 
+
 Commissioned by and presented at Festival of Recorded Movement 2017.`
             },
             {
@@ -386,7 +381,6 @@ Presented at the Gold Saucer, September 2018.`
                 description: `In Circulation is a mixed program of Company 605's repertoire, consisting of excerpts from two recent full-length works, Albatross and Vital Few, as well as the premiere of a short piece. Each of these distinct works circle around the same current interests of 605’s artists: individuals united, a shared experience held between separate bodies, and moving as one.
 
 Created and choreographed by Josh Martin and Lisa Gelley-Martin
-
 Dancers: Laura Avery, Hayden Fong, Lisa Gelley, Josh Martin, Renee Sigouin, Avery Smith, Jessica Wilkie, Sophia Wolfe
 
 Presented at Shadbolt Centre for the Arts, November 2017`
@@ -425,7 +419,6 @@ Anne Trudel`
 Director: Mandy-Lyn
 Choreographer: Layla Marcelle Mrozowski
 Dancers: Layla Marcelle Mrozowski, Andrea Cownden, Avery Smith, Ileanna Cheladyn, Ja Pace
-
 Videography: Peter Hagge
 Lighting: Craig Trudeau
 Camera Assistant: Evan Mason
@@ -440,10 +433,11 @@ Editing: Mandy-Lyn, Evan Mason`
                 video: "",
                 description: `A solo work by Karissa Barry exploring the physical response to isolation and finality, using only battery powered LEDs and recycled materials such as tetra packs/juice boxes to light and animate the space. 
 
-                Choreographer: Karissa Barry
+Choreographer: Karissa Barry
 Performer: Avery Smith 
 Set and lighting designer: Karissa Barry, Matthew Barry
 Music: Heather Pearls
+
 Presented at BC Buds Festival 2016.`
             },
             {
@@ -455,10 +449,9 @@ Presented at BC Buds Festival 2016.`
                 description: `p(l)ace is a site-responsive work created and performed in Yaletown Park.  As a response to the social choreography of Yaletown Park, this colourful intersection of movements playfully explore notions of filling and emptying within the structure of the body, the dancing collective and the city itself.
 
 Created by Emmalena Fredriksson
-
 Performers: Robert Azavedo, Emmalena Fredriksson, Felicia Lau, Hailey McCloskey, Layla Mrozowski, Avery Smith
 Video: Jenna Mazur
- 
+
 Presented as part of Dance in Vancouver's Choreography Walk 2015, curated by Justine A. Chambers.`
             }
         ]
