@@ -220,7 +220,7 @@ header {
 .header-right { display: flex; align-items: center; gap: 1rem; }
 
 #site-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 1.2rem; /* reasonable gap above nav */
     font-weight: 500;
     letter-spacing: 0.5px;
