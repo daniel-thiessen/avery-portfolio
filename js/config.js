@@ -350,6 +350,7 @@ Presented at WhatLab, July 2019.`
                 fullImage: "images/spaceman.png",
                 video: "",
                 description: `Questioning societies ever-changing relationship with technology, the reliance we are developing with it, and recognizing that, just like human relationships, technology has flaws and perception-changing failures.
+
 Choreographer, Artistic Director: Jamie RobinsonDirector: Kurtis YuPerformers: Avery Smith, Elya Grant, Jamie Robinson, Katie Lowen, Zahra Shahab
 Sound Design: Patrick FioreCamera Operation: Jevan CrittendenProduction Assistant: Lauren ThuCostuming: Lululemon Lab
 
