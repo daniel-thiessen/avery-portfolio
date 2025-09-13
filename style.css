@@ -220,7 +220,7 @@ header {
 .header-right { display: flex; align-items: center; gap: 1rem; }
 
 #site-title {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     margin-bottom: 1.2rem; /* reasonable gap above nav */
     font-weight: 500;
     letter-spacing: 0.5px;
@@ -359,6 +359,18 @@ main {
 
 /* Remove extra bottom margin on final bio paragraph for tighter rhythm */
 .bio-container .bio:last-child { margin-bottom: 0; }
+
+/* Prevent About text from overflowing on narrow widths or long words/links */
+.bio-container .bio,
+.bio-container .bio a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+/* Add subtle right padding on the About column at desktop sizes to avoid edge collisions */
+@media (min-width: 980px) {
+    .intro-split .about-section { padding-right: clamp(12px, 2.2vw, 28px); }
+}
 
 
 /* Carousel Sections */

@@ -223,10 +223,7 @@ function createAboutSection(about) {
     const section = document.createElement('section');
     section.id = 'about';
     section.className = 'about-section';
-    
-    const heading = document.createElement('h2');
-    heading.textContent = 'About';
-    
+
     const content = document.createElement('div');
     content.className = 'about-content';
     
@@ -254,7 +251,6 @@ function createAboutSection(about) {
     // Only add bio to the content
     content.appendChild(bioContainer);
     
-    section.appendChild(heading);
     section.appendChild(content);
     
     return section;
