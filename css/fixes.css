@@ -1,0 +1,21 @@
+/* Fix for duplicate main definition */
+main {
+    margin-top: 9rem !important; /* Important to override duplicate definition */
+}
+
+/* Fix duplicate nav definition */
+header nav {
+    display: flex;
+    flex: 1;
+}
+
+/* Fix for the hamburger in mobile view */
+@media (max-width: 768px) {
+    .hamburger {
+        margin-right: 1rem;
+    }
+    
+    .nav-container {
+        flex-wrap: nowrap;
+    }
+}
