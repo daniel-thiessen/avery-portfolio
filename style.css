@@ -130,7 +130,7 @@ h2::after {
     position: absolute;
     bottom: -5px;
     left: 0;
-    width: 2rem;
+    width: 4rem;
     height: 1px;
     background-color: var(--accent-color);
     opacity: 0.5;
@@ -209,25 +209,25 @@ header {
 
 .header-content {
     display: flex;
+    align-items: flex-start;
     justify-content: space-between;
-    align-items: center;
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
+    gap: 1rem;
 }
+
+.header-left { display: flex; flex-direction: column; align-items: flex-start; }
+.header-right { display: flex; align-items: center; gap: 1rem; }
 
 #site-title {
     font-size: 1.3rem;
-    margin-bottom: 0;
-    margin-right: 4rem; /* Add spacing after title */
+    margin-bottom: 1.2rem; /* reasonable gap above nav */
     font-weight: 500;
     letter-spacing: 0.5px;
 }
 
-/* Ensure nav takes up middle space and CV stays right */
-nav {
-    display: flex;
-    flex: 1; /* Take available middle space */
-}
+/* Nav layout */
+nav { display: flex; }
 
 .hamburger {
     display: none;
@@ -246,14 +246,15 @@ nav {
 }
 
 nav {
-    display: flex;
-    flex: 1; /* Take available middle space */
+    display: flex; /* inline/horizontal */
 }
 
 nav ul {
     list-style: none;
-    display: flex;
+    display: flex; /* keep items horizontal */
     gap: 2.5rem;
+    padding: 0; /* remove default ul padding */
+    margin: 0;  /* ensure left edge aligns with title */
 }
 
 nav a {
@@ -291,7 +292,7 @@ main {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    max-width: 1400px;
+    max-width: 1300px;
     margin: 0 auto;
     position: relative;
 }
@@ -303,9 +304,9 @@ main {
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    max-width: 1500px;
+    max-width: 1300px;
     margin: 0 auto 2rem;
-    padding: 0 1.5rem;
+    padding: 0 var(--site-padding); /* align with header left padding */
 }
 
 .hero-section {
@@ -315,7 +316,7 @@ main {
     background: transparent; /* remove black bars */
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* align image to left padding */
 }
 
 .hero-container { width: 100%; }
@@ -1121,12 +1122,17 @@ section {
     
     .modal-content {
         padding: 1.5rem;
-    }
-    
-    /* CV link styling */
-.cv-link { margin-left: 1.5rem; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.6; align-self: center; transition: opacity 0.25s ease, color 0.25s ease; }
-.cv-link:hover, .cv-link:focus { opacity: 0.95; color: var(--primary-color); }
-@media (max-width: 768px){ .cv-link { order: 3; margin-left: 0.75rem; font-size: 0.75rem; } }
+        }
+}
+
+/* CV link styling (desktop/top-right) */
+.cv-link { font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.65; transition: opacity 0.25s ease, color 0.25s ease; }
+.cv-link:hover, .cv-link:focus { opacity: 1; color: var(--primary-color); }
+
+@media (max-width: 768px){
+    #site-title { margin-bottom: 0.75rem; }
+    .header-right { gap: 0.5rem; }
+    .cv-link { font-size: 0.75rem; }
 }
 
 @media (max-width: 480px) {

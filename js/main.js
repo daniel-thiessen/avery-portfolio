@@ -69,6 +69,14 @@ function initSite(config) {
     
     // Create header
     createHeader(config);
+    // Ensure content clears the fixed header
+    adjustMainOffset();
+    window.addEventListener('load', adjustMainOffset);
+    let _resizeT;
+    window.addEventListener('resize', () => {
+        if (_resizeT) cancelAnimationFrame(_resizeT);
+        _resizeT = requestAnimationFrame(adjustMainOffset);
+    });
     
     // Build hero and about first (custom split layout)
     const heroEl = createHeroSection('images/avery.jpg', config.siteTitle);
@@ -81,7 +89,6 @@ function initSite(config) {
     document.querySelector('main').appendChild(introWrapper);
 
     // Remaining sections
-    createCarouselSection('current', config.current);
     createCarouselSection('current', config.current);
     createCarouselSection('choreography', config.choreography);
     createCarouselSection('projects', config.projects);
@@ -127,6 +134,11 @@ function createHeader(config) {
     const header = document.createElement('header');
     const headerContent = document.createElement('div');
     headerContent.className = 'header-content';
+    // Split header into left (title + nav) and right (CV + hamburger)
+    const left = document.createElement('div');
+    left.className = 'header-left';
+    const right = document.createElement('div');
+    right.className = 'header-right';
     
     // Site title
     const title = document.createElement('h1');
@@ -148,8 +160,9 @@ function createHeader(config) {
         if (nav) nav.classList.toggle('open');
     });
     
-    headerContent.appendChild(title);
-    headerContent.appendChild(hamburger);
+    left.appendChild(title);
+    headerContent.appendChild(left);
+    headerContent.appendChild(right);
     header.appendChild(headerContent);
     
     // Navigation
@@ -184,12 +197,13 @@ function createHeader(config) {
     });
     
     nav.appendChild(navList);
-    header.appendChild(nav);
+    // Place nav under title within the left column for shared left edge
+    left.appendChild(nav);
     
     // Add header to page
     document.body.insertBefore(header, document.body.firstChild);
     
-    // CV link
+    // CV link (top-right)
     if (config.cvPdf) {
         const cvLink = document.createElement('a');
         cvLink.href = config.cvPdf;
@@ -197,9 +211,11 @@ function createHeader(config) {
         cvLink.rel = 'noopener noreferrer';
         cvLink.className = 'cv-link';
         cvLink.textContent = 'CV (PDF)';
-        // Insert before hamburger for visibility
-        headerContent.insertBefore(cvLink, headerContent.querySelector('.hamburger'));
+        right.appendChild(cvLink);
     }
+
+    // Place hamburger on the right as well
+    right.appendChild(hamburger);
 }
 
 // Create About section
@@ -936,4 +952,13 @@ function initSectionObserver() {
     sections.forEach(section => {
         observer.observe(section);
     });
+}
+
+// Keep main content pushed below the fixed header height
+function adjustMainOffset() {
+    const header = document.querySelector('header');
+    const main = document.querySelector('main');
+    if (!header || !main) return;
+    const h = header.getBoundingClientRect().height;
+    main.style.marginTop = h + 'px';
 }
