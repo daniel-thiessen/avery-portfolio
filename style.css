@@ -34,7 +34,8 @@
     --border-color: #e0e0e0;
     --subtle-color: #e5e5e5;
     --subtle-color-rgb: 229, 229, 229; /* RGB value for subtle effects */
-    --section-padding: 2.1rem 1.5rem; /* further tightened */
+    --site-padding: 1.5rem; /* Consistent padding for alignment */
+    --section-padding: 2.1rem var(--site-padding); /* further tightened */
     --section-vertical: clamp(1.4rem, 4vw, 2.4rem); /* more compact vertical rhythm */
     --transition-speed: 0.3s;
     --transition-fast: 0.2s;
@@ -195,7 +196,7 @@ main {
 header {
     background-color: rgba(255, 255, 255, 0.98);
     color: var(--primary-color);
-    padding: 1.2rem 2rem;
+    padding: 1.2rem var(--site-padding);
     position: fixed;
     width: 100%;
     top: 0;
@@ -297,62 +298,49 @@ main {
 
 /* About Section */
 /* Hero Section */
+/* Intro split layout: mobile stacked; desktop side-by-side with hero full image on right */
+.intro-split {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 1500px;
+    margin: 0 auto 2rem;
+    padding: 0 1.5rem;
+}
+
 .hero-section {
     padding: 0;
-    margin-top: 0;
+    margin: 0;
     width: 100%;
-    height: 75vh;
-    min-height: 480px;
-    max-height: 780px;
-    overflow: hidden;
-    position: relative;
-}
-
-.hero-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.hero-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-/* About section - redesigned with bio first, portrait second */
-.about-content {
+    background: transparent; /* remove black bars */
     display: flex;
-    flex-direction: row;
     align-items: center;
-    gap: 3rem;
-    flex-wrap: wrap;
+    justify-content: center;
 }
+
+.hero-container { width: 100%; }
+
+.hero-image { width: 100%; height: auto; display: block; }
+
+@media (min-width: 980px) {
+    .intro-split { flex-direction: row; align-items: stretch; }
+    .about-section { flex: 0 0 48%; display: flex; flex-direction: column; justify-content: center; }
+    .hero-section { flex: 0 0 52%; min-height: auto; }
+    .hero-container { width: 100%; display: flex; align-items: center; justify-content: center; }
+    .hero-image picture, .hero-image img { width: 100%; height: auto; max-height: none; }
+    .hero-section img { width: 100%; height: auto; object-fit: contain; }
+}
+
+/* About section - bio only, no portrait */
+/* About content simplified */
+.about-content { max-width: 800px; margin: 0 auto; }
 
 .bio-container {
-    flex: 1;
-    min-width: 300px;
+    width: 100%;
     font-family: var(--font-body) !important; /* ensure Inter inheritance */
 }
 
-.profile-image-container {
-    flex: 0 0 220px;
-}
-
-.profile-image {
-    width: 100%;
-    height: auto;
-    border-radius: 50%; /* Make it circular for a more subtle, inset look */
-    box-shadow: var(--shadow);
-    filter: grayscale(0.1);
-    transition: all 0.5s ease;
-}
-
-.profile-image:hover {
-    filter: grayscale(0);
-    transform: scale(1.02);
-}
+/* Removed all profile image styling as it's no longer used */
 
 /* Simple styling for bio paragraph */
 .bio-container .bio {

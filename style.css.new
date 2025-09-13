@@ -1,0 +1,17 @@
+.title-container {
+    padding-bottom: 2cm;
+    margin-bottom: 0;
+}
+
+.nav-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .title-container {
+        padding-bottom: 0;
+    }
+}
