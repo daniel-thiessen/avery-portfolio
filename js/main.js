@@ -742,7 +742,7 @@ function createContactSection(contact) {
         const form = document.createElement('form');
         form.className = 'contact-form';
         // Set up FormSubmit action with secure token instead of email
-        form.action = 'https://formsubmit.co/7901188d6d31702f00ad3357f2698284';
+        form.action = 'https://formsubmit.co/$averymileahsmith@gmail.com';
         form.method = 'POST';
         
         // Hidden fields for FormSubmit configuration
