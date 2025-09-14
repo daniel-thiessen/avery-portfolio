@@ -46,7 +46,7 @@ Performed by Andrea Cownden, Emily Clarke, Avery Smith`
                 video: "",
                 description: `"Here We Are" explores the artifice of identity. Together, Avery and Kate have created states of being that attempt to consolidate multiple versions of self. The attempt of presenting oneself in a neat package fails and dissolves in different ways. Cracks in formality and persona soften the performer and make space for multiple identities to exist.
 
-Presented at Left of PuSh 2023 & Accelerate 6.0 (January 2023)
+Presented at Left of PuSh 2023 & Accelerate 6.0, January 2023
 Performed by Kate Franklin`
             },
             {
@@ -58,6 +58,7 @@ Performed by Kate Franklin`
                 description: `Body and camera collaborate to create three distinct visual experiences of ritual. Through rigorous processes of imagination, performers experiment with specific ways of meeting and being with the body. Inspired by the fundamental states of matter, the movement explorations draw on scientific phenomena in the search of reaching an altered state of being.
 
 Presented by The Dance Centre’s Digital Dance Commission, February 2023
+
 Created in collaboration by Jamie Robinson & Avery Smith
 Performed by Jamie Robinson & Avery Smith
 Filmed by Jamie Robinson & Avery Smith
@@ -76,7 +77,7 @@ Supported and funded by The Dance Centre`
 The collaborators drew on their personal relationships with the universal themes of grief and joy to craft a performance that reveals the struggle and pain of a crippling inner monologue. Using improvisation as a basis for creation and exploration, a distinct yet ever-shifting fictional character was birthed. This character was researched through experimenting with adopting one another's histories, amalgamating identities, and shifting personas. A character who has the will to conquer her relentless anxieties but lacks the tools to do so began to appear. Through the marriage of movement, sound, and text, the work aims to explore this intimate and isolating experience.  
 
 Presented at The Suoni Per Il Popolo Music Festival (Montreal) at La Sala Rossa, October 2019.
-Created at The Banff Centre for Arts and Creativity in collaboration by Kimberley de Jong, Avery Smith (performer), Anna Atkinson (composer)`
+Created at The Banff Centre for Arts and Creativity in collaboration by Kimberley de Jong, Avery Smith (performer), Anna Atkinson (composer).`
             },
             {
                 id: "choreo3",
@@ -84,11 +85,10 @@ Created at The Banff Centre for Arts and Creativity in collaboration by Kimberle
                 thumbnail: "images/born-to-dance-thumb.png",
                 fullImage: "images/born-to-dance.png",
                 video: "https://www.youtube.com/embed/tVg6zt56saw",
-                description: `Performed, choreographed, and filmed by Avery Smith
+                description: `Premier June 2022
 
-Music by Zachari Smith and Brieanna Lebel
-
-Premiered June 2022`
+Created and performed by Avery Smith
+Music by Zachari Smith and Brieanna Lebel`
             },
             {
                 id: "choreo5",
@@ -98,11 +98,12 @@ Premiered June 2022`
                 video: "https://player.vimeo.com/video/269486806",
                 description: `every part explores a contradicting desire to reveal and retreat; to be the audience of one moment and the performer of the next. The film finds a single dancer unearthing, tangling, and deconstructing habitual movement patterns and rhythms. This process manifests in a physical investigation of calculated precision. Contrasting environments and camera perspectives work to challenge and disrupt this intimate experience. What is lost in the camera's translation of this experience? What feelings of intimacy are gained, forgotten, and revealed? 
 
+Presented at Festival of Recorded Movement 2018
+Presented at REELING Film Festival (Edmonton) 2018
+Presented at New Blue Dance Festival (Toronto) 2018
+
 Director, Choreographer, Performer: Avery Smith
-DOP, Cinematographer: Alex Tam 
-Presented at Festival of Recorded Movement 2018.
-Presented at REELING Film Festival (Edmonton) 2018.
-Presented at New Blue Dance Festival (Toronto) 2018.`
+DOP, Cinematographer: Alex Tam`
             },
             {
                 id: "choreo6",
@@ -151,7 +152,8 @@ Sound by Zachari Smith`
     - Josh Martin
 
 Co-creators, Producers, Facilitators: Josh Martin, Lisa Gelley-Martin, Avery Smith 
-Supported and funded by The Dance Centre, Company 605, CADA/West. Spring 2019.`
+Supported and funded by The Dance Centre, Company 605, CADA/West.
+Spring 2019.`
             },
             {
                 id: "project3",
