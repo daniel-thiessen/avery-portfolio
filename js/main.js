@@ -71,11 +71,18 @@ function initSite(config) {
     createHeader(config);
     // Ensure content clears the fixed header
     adjustMainOffset();
-    window.addEventListener('load', adjustMainOffset);
+    window.addEventListener('load', () => {
+        adjustMainOffset();
+        applySectionScrollMargins();
+        enableNavSmoothScroll();
+    });
     let _resizeT;
     window.addEventListener('resize', () => {
         if (_resizeT) cancelAnimationFrame(_resizeT);
-        _resizeT = requestAnimationFrame(adjustMainOffset);
+        _resizeT = requestAnimationFrame(() => {
+            adjustMainOffset();
+            applySectionScrollMargins();
+        });
     });
     
     // Build hero and about first (custom split layout)
@@ -957,4 +964,29 @@ function adjustMainOffset() {
     if (!header || !main) return;
     const h = header.getBoundingClientRect().height;
     main.style.marginTop = h + 'px';
+}
+
+// Apply dynamic scroll margin to sections based on header height
+function applySectionScrollMargins() {
+    const header = document.querySelector('header');
+    if (!header) return;
+    const offset = header.getBoundingClientRect().height + 12; // extra breathing room
+    document.querySelectorAll('[id].section, .section[id], section[id]').forEach(sec => {
+        sec.style.scrollMarginTop = offset + 'px';
+    });
+}
+
+// Enable smooth scrolling for nav links
+function enableNavSmoothScroll() {
+    document.querySelectorAll('nav a[href^="#"]').forEach(link => {
+        link.addEventListener('click', e => {
+            const hash = link.getAttribute('href');
+            if (!hash || hash === '#') return;
+            const id = hash.slice(1);
+            const target = document.getElementById(id);
+            if (!target) return;
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
 }
