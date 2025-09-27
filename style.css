@@ -190,6 +190,8 @@ main {
     max-width: 1300px;
     margin: 0 auto;
     position: relative;
+    /* Fallback; JS will overwrite inline with exact header height */
+    scroll-margin-top: 140px;
 }
 
 /* Header styles */
